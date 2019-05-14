@@ -449,7 +449,7 @@ var sendGa = function(label, value = 0) {
 				c = m[0].replace(/em-i-/, '');
 
 				$.post(emurl.ajax_url, {
-					action: 'gdoc',
+					action: 'gdoc_se',
 					type: 'focus',
 					name: c
 				}, function(data) {
@@ -470,7 +470,7 @@ var sendGa = function(label, value = 0) {
 				c = m[0].replace(/em-i-/, '');
 
 				$.post(emurl.ajax_url, {
-					action: 'gdoc',
+					action: 'gdoc_se',
 					type: 'unfocus',
 					name: c
 				}, function(data) {
@@ -494,7 +494,7 @@ var sendGa = function(label, value = 0) {
 				c = m[0].replace(/em-i-/, '');
 
 				$.post(emurl.ajax_url, {
-					action: 'gdoc',
+					action: 'gdoc_se',
 					type: 'valid',
 					name: c
 				}, function(data) {
@@ -648,7 +648,8 @@ var sendGa = function(label, value = 0) {
 		});
 
 
-		window.addEventListener('beforeunload', unload);
+		// TODO uncomment
+		// window.addEventListener('beforeunload', unload);
 
 		sendGa('neste', 0);
 
@@ -678,12 +679,12 @@ var sendGa = function(label, value = 0) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		if (!valid) return;
+		// if (!valid) return;
 
 		location.hash = 'form';
 		// if ($('.em-check-contact_accept')[0].checked)
 		$.post(emurl.ajax_url, {
-			action: 'wlinc',
+			action: 'wlinc_se',
 			'contact_accept': $('.em-check-contact_accept')[0].checked ? '1' : '0',
 			'email': $('.em-i-email').val(),
 			'mobile_number': $('.em-i-mobile_number').val().replace(/[\D]/g, '')
@@ -699,7 +700,7 @@ var sendGa = function(label, value = 0) {
 		// catch (e) { console.log(e) }
 
 
-		$('.content-post > div:not(.top-container), .em-icons-container').each(function() {
+		$('.content-post > div:not(.em-form-container)').each(function() {
 			$(this).fadeOut();
 		});
 
@@ -830,7 +831,7 @@ var sendGa = function(label, value = 0) {
 		$(this).html('Søknad Sendes ...');
 
 		$.post(emurl.ajax_url, {
-			action: 'axowl',
+			action: 'axowl_se',
 			data: data
 		}, function(d) {
 
@@ -965,9 +966,9 @@ var sendGa = function(label, value = 0) {
 				}
 				else show();
 
-				$('.em-element-spouse_income:not(.em-hidden)').each(function() {
-					$(this).slideUp(300).addClass('em-hidden');
-				});
+				// $('.em-element-spouse_income:not(.em-hidden)').each(function() {
+				// 	$(this).slideUp(300).addClass('em-hidden');
+				// });
 			}
 
 
@@ -1000,12 +1001,12 @@ var sendGa = function(label, value = 0) {
 					});	
 				} else hide();
 
-				switch ($('.em-i-civilstatus').val()) {
-					case 'Gift/partner':
-					case 'Samboer':
-						$('.em-element-spouse_income').slideDown(300).removeClass('em-hidden'); 
-						break;
-				}
+				// switch ($('.em-i-civilstatus').val()) {
+				// 	case 'Gift/partner':
+				// 	case 'Samboer':
+				// 		$('.em-element-spouse_income').slideDown(300).removeClass('em-hidden'); 
+				// 		break;
+				// }
 			}
 
 
@@ -1028,84 +1029,94 @@ var sendGa = function(label, value = 0) {
 
 
 	// LISTS 
-	$('.em-i-education').change(function() {
-		switch ($(this).val()) {
-			case 'Høysk./universitet 1-3 år':
-			case 'Høysk./universitet 4+år': $('.em-element-education_loan').down(); break;
-			default: $('.em-element-education_loan').up();			
-		}
-	});
+	// $('.em-i-education').change(function() {
+	// 	switch ($(this).val()) {
+	// 		case 'Høysk./universitet 1-3 år':
+	// 		case 'Høysk./universitet 4+år': $('.em-element-education_loan').down(); break;
+	// 		default: $('.em-element-education_loan').up();			
+	// 	}
+	// });
 
 	$('.em-i-employment_type').change(function() {
 		switch ($(this).val()) {
-			case 'Fast ansatt (privat)':
-			case 'Fast ansatt (offentlig)':
-			case 'Midlertidig ansatt/vikar':
-			case 'Selvst. næringsdrivende':
-			case 'Langtidssykemeldt': 
-				$('.em-element-employment_since, .em-element-employer').down(); break;
+			case 'Vikariat':
+				$('.em-element-employment_since_year, .em-element-employment_since_month').up();
+				$('.em-element-employment_last_year, .em-element-employment_last_month, .em-element-employer, .em-element-work_number').down(); 
+				break;
+			case 'Fast anställd':
+			case 'Egen rörelse': 
+				$('.em-element-employment_last_year, .em-element-employment_last_month').up(); 
+				$('.em-element-employment_since_year, .em-element-employment_since_month, .em-element-employer, .em-element-work_number').down(); 
+				break;
 
-			default: $('.em-element-employment_since, .em-element-employer').up();
+			default: $('.em-element-employment_since_year, .em-element-employment_since_month, .em-element-employment_last_year, .em-element-employment_last_month, .em-element-employer, .em-element-work_number').up();
 		}
 	});
 
-	$('.em-i-civilstatus').change(function() {
-		switch ($(this).val()) {
-			case 'Gift/partner':
-			case 'Samboer':
-				if ($('.em-c-co_applicant').val() == 0)
-					$('.em-element-spouse_income').down(); break;
+	// $('.em-i-civilstatus').change(function() {
+	// 	switch ($(this).val()) {
+	// 		case 'Gift/partner':
+	// 		case 'Samboer':
+	// 			if ($('.em-c-co_applicant').val() == 0)
+	// 				$('.em-element-spouse_income').down(); break;
 			
-			default: $('.em-element-spouse_income').up();
-		}
-	});
+	// 		default: $('.em-element-spouse_income').up();
+	// 	}
+	// });
 
 	$('.em-i-living_conditions').change(function() {
+		console.log($(this).val());
 		switch ($(this).val()) {
-			case 'Leier':
-			case 'Bor hos foreldre':
-				$('.em-element-rent').down();
-				$('.em-element-rent_income, .em-element-mortgage').up();
-				break;
+			case 'Hyresrätt':
+			case 'Bostadsrätt':
+			case 'Inneboende': $('.em-element-rent').down(); break;
+			default: $('.em-element-rent').up();
 
-			case 'Aksje/andel/borettslag':
-			case 'Selveier': 
-				$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').down();
-				break;
 
-			case 'Enebolig':
-				$('.em-element-rent_income, .em-element-mortgage').down();
-				$('.em-element-rent').up();
-				break;
+			// case 'Leier':
+			// case 'Bor hos foreldre':
+			// 	$('.em-element-rent').down();
+			// 	$('.em-element-rent_income, .em-element-mortgage').up();
+			// 	break;
 
-			default:
-				$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').up();
+			// case 'Aksje/andel/borettslag':
+			// case 'Selveier': 
+			// 	$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').down();
+			// 	break;
+
+			// case 'Enebolig':
+			// 	$('.em-element-rent_income, .em-element-mortgage').down();
+			// 	$('.em-element-rent').up();
+			// 	break;
+
+			// default:
+			// 	$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').up();
 		}
 	});
 
-	$('.em-i-number_of_children').change(function() {
-		if ($(this).val() > 0) $('.em-element-allimony_per_month').down();
-		else $('.em-element-allimony_per_month').up() ;
-	});
+	// $('.em-i-number_of_children').change(function() {
+	// 	if ($(this).val() > 0) $('.em-element-allimony_per_month').down();
+	// 	else $('.em-element-allimony_per_month').up() ;
+	// });
 
 
-	$('.em-i-total_unsecured_debt').on('input', function() {
-		if ($(this).val() && $(this).val() != '0') $('.em-element-unsecured_debt_balance').down();
-		else $('.em-element-unsecured_debt_balance').up();
-	});
+	// $('.em-i-total_unsecured_debt').on('input', function() {
+	// 	if ($(this).val() && $(this).val() != '0') $('.em-element-unsecured_debt_balance').down();
+	// 	else $('.em-element-unsecured_debt_balance').up();
+	// });
 
-	$('.em-i-co_applicant_employment_type').change(function() {
-		switch ($(this).val()) {
-			case 'Fast ansatt (privat)':
-			case 'Fast ansatt (offentlig)':
-			case 'Midlertidig ansatt/vikar':
-			case 'Selvst. næringsdrivende':
-			case 'Langtidssykemeldt': 
-				$('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').down(); break;
+	// $('.em-i-co_applicant_employment_type').change(function() {
+	// 	switch ($(this).val()) {
+	// 		case 'Fast ansatt (privat)':
+	// 		case 'Fast ansatt (offentlig)':
+	// 		case 'Midlertidig ansatt/vikar':
+	// 		case 'Selvst. næringsdrivende':
+	// 		case 'Langtidssykemeldt': 
+	// 			$('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').down(); break;
 
-			default: $('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').up();
-		}
-	});
+	// 		default: $('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').up();
+	// 	}
+	// });
 
 
 })(jQuery);
@@ -1146,7 +1157,7 @@ var sendGa = function(label, value = 0) {
 
 			$.post(emurl.ajax_url, 
 				{
-					action: 'popup',
+					action: 'popup_se',
 					// 'ga': gaInfo(),
 					'ab-name': $('#abtesting-post').val(),
 					'ab-sc': $('#abtesting-sc').val(),

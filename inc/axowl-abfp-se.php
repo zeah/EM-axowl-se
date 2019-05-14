@@ -3,7 +3,7 @@
 defined('ABSPATH') or die('Blank Space');
 
 
-final class Axowl_abfp {
+final class Axowl_abfp_se {
 	/* singleton */
 	private static $instance = null;
 
@@ -25,7 +25,7 @@ final class Axowl_abfp {
 	public function ab($content) {
 		if (!is_front_page()) return $content;
 
-		$opt = get_option('em_axowl');
+		$opt = get_option('em_axowl_se');
 
 		if (!isset($opt['abtesting'])) return $content;
 

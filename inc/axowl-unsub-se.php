@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or die('Blank Space');
 
-final class Axowl_unsub {
+final class Axowl_unsub_se {
 	/* singleton */
 	private static $instance = null;
 
@@ -28,7 +28,7 @@ final class Axowl_unsub {
 			if (!isset($_GET['email'])) return;
 		}
 
-		$url = get_option('em_axowl');
+		$url = get_option('em_axowl_se');
 
 		if (!isset($url['unsub'])) return;
 

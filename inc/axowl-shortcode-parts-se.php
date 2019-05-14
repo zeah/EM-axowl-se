@@ -1,7 +1,7 @@
 <?php 
 defined('ABSPATH') or die('Blank Space');
 
-final class Axowl_shortcode_parts {
+final class Axowl_shortcode_parts_se {
 	/* singleton */
 	private static $instance = null;
 
@@ -73,7 +73,7 @@ final class Axowl_shortcode_parts {
 	public function popup() {
 		return '
 			<div class="em-popup">
-				<button type="button" class="em-popup-x"><img class="em-close" src="'.EM_AXOWL_PLUGIN_URL.'assets/img/close.png"></button>
+				<button type="button" class="em-popup-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></button>
 				<div class="em-popup-content"><span>DIN SØKNAD ER SENDT INN TIL VÅR PARTNER AXO FINANS AS.<br>DU VIL FÅ SVAR PÅ SØKNADEN FRA AXO FINANS I LØPET AV 1 DAG.</span></div>
 			</div>
 		';
@@ -195,7 +195,7 @@ final class Axowl_shortcode_parts {
 
 			$o['name'], // 1
 			
-			$o['text'], // 2
+			$o['text'] ? $o['text'] : '&nbsp;', // 2
 			
 			(isset($o['value']['help']) && isset($o['ht'])) ? $this->help_element($o['name'], $o['ht']) : '', // 3
 
@@ -359,7 +359,9 @@ final class Axowl_shortcode_parts {
 
 			$o['name'],
 
-			$o['text'],
+			// $o['text'],
+			$o['text'] ? $o['text'] : '&nbsp;', // 2
+			
 
 			(isset($o['value']['help']) && isset($o['ht'])) ? $this->help_element($o['name'], $o['ht']) : '',
 
@@ -495,11 +497,11 @@ final class Axowl_shortcode_parts {
 			'<img class="em-marker-valid em-marker-val em-hidden" src="%s">
 			<img class="em-marker-invalid em-marker-val em-hidden" src="%s">',
 			
-			esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/'.$valid),
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/'.$valid),
 			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/hook.png'),
 			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/greentick.png'),
 			
-			esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/'.$invalid)
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/'.$invalid)
 			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/redtick.png')
 		);		
 	}

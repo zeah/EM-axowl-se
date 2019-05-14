@@ -5,7 +5,7 @@
 
 defined('ABSPATH') or die('Blank Space');
 
-final class Axowl_data {
+final class Axowl_data_se {
 
 	/**
 	 * from_form() recieves ajax from front end
@@ -52,24 +52,24 @@ final class Axowl_data {
 	}
 
 	private function wp_hooks() {
-		add_action( 'wp_ajax_nopriv_axowl', [$this, 'from_form']);
-		add_action( 'wp_ajax_axowl', [$this, 'from_form']);
+		add_action( 'wp_ajax_nopriv_axowl_se', [$this, 'from_form']);
+		add_action( 'wp_ajax_axowl_se', [$this, 'from_form']);
 
-		add_action( 'wp_ajax_nopriv_wlinc', [$this, 'incomplete']);
-		add_action( 'wp_ajax_wlinc', [$this, 'incomplete']);
+		add_action( 'wp_ajax_nopriv_wlinc_se', [$this, 'incomplete']);
+		add_action( 'wp_ajax_wlinc_se', [$this, 'incomplete']);
 
-		add_action( 'wp_ajax_nopriv_popup', [$this, 'popup']);
-		add_action( 'wp_ajax_popup', [$this, 'popup']);
+		add_action( 'wp_ajax_nopriv_popup_se', [$this, 'popup']);
+		add_action( 'wp_ajax_popup_se', [$this, 'popup']);
 
 
-		add_action( 'wp_ajax_nopriv_gdoc', [$this, 'gdoc']);
-		add_action( 'wp_ajax_gdoc', [$this, 'gdoc']);
+		add_action( 'wp_ajax_nopriv_gdoc_se', [$this, 'gdoc']);
+		add_action( 'wp_ajax_gdoc_se', [$this, 'gdoc']);
 
-		add_action( 'wp_ajax_nopriv_del', [$this, 'del']);
-		add_action( 'wp_ajax_del', [$this, 'del']);
+		add_action( 'wp_ajax_nopriv_del_se', [$this, 'del']);
+		add_action( 'wp_ajax_del_se', [$this, 'del']);
 
-		add_action( 'wp_ajax_nopriv_gan', [$this, 'gan']);
-		add_action( 'wp_ajax_gan', [$this, 'gan']);
+		add_action( 'wp_ajax_nopriv_gan_se', [$this, 'gan']);
+		add_action( 'wp_ajax_gan_se', [$this, 'gan']);
 	}
 
 
@@ -136,7 +136,7 @@ final class Axowl_data {
 	public function del() {
 		$this->test();
 
-		$settings = get_option('em_axowl');
+		$settings = get_option('em_axowl_se');
 
 		if (!isset($settings['unsub']) || $settings['unsub'] == '') {
 			echo '';
@@ -235,7 +235,7 @@ final class Axowl_data {
 	 * @return [type]       [description]
 	 */
 	private function send_axo($data) {
-		$settings = get_option('em_axowl');
+		$settings = get_option('em_axowl_se');
 		if (!isset($settings['form_url']) || !isset($settings['name'])
 			|| !$settings['form_url'] || !$settings['name']) return;
 		
@@ -319,7 +319,7 @@ final class Axowl_data {
 		// $this->gdocs_ads($data);
 
 		// google analytics
-		$value = get_option('em_axowl');
+		$value = get_option('em_axowl_se');
 		$value = isset($value['payout']) ? $value['payout'] : 0;
 		$this->ga('accepted', $value);
 	}
@@ -382,7 +382,7 @@ final class Axowl_data {
 	 */
 	private function sql_conversions($data) {
 
-		$opt = get_option('em_axowl');
+		$opt = get_option('em_axowl_se');
 		$data = [
 			'campaign' => 'axo',
 			'media' => $_SERVER['SERVER_NAME'],
@@ -409,7 +409,7 @@ final class Axowl_data {
 	private function gdocs_ads($data) {
 		// Google Click ID, Conversion Name, Conversion Time, Conversion Value, Conversion Currency
 
-		$opt = get_option('em_axowl');
+		$opt = get_option('em_axowl_se');
 
 		// if not set in settings
 		if (!isset($opt['gdocs_ads']) || !isset($opt['payout']) || !isset($opt['currency'])) return;
@@ -440,7 +440,7 @@ final class Axowl_data {
 	 * @return [type]        [description]
 	 */
 	private function get_url($value) {
-		$url = get_option('em_axowl');
+		$url = get_option('em_axowl_se');
 
 		if (isset($url[$value])) return $url[$value];
 
@@ -495,7 +495,7 @@ final class Axowl_data {
 
 		if (!$data) return;
 
-		$tag = get_option('em_axowl');
+		$tag = get_option('em_axowl_se');
 
 		// if (!isset($tag['ga_code']) && $tag['ga_code'] != '') return;
 

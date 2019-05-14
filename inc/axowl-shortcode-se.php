@@ -3,10 +3,10 @@
 defined('ABSPATH') or die('Blank Space');
 
 
-require_once 'axowl-shortcode-parts.php';
-require_once 'axowl-inputs.php';
+require_once 'axowl-shortcode-parts-se.php';
+require_once 'axowl-inputs-se.php';
 
-final class Axowl_shortcode {
+final class Axowl_shortcode_se {
 	/* singleton */
 	private static $instance = null;
 
@@ -20,7 +20,7 @@ final class Axowl_shortcode {
 
 	private function __construct() {
 
-		self::$parts = Axowl_shortcode_parts::get_instance(); 		
+		self::$parts = Axowl_shortcode_parts_se::get_instance(); 		
 
 		$this->hooks();
 	}
@@ -29,9 +29,9 @@ final class Axowl_shortcode {
 	 * [hooks description]
 	 */
 	private function hooks() {
-		add_shortcode('axowl', [$this, 'shortcode']);
+		add_shortcode('axowl-se', [$this, 'shortcode']);
 
-		add_shortcode('axowl-delete', [$this, 'delete']);
+		add_shortcode('axowl-delete-se', [$this, 'delete']);
 
 		// add_shortcode('axowlicon', [$this, 'icon']);
 	}
@@ -69,7 +69,7 @@ final class Axowl_shortcode {
 		add_filter('google_link', [$this, 'fonts']);
 
 		if (!is_user_logged_in()) 
-			if (get_transient('axowl_sc1')) return get_transient('axowl_sc1');
+			if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
 
 		// shortcode-parts.php
 		$p = self::$parts;
@@ -82,11 +82,11 @@ final class Axowl_shortcode {
 		// add_action('wp_footer', [$this, 'footer']);
 		// add_action('wp_head', [$this, 'sands']);
 
-		$data = get_option('em_axowl');
+		$data = get_option('em_axowl_se');
 		if (!is_array($data)) $data = [];
 		$data = $this->sanitize($data);
 		// wp_die('<xmp>'.print_r($data, true).'</xmp>');
-		$inputs = AXOWL_inputs::$inputs;
+		$inputs = AXOWL_inputs_se::$inputs;
 
 		$lock = '<div class="em-lock" title="Kryptert og sikker kommunikasjon"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>';
 		$lock = '';
@@ -110,7 +110,7 @@ final class Axowl_shortcode {
 
 				 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
 
-				 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_PLUGIN_URL.'assets/img/close.png"></buttton>
+				 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
 				 </div>';
 
 		$html = sprintf(
@@ -166,7 +166,7 @@ final class Axowl_shortcode {
 		
 		// TODO set transient
 		if (!is_user_logged_in()) 
-			set_transient('axowl_sc1', $html);
+			set_transient('axowl_se_sc1', $html);
 		return $html;
 	}
 
@@ -256,9 +256,9 @@ final class Axowl_shortcode {
         // wp_enqueue_style('axodel-mobile', EM_AXOWL_PLUGIN_URL.'assets/css/pub/axodel-mobile.css', array(), '0.0.1', '(max-width: 900px)');
         wp_enqueue_script('cndjq', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, false);
         
-        wp_enqueue_script('axodel', EM_AXOWL_PLUGIN_URL.'assets/js/pub/axodel.js', [], '0.0.1');
+        wp_enqueue_script('axodel-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/axodel.js', [], '0.0.1');
         // wp_add_inline_script('axodel', $script);
-		wp_localize_script('axodel', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
+		wp_localize_script('axodel-se', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
 	}
 
 
@@ -278,24 +278,24 @@ final class Axowl_shortcode {
 
 
 
-	public function icon($atts, $content = null) {
-		add_action('wp_head', [$this, 'sands_icons']);
+	// public function icon($atts, $content = null) {
+	// 	add_action('wp_head', [$this, 'sands_icons']);
 		
-		$banks = [
-					'bank-norwegian', 'bluestep', 'dnb', 'easybank', 'komplett-bank', 'nordax', 
-					'resurs-bank', 'santander-consumer-bank', 'ya-bank', 'expressbank',
-					'bnbank', 'remember', 'nystart-bank', 'monobank', 'thorn', 'optinbank'
-				];
+	// 	$banks = [
+	// 				'bank-norwegian', 'bluestep', 'dnb', 'easybank', 'komplett-bank', 'nordax', 
+	// 				'resurs-bank', 'santander-consumer-bank', 'ya-bank', 'expressbank',
+	// 				'bnbank', 'remember', 'nystart-bank', 'monobank', 'thorn', 'optinbank'
+	// 			];
 
-		$out = '';
-		foreach ($banks as $b)
-			$out .= sprintf('<div class="em-sprite sprite-%s"></div>', $b);
+	// 	$out = '';
+	// 	foreach ($banks as $b)
+	// 		$out .= sprintf('<div class="em-sprite sprite-%s"></div>', $b);
 
-		return '<div class="em-sprites">
-					<div class="em-sprite-container em-sprite-container-animation" onclick="this.classList.toggle(\'em-sprite-container-animation-paused\');">'.
-					$out.'</div></div>';
+	// 	return '<div class="em-sprites">
+	// 				<div class="em-sprite-container em-sprite-container-animation" onclick="this.classList.toggle(\'em-sprite-container-animation-paused\');">'.
+	// 				$out.'</div></div>';
 
-	}
+	// }
 
 
 	/**
@@ -308,29 +308,29 @@ final class Axowl_shortcode {
 
 		$d = [];
 		foreach($data as $key => $value)
-			$d[$key] = Axowl_settings::sanitize($value);
+			$d[$key] = Axowl_settings_se::sanitize($value);
 
 		return $d;
 	}
 
 	public function sands() {
         wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
-        wp_enqueue_style('emaxowl-style', EM_AXOWL_PLUGIN_URL.'assets/css/pub/emaxo.css', array(), '2.0.21', '(min-width: 901px)');
-        wp_enqueue_style('emaxowl-mobile', EM_AXOWL_PLUGIN_URL.'assets/css/pub/emaxo-mobile.css', array(), '2.0.21', '(max-width: 900px)');
+        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se.css', array(), '0.0.1', '(min-width: 901px)');
+        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-mobile-se.css', array(), '0.0.1', '(max-width: 900px)');
         
         wp_enqueue_script('jquery-cdn', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, true);
         wp_enqueue_script('jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js', [], false, true);
         wp_enqueue_script('jquery-touch', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', [], false, true);
 
-        wp_enqueue_script('emaxowl', EM_AXOWL_PLUGIN_URL.'assets/js/pub/emaxo.js', [], '2.0.39', true);
+        wp_enqueue_script('emaxowl-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/emaxo-se.js', [], '0.0.1', true);
 		
-		wp_localize_script( 'emaxowl', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
+		wp_localize_script( 'emaxowl-se', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
 	}
 
-	public function sands_icons() {
-        wp_enqueue_style('emaxowl-style', EM_AXOWL_PLUGIN_URL.'assets/css/pub/emaxo.css', array(), '1.0.6', '(min-width: 816px)');
-        wp_enqueue_style('emaxowl-mobile', EM_AXOWL_PLUGIN_URL.'assets/css/pub/emaxo-mobile.css', array(), '1.0.2', '(max-width: 815px)');
-	}
+	// public function sands_icons() {
+ //        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se.css', array(), '1.0.6', '(min-width: 816px)');
+ //        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-mobile-se.css', array(), '1.0.2', '(max-width: 815px)');
+	// }
 
 
 
