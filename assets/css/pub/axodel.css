@@ -1,0 +1,29 @@
+.axodel-container {
+	margin: 4rem 0;
+}
+
+.axodel-input {
+	font-size: 1.6rem;
+	padding: .5rem;
+	min-width: 30rem;
+	border: solid 2px #333;
+}
+
+.axodel-send {
+	display: block;
+
+	margin: 2rem 0;
+
+	border: none;
+	outline: none;
+
+	background-color: #fc6;
+	font-size: 1.6rem;
+	padding: .6rem;
+
+	border: solid 2px #333;
+}
+
+.axodel-message {
+	display: none;
+}

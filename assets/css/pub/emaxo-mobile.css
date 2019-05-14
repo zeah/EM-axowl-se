@@ -1,0 +1,685 @@
+/**
+	
+	0.2 hidden elements
+
+*/
+
+.em-element-container {
+	min-width: 30rem;
+	max-width: 40rem;
+}
+
+.content {
+	background-color: #f2e7d5;
+	margin: 0;
+	padding: 1rem 0;
+}
+
+.forside-overskrift {
+	font-size: 3rem;
+	margin: 1rem 0 2rem;
+
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+.forside-overtext {
+	font-size: 1.8rem;
+	font-family: Montserrat;
+	font-weight: 300;
+}
+
+.em-qa-container {
+	background-color: #fff;
+	margin: 1rem;
+}
+
+/* 0.2 hidden elements */
+.content-title,
+.em-element-collect_compare,
+.em-b-endre,
+.em-b-send,
+.em-b-text,
+.em-b-container,
+.em-popup,
+.em-glass,
+.email-popup {
+	display: none;
+}
+
+.email-popup {
+	/*display: block;*/
+}
+
+.em-form-container {
+	opacity: 1 !important;
+}
+
+.emowl-form {
+
+	position: relative;
+
+	padding: 2rem 4rem;
+	background-color: #fff;
+}
+
+/*.emowl-form * {*/
+	/*font-size: 1.8rem;*/
+/*}*/
+
+.em-part {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+
+	margin: auto;
+}
+
+.em-element-container {
+	position: relative;
+
+	width: 100%;
+
+	margin-bottom: 4rem;
+}
+
+.em-it {
+	margin: 0;
+	margin-bottom: .5rem;
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+.em-if {
+	background-color: #fff;
+}
+
+
+.em-compare-save,
+.em-if,
+.em-i {
+	border: solid 2.4px black;
+	padding: .5rem 1rem;
+	width: 100%;
+	height: 4rem;
+	line-height: 2.5rem;
+	font-size: 2rem;
+	font-family: Merriweather;
+	background-color: #fff;
+}
+
+.em-i:focus {
+	border-color: hsl(0, 0%, 0%) !important;
+	outline: none;
+	box-shadow: inset 0 0 1px black, inset 0 -0 1px gray;
+
+	/*outline: solid 4px hsl(240, 50%, 50%);*/
+}
+
+.em-i-tenure {
+	padding-left: 40%;
+}
+.em-i-loan_amount {
+	text-align: center;
+}
+
+.em-slider-loan_amount {
+	border: solid 3px black !important;
+	height: 3rem;
+	margin-top: 4rem;
+
+}
+.em-slider-loan_amount .ui-widget-header {
+	border-radius: 0;
+	background-image: repeating-linear-gradient(
+    	45deg, 
+    	#96f, 
+    	#96f 10px, 
+    	#85e 0px, 
+    	#85e 20px);
+	/*background-image: none;*/
+	/*background: url('https://www.axofinans.no/images/slider-bg.png') repeat top;*/
+	/*background-color: #96f;*/
+	/*background: linear-gradient(45deg, black 0%, black 26%, transparent 26%), linear-gradient(-45deg, black 0%, black 27%, transparent 27%);*/
+}
+.em-slider-loan_amount .ui-slider-handle {
+	height: 5rem;
+	width: 5rem;
+	border: solid 3px black;
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/04/sliderarrow3.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+	background-color: #fff;
+	top: -1.2rem;
+	margin-left: -2rem;
+	cursor: grab;
+}
+
+.em-slider-loan_amount .ui-state-active {
+	background-color: #fff;
+}	
+
+.em-r-loan_amount {
+	position: relative;
+    left: 0;
+	top: 0;
+
+	width: 100%;
+
+	margin: 3.2rem 0 1rem;
+    -webkit-appearance: none;
+    overflow: hidden;
+    height: 2.8rem;
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+
+    border: solid 2px #000;
+
+}
+
+/* 4.1.4.1 loan amount range track */
+.em-r-loan_amount::-webkit-slider-runnable-track {
+    background: #ddd;
+    background: white;
+}
+.em-r-loan_amount::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+.em-r-loan_amount::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 48px;
+    border: none;
+}
+
+/* 4.1.4.2 loan amount range thumb*/
+.em-r-loan_amount::-webkit-slider-thumb {
+  	-webkit-appearance: none;
+    width: 34px;
+    height: 58px;
+    background: #fff;
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/04/sliderarrow3.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    box-shadow: -100vw 0 0 100vw #96f;
+    border: solid 2.4px #000;
+}
+.em-r-loan_amount::-moz-range-thumb {
+    background: #fff;
+    height: 48px;
+    width: 40px;
+    border: 1px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+.em-r-loan_amount::-ms-thumb { 
+    background: #fff;
+    border: 1px solid #999;
+    height: 48px;
+    width: 40px;
+    box-sizing: border-box;
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/04/sliderarrow3.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+/* 4.1.4.3 misc IE parts */
+.em-r-loan_amount::-ms-fill-lower { 
+    background: hsl(120, 80%, 60%);
+}
+
+
+.em-r-loan_amount::-ms-ticks-after { 
+    display: none; 
+}
+
+.em-r-loan_amount::-ms-ticks-before { 
+    display: none; 
+}
+
+
+.em-r-loan_amount::-ms-tooltip { 
+    display: none;
+}
+
+.em-ht-q {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	padding: 0;
+
+	border: none;
+	background: none;
+}
+
+.em-ht-mark {
+	display: block;
+	border-radius: 50%;
+
+	height: 2rem;
+	width: 2rem;
+
+	background-color: #000;
+	color: #fff;
+	font-size: 1.6rem;
+	font-family: Montserrat;
+	font-weight: 700;
+}
+
+.em-ht-q:focus {
+	outline: none;
+}
+
+.em-ht-q:focus .em-ht-mark {
+	/*box-shadow: 1px 1px hsl(120, 50%, 50%), -1px 1px hsl(120, 50%, 50%), 1px -1px hsl(120, 50%, 50%), -1px -1px hsl(120, 50%, 50%);*/
+	box-shadow: 1px 1px #96f, -1px 1px #96f, 1px -1px #96f, -1px -1px #96f;
+}
+
+.em-cc-selector {
+	display: flex;
+	width: 100%;
+}
+
+.em-cc-yes,
+.em-cc-no {
+	flex-grow: 1;
+	font-family: Montserrat;
+	font-weight: 300;
+}
+
+.em-cc-yes {
+	border-right-width: 1.5px;
+}
+.em-cc-no {
+	border-left-width: 1.5px;
+}
+
+.em-cc-green {
+	background-color: #96f;
+	color: #fff;
+}
+
+.em-element-check span {
+	line-height: 1.5;
+	font-size: 1.4rem;
+}
+
+.em-check {
+	display: none;
+	position: relative;
+	top: .6rem;
+	right: .5rem;
+	width: 2rem;
+	height: 2rem;
+}
+
+.em-element-check label {
+	position: relative;
+	left: 3.5rem;
+	/*font-family: montserrat;*/
+}
+
+.em-element-check span::before {
+	position: relative;
+	top: 0rem;
+}
+
+/* 3.6.4 check text */
+.em-element-contact_accept span::before,
+.em-element-axo_accept span::before {
+	border-color: hsl(0, 100%, 70%);
+	border: solid 2px;
+
+}
+.em-check:checked + label span::before {
+	/*background-color: green;*/
+	border: solid 2px;
+	border-color: hsl(0, 0%, 30%);
+    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/checkcross.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    /*opacity: .75;*/
+	/*outline: solid 3px black;*/
+}
+.em-element-check span::before {
+	content: '';
+
+	position: absolute;
+	left: -35px;
+
+	height: 1.7rem;
+	width: 1.7rem;
+	/*border-color: red;*/
+}
+
+.em-element-check-unchecked span::before {
+	border-color: hsl(0, 100%, 70%);
+}
+
+
+.em-lc .em-i {
+	appearance: none;
+	-webkit-appearance: none;
+	/*padding-left: 1rem;*/
+}
+
+.em-lc {
+	position: relative;
+	/*cursor: pointer;*/
+}
+
+.em-lc::after {
+	content: ' ';
+	position: absolute;
+	bottom: 0;
+	right: 1rem;
+	height: 4rem;
+	width: 3rem;
+	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/downarrow.png') no-repeat center center;*/
+	background: url('https://norskfinans.no/wp-content/uploads/2019/03/selectarrow.png') no-repeat center center;
+	pointer-events: none;
+	/*cursor: pointer;*/
+}
+
+
+.em-b-container {
+	text-align: center;
+}
+
+.em-element-neste {
+	text-align: center;
+}
+
+.em-b {
+	width: 100%;
+	min-width: 25rem;
+	max-width: 40rem;
+	margin: auto;
+	height: 5rem;
+	line-height: 1;
+
+	border: solid 2.4px black;
+	background-color: #fc6;
+	cursor: pointer;
+
+	font-size: 2rem;
+
+	font-family: Montserrat;
+	font-weight: 700;
+
+}
+
+.em-b-next {
+	width: 50%;
+}
+
+.em-b-send {
+	margin: 2rem 0;
+}
+
+.em-b-endre {
+	background-color: #96f;
+	color: white;
+}
+
+.em-compare-text {
+	text-align: center;
+	margin-bottom: 2rem;
+	font-size: 1.6rem;
+}
+
+.em-compare-save {
+	display: block;
+
+	margin: 1rem 0;
+
+	background-color: #96f;
+	color: white;
+	font-family: Merriweather;
+	font-weight: 900;
+
+}
+
+.em-compare-amount {
+	white-space: nowrap;
+}
+
+.em-compare-text-info {
+	font-size: 1.2rem;
+}
+
+.em-ht {
+	margin: 1rem 0;
+	padding: .5rem 1rem;
+
+	background-color: #96f;
+	color: #fff;
+
+	font-family: Montserrat;
+	font-weight: 300;
+
+	border: solid 2px black;
+
+}
+
+.em-error {
+	color: hsl(0, 100%, 60%);
+}
+
+.em-invalid-border {
+	animation-name: bcolor;
+	animation-duration: .3s;
+	/*border-color: #000;*/
+	animation-fill-mode: forwards;
+}
+
+@keyframes bcolor {
+	to { border-color: hsl(0, 50%, 60%); }
+}
+
+.em-valid-border {
+	animation-name: vbcolor;
+	animation-duration: .3s;
+	animation-fill-mode: forwards;
+	/*border-color: hsl(0, 100%, 50%);*/
+}
+
+@keyframes vbcolor {
+	/*from { border-color: hsl(0, 100%, 50%); }*/
+	to { border-color: hsl(120, 50%, 60%); }
+}
+
+.em-part-title {
+	text-align: center;
+}
+
+
+.em-part-2 .em-part-title::after {
+	content: 'Om deg';
+}
+
+.em-part-3 .em-part-title::after {
+	content: 'Husholdning';
+}
+
+.em-part-4 .em-part-title::after {
+	content: 'Medsøker';
+}
+
+.em-part-5 .em-part-title::after {
+	content: 'Siste etappe';
+}
+
+.em-i-email {
+	font-size: 1.6rem;
+}
+
+.em-element-monthly_cost {
+	/*background-color: red;*/
+	font-family: Montserrat;
+	font-weight: 300;
+	font-size: 2rem;
+	text-align: center;
+
+}
+
+.em-if-monthly_cost {
+	display: block;
+	width: 15rem;
+	margin: auto;
+	background-color: hsl(0, 0%, 96%);
+	background-color: #fff;
+	/*background-color: #fc6;*/
+	color: black;
+	/*border: none;*/
+	/*text-shadow: 1px 1px 1px black, -1px 1px 1px black, 1px -1px 1px black, -1px -1px 1px black;*/
+	text-align: center;
+	/*font-weight: 700;*/
+	/*font-family: Montserrat;*/
+}
+
+.em-co-applicant {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.em-popup {
+	display: none;
+	position: relative;
+	height: 323px;
+	width: 100%;
+	z-index: 999;
+
+	background-color: #fff;
+}
+
+
+.em-pop-email-x,
+.em-popup-x {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+}
+
+.em-popup-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-family: Merriweather;
+	font-weight: 700;
+	font-size: 2rem;
+
+	text-align: center;
+}
+
+.em-loan-example {
+	margin-top: 2rem;
+	padding-bottom: .6rem;
+
+	text-align: center;
+	
+	font-family: Montserrat;
+	font-weight: 400;
+	font-size: 1.3rem;
+}
+
+/* 10.0 modal popup */
+.modal-popup {
+	display: none;
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	background-color: #fff;
+
+	/*margin: auto;*/
+
+	/*width: 40rem;*/
+	/*max-width: 100%;*/
+
+	font-size: 1.6rem;
+	z-index: 99999;
+	font-family: Montserrat;
+
+	overflow: auto;
+	/*height: 100%;*/
+
+	border: solid 1px #000;
+}
+
+.modal-popup .content-title {
+	display: block;
+	font-size: 1.8rem;
+	margin-top: 4rem;
+}
+
+.modal-popup .content {
+	background-color: #fff;
+}
+
+.modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+
+	
+	/*float: right;*/
+
+	font-size: 2rem;
+	font-weight: 900;
+	font-family: Merriweather;
+
+	cursor: pointer;
+}
+
+.pvc2 {
+	position: static;
+	float: right;
+	margin: 0 1rem 1rem 0;
+}
+
+.em-income-alert {
+	margin-top: .5rem;
+}
+
+.em-income-button {
+	display: block;
+	margin-top: .5rem;
+	padding: 0 2rem;
+	background-color: #96f;
+	border: solid 1px black;
+	font-size: 1.8rem;
+	color: #fff;
+	font-family: Merriweather;
+	font-weight: 900;
+	cursor: pointer;
+
+}
+
+.em-lock {
+	/*display: inline;*/
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	/*right: 14rem;*/
+}
+
+.em-hidden {
+	display: none;
+}

@@ -1,0 +1,2014 @@
+/**
+ * INDEX
+ *
+ *	0.1 theme stuff
+ * 		0.1.1 content-title
+ *
+ * 	0.2 hidden (css class to hide elements)
+ *
+ * 	1.0 form container
+ * 		1.0.1 form cover (glass)
+ *
+ * 	1.1 form element
+ * 		1.1.1 font-size
+ * 		1.1.2 border
+ * 		1.1.3 focus
+ *
+ *	1.2 form title
+ *
+ *	1.3 buttons 
+ *		1.3.1 inner container (grid)
+ *		1.3.2 generic button
+ *		1.3.2 submit
+ *		1.3.3 next
+ *
+ * 	1.4 progress bar
+ * 		1.4.1 container
+ *   	1.4.2 element
+ *   	1.4.3 text
+ *   	1.4.4 bar (background)
+ *   	1.4.5 value (colored)
+ * 
+ * 	2.0 form parts
+ * 		2.1 container
+ * 		2.1.1 generic part
+ * 		2.1.2 part 1
+ * 			2.1.2.1 css text
+ * 			2.1.2.3 title
+ * 			2.1.2.3 inner (grid)
+ * 		2.1.3 part 2
+ * 			2.1.3.1 css text
+ * 		2.1.4 part 3
+ * 			2.1.4.1 css text
+ * 		2.1.5 part 4
+ * 			2.1.5.1 css text
+ * 		2.1.6 part 5
+ * 			2.1.6.1 css text
+ *
+ * 		2.2 part title
+ * 			2.2.1 container
+ * 		 	2.2.2 title element
+ *
+ *		2.3 part animation
+ *			2.3.1 element
+ *			2.3.2 animation
+ *
+ *	3.0 generic part parts (of form)
+ *		3.1 container
+ *		3.2 title 
+ *		3.3 input text
+ *		3.4 input select
+ *		3.5 input rang
+ *		3.6 check input
+ *			3.6.1 container
+ *			3.6.2 input
+ *			3.6.3 label
+ *			3.6.3 span (text)
+ *		3.7 help info
+ *			3.7.1 help box (text)
+ *			3.7.2 help icon
+ *				3.7.2.1 hover
+ *				3.7.2.2 text
+ *		3.8 label
+ *		3.9 checkbox (yes/no)
+ *			3.9.1 container
+ *			3.9.2 buttons
+ *		 	3.9.3 green (chosen)
+ *		3.10 marker (validation)
+ *		3.11 error info
+ *
+ *	4.0 specific elements
+ *		4.1 loan amount
+ *		4.1.1 container
+ *		4.1.2 input container
+ *		4.1.3 validation marker (hidden)
+ *		4.1.4 input text
+ *		4.1.4 input range
+ *			4.1.4.1 track
+ *			4.1.4.2 thumb
+ *			4.1.4.3 misc ie parts
+ *	  	4.2 tenure
+ *	  		4.2.1  container
+ *	  		4.2.2 input select
+ *	  		4.2.3 validation marker (hidden)
+ *	  	4.3 refinancing (collect debt)
+ *	  	4.4 mobile number (phone)
+ *	  	4.5 email
+ *	  	4.6 axo accept
+ *	  	4.7 contact accept
+ *	  	4.8 monthly cost
+ *	  		4.8.1 container
+ *	  		4.8.2 inner container
+ *	  		4.8.3 input (disabled)
+ 		4.9	compare to credit card
+ *	  	4.10 neste button (first part button)
+ *	  		4.10.1 container
+ *	  		4.10.2 button
+ *
+ * 	5.0 popup window (on form post)
+ * 		5.1 container
+ * 		5.2 show container
+ * 		5.3 animation
+ * 		5.4 close button
+ * 		5.5 text element
+ * 		5.6 button ('ok')
+ *
+ *
+ * 	10.0 sprites
+ * 		10.1 container
+ * 		10.2 inner container
+ * 		10.3 animation
+ * 		10.4 animation paused
+ * 		10.5 sprite part element
+ * 		10.6 sprite parts
+ *
+ * 	20.0 internet explorer
+ *	  		
+ */
+
+
+ .em-slidedown {
+ 	padding: 3rem 1rem;
+ 	/*display: block !important;*/
+ }
+
+/* 0.1 theme stuff */
+
+/* 0.1.1 content-title 
+   Hiding post title */
+.content-title {
+	display: none;
+}
+
+body {
+	background-color: #f2e7d5 !important;
+	overflow-y: scroll;
+}
+
+/*.content,*/
+.page-container {
+	/*background-color: #fc6;*/
+	/*background-color: #f2e7d5;*/
+	min-height: auto;
+}
+
+.content {
+	background-color: transparent;
+}
+
+.em-popup,
+.em-sprites,
+.em-qa-container {
+	background-color: white;
+}
+
+.forside-overskrift,
+.forside-overtext,
+.em-qa-container {
+	width: 90rem;
+	max-width: 100%;
+	margin: auto;
+}
+
+.forside-overskrift {
+	font-family: Merriweather;
+	font-weight: 900;
+	font-size: 4rem;
+}
+
+.forside-overtext {
+	font-family: Montserrat;
+	font-weight: 300;
+	font-size: 2rem;
+
+	margin-bottom: 2rem;
+}
+
+
+/* 0.2 hidden */
+/*.em-hidden {
+	display: none;
+}*/
+
+/* 1.0 form container */
+.em-form-container {
+
+	/* for glass */
+	position: relative;
+	/*border-bottom: solid 4rem #f2e7d5;*/
+	/*margin: -20px;	*/
+	margin-bottom: 4rem;
+
+	opacity: 1 !important;
+}
+
+/* 1.0.1 form cover */
+.em-glass {
+	display: none;
+
+	position: absolute;
+
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	background-color: white;
+	opacity: .7;
+	z-index: 99;
+}
+
+/* 1.1 form element */
+.emowl-form {
+	display: block;
+	margin: auto;
+
+	position: relative;
+
+	width: 90rem;
+	max-width: 100%;
+
+	/*padding-bottom: 2rem;*/
+
+	background-color: hsl(240, 50%, 98%);
+	background-color: white;
+
+	user-select: none;
+
+	font-family: merriweather;
+	/*font-family: montserrat;*/
+}
+
+/* 1.1.1 font size */
+.emowl-form {
+/*.emowl-form button,*/
+/*.emowl-form select,*/
+/*.emowl-form input {*/
+	font-size: 1.6rem;
+	font-family: merriweather;
+
+	/*filter: blur(.2px);*/
+}
+
+
+/* 1.1.2 border */
+.em-if-monthly_cost,
+/*.em-element-monthly_cost,*/
+/*.em-r-loan_amount::-webkit-slider-thumb,*/
+/*.em-element-contact_accept span::before,
+.em-element-axo_accept span::before,
+*/.em-progress,
+/*.em-b-neste,*/
+/*.em-b-next,*/
+.em-b-submit,
+.em-i,
+.em-r,
+.em-compare-save,
+.em-ht {
+	/*border-color: black red green blue;*/
+	/*border: ridge 3px;*/
+	border: solid 2.6px hsl(0, 0%, 20%);
+	/*outline: solid 1px hsl(0, 0%, 35%);*/
+}
+
+.em-element-contact_accept span::before {
+	border: solid 2px hsl(0, 0%, 10%);
+
+}
+
+
+/*.em-part-lower-container .em-i {
+	border: solid 1.6px hsl(0, 0%, 70%);
+}*/
+
+.em-invalid-border {
+	animation-name: bcolor;
+	animation-duration: .3s;
+	/*border-color: #000;*/
+	animation-fill-mode: forwards;
+}
+
+@keyframes bcolor {
+	to { border-color: hsl(0, 50%, 60%); }
+}
+
+.em-valid-border {
+	animation-name: vbcolor;
+	animation-duration: .3s;
+	animation-fill-mode: forwards;
+	/*border-color: hsl(0, 100%, 50%);*/
+}
+
+@keyframes vbcolor {
+	/*from { border-color: hsl(0, 100%, 50%); }*/
+	to { border-color: hsl(120, 50%, 60%); }
+}
+
+
+
+
+.em-cc-yes {
+	border-right: solid 1.5px hsl(0, 0%, 20%);
+}
+
+.em-cc-no {
+	border-left: solid 1.5px hsl(0, 0%, 20%);
+}
+
+/* 1.1.3 focus */
+.em-b:focus,
+.em-b-neste:focus,
+.em-i:active,
+.em-i:focus {
+	/*box-shadow: 0 0 6px #96f;*/
+	/*border-color: hsl(240, 70%, 60%) !important;*/
+	border-color: #96f !important;
+	outline: none;
+}
+.em-check-span:focus,
+.ui-slider-handle:focus {
+	outline: solid 1px #96f;
+}
+
+/* 1.2 form title */
+.form-title {
+	margin: 0;
+}
+
+/* 1.3 buttons */
+
+
+
+/* 1.3.1 buttons */
+.em-b {
+	background-color: hsl(30, 90%, 60%);
+
+	height: auto;
+	width: 100%;
+
+	margin: 2rem 0;
+	padding: 1.3rem 0;
+	font-weight: 700;
+	font-size: 2rem !important;
+	border: solid 2px #333; 
+	/*border-color: hsl(0, 0%, 50%) hsl(0, 0%, 20%) hsl(0, 0%, 50%) hsl(0, 0%, 20%);*/
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+	height: auto;
+	background-color: #fc6;
+	cursor: pointer;
+	font-family: merriweather;
+}
+
+.em-b:focus {
+	outline: solid .6px #96f;
+	/*outline: dashed 1px #ccc;*/
+}
+
+.em-b-container {
+	display: none;
+	text-align: center;
+	margin: 0 10rem;
+}
+
+.em-b-next {
+	width: 50%;
+}
+
+.em-b-endre,
+.em-b-send {
+	display: none;
+	width: 100%;
+	margin-top: 3.3rem;
+	margin-bottom: 0;
+}
+
+.em-b-endre {
+	background-color: #96f;
+	color: #fff;
+}
+
+.em-b-endre:focus {
+	border: solid 2px #000 !important;
+	box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f, -2px -2px #96f;
+}
+
+.em-b-send {
+	margin-top: 3.5rem;
+}
+
+.em-b-text {
+	display: none;
+	margin-top: 2rem;
+	text-align: left;
+	font-weight: 900;
+
+}
+
+
+/* 2.0 form parts */
+
+/* 2.1 part container */
+.em-part-container {
+}
+
+.em-part-lower-container {
+	display: grid;
+	grid-template-areas: 
+	 "title title title"
+	 "two three five";
+
+	 grid-template-rows: auto auto;
+
+	 justify-items: center;
+
+}
+
+.em-lower-titles {
+	grid-area: title;
+}
+
+/* 2.1.1 generic */
+.em-part {
+	margin-top: 5rem;
+}
+
+.em-part-lower-container .em-part {
+	width: 25rem;
+	/*width: 30rem;*/
+}
+
+.em-part-lower-container .em-part-4 {
+	width: 0;
+	display: none;
+}
+
+
+.em-part-lower-container .em-part {
+	margin-top: 0;
+}
+
+/*.em-part-lower-container .em-i {*/
+.em-if-monthly_cost,
+/*.em-element-monthly_cost,*/
+/*.em-r-loan_amount::-webkit-slider-thumb,*/
+.em-element-contact_accept span::before,
+.em-element-axo_accept span::before,
+.em-progress,
+/*.em-b-neste,*/
+/*.em-b-next,*/
+/*.em-b-submit,*/
+.em-i,
+.em-r {
+/*.em-r,
+.em-if,
+.em-i {*/
+	/*border: solid 1px #949494;*/
+	/*border: solid 3px hsl(0, 0%, 30%);*/
+	/*box-shadow: 0 0 0 transparent, inset 0 2px 2px #d4d4d4;*/
+	/*border-radius: 3px;*/
+	height: 4rem;
+	font-size: 1.6rem;
+	font-family: Merriweather;
+}
+
+/* 2.1.2 part 1*/
+.em-part-1 {
+	grid-area: first;
+	display: block;
+
+	margin-top: 0;
+
+	/*padding: 4rem 8rem 0;*/
+}
+
+/* 2.1.2.1 text */
+/*.em-part-1 .em-part-title::after {
+	content: 'Sjekk dine lånetilbud';
+}*/
+
+/* 2.1.2.3 part 1 title */
+.em-part-1 .em-part-title {
+	display: none;
+	margin: 0;
+	cursor: pointer;
+
+	justify-content: space-around;
+
+	background-color: white;
+
+	/*border-top-right-radius: 25px;*/
+	/*border-top-left-radius: 25px;*/
+}
+
+.em-part-2 .em-part-title {
+	/*border-top-left-radius: 25px;*/
+
+}
+
+.em-part-5 .em-part-title {
+	/*border-top-right-radius: 25px;*/
+}
+
+/* 2.1.2.4 part 1 inner */
+.em-part-1-grid {
+	display: grid;
+
+	/*grid-template-columns: 25% 30% 45%;*/
+	/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
+	grid-template-columns: 25% 25% 25% 25%;
+
+	grid-template-areas: 
+	"loan loan monthly monthly"
+	". neste neste ."
+	"compare compare compare compare"
+	"tenure refinancing mobile mobile"
+	/*"tenure refinancing mobile mobile"*/
+	"axoaccept axoaccept email email"
+	"contactaccept contactaccept email email";
+/*	"monthly monthly"
+	"loan loan"
+	"neste neste"
+	"refinancing tenure"
+	"mobile email"
+	"axoaccept axoaccept"
+	"contactaccept contactaccept";*/
+	padding: 4rem 10rem 0;
+
+	justify-content: space-between;
+	align-items: stretch;
+	/*grid-column-gap: 1rem;*/
+}
+
+.em-part-1-grid-2 {
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+
+	grid-template-areas: 
+		"loan tenure refinancing monthly"
+		"compare compare compare compare";
+
+	grid-column-gap: 2rem;
+
+	padding: 4rem 6rem;
+}
+
+/*.em-part-1-done {
+	grid-template-columns: 1fr 1fr;
+
+	grid-template-areas: 
+	"loan monthly"
+	"tenure refinancing"
+	"mobile email";
+
+	grid-column-gap: 2rem
+}
+
+.em-part-1-done .em-element-contact_accept,
+.em-part-1-done .em-element-axo_accept {
+	display: none;
+}
+
+.em-part-1-done .em-element-container {
+	margin: 0;
+}
+
+.em-part-done .em-element-loan_amount {
+}*/
+
+/* 2.1.3 part 2*/
+.em-part-2 {
+	grid-area: two;
+}
+
+/* 2.1.3.1 text */
+.em-part-2 .em-part-title::after {
+	content: 'Om deg';
+}
+
+/* 2.1.4 part 3*/
+.em-part-3 {
+	grid-area: three;
+}
+
+/* 2.1.4.1 text */
+.em-part-3 .em-part-title::after {
+	content: 'Husholdning';
+}
+
+/* 2.1.5 part 4*/
+.em-part-4 {
+	grid-area: four;
+	/*display: none;*/
+}
+
+/* 2.1.5.1 text */
+.em-part-4 .em-part-title::after {
+	content: 'Medsøker';
+}
+
+/* 2.1.6 part 5*/
+.em-part-5 {
+	grid-area: five;
+}
+
+/* 2.1.6.1 text */
+.em-part-5 .em-part-title::after {
+	content: 'Siste etappe';
+}
+
+/* 2.2 part title */
+
+/* 2.2.1 title container */
+.em-part-title-container {
+	overflow: hidden;
+}
+
+/* 2.2.2 title element */
+.em-part-title {
+	margin: 0;
+	margin-bottom: 1rem;
+	padding: .5rem 0;
+	/*background-color: #fc6;*/
+	/*text-align: center;*/
+	font-size: 2rem;
+	overflow: hidden;
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+
+
+/* 2.3 part animation */
+
+/* 2.3.1 element */
+.em-animate-show {
+	display: block;
+
+	animation-name: show;
+	animation-duration: 1.5s;
+	/*overflow: hidden;*/
+}
+
+/* 2.3.2 animation */
+@keyframes show {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+/* 3.0 generic form parts parts */
+
+/* 3.1 container */
+.em-element-container {
+	/*position: relative;*/
+
+	/*margin-bottom: 1rem;*/
+	/*margin: 1rem 4rem 1rem;*/
+	padding: .5rem 0;
+	/*overflow: hidden;*/
+}
+
+.em-part-lower-container .em-element-container {
+	margin: 0;
+	margin-bottom: 1rem;
+}
+
+.em-part-lower-container .em-part {
+	margin: 1rem;
+}
+
+.em-part-lower-container .em-it {
+	/*font-weight: 400;*/
+	font-size: 1.4rem;
+}
+
+/* 3.2 title */
+.em-it {
+	margin: 0;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+
+	white-space: nowrap;
+	overflow: hidden;
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+.em-it:hover {
+	overflow: visible;
+}
+
+.em-part-lower-container .em-it {
+
+}
+
+/* 3.3 text input */
+.em-i {
+	padding: .2rem .5rem;
+	/*padding: 1rem 0 1rem 1rem;*/
+	z-index: 20;
+	width: 100%;
+}
+
+/* 3.4 select input */
+.em-lc .em-i {
+	appearance: none;
+	-webkit-appearance: none;
+	/*padding-left: 1rem;*/
+}
+
+.em-lc {
+	position: relative;
+	/*cursor: pointer;*/
+}
+
+.em-lc::after {
+	content: ' ';
+	position: absolute;
+	bottom: .5rem;
+	right: 1rem;
+	height: 4rem;
+	width: 3rem;
+	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/downarrow.png') no-repeat center center;*/
+	background: url('https://norskfinans.no/wp-content/uploads/2019/03/selectarrow.png') no-repeat center center;
+	pointer-events: none;
+	/*cursor: pointer;*/
+}
+
+.em-lc-lower::after {
+	right: 6rem;
+}
+
+.em-part-lower-container .em-lc::after {
+	bottom: 0;
+}
+
+select.em-i {
+	cursor: pointer;
+}
+
+/* 3.5 range input */
+.em-r {
+	position: relative;
+	bottom: 1.7rem;
+	right: 0.2rem;
+	
+	-webkit-appearance: none;
+	background: none;
+	outline: none;
+
+	background-color: hsla(120, 100%, 20%, .2);
+
+	cursor: grab;
+}
+
+/* 3.6 check input */
+
+/* 3.6.1 check container */
+.em-element-check {
+	font-size: 1.3rem;
+	margin: 1rem 0;
+	font-weight: 400;
+	font-family: montserrat;
+}
+
+/* 3.6.2 check input */
+.em-check {
+	display: none;
+	/*font-family: montserrat;*/
+}
+
+/* 3.6.3 check label */
+.em-element-check label {
+	position: relative;
+	left: 3.5rem;
+	/*font-family: montserrat;*/
+}
+
+.em-element-axo_accept span::before {
+	/*position: relative;*/
+	/*top: 1rem;*/
+}
+
+/* 3.6.4 check text */
+.em-element-axo_accept span::before {
+	border-color: hsl(0, 100%, 70%);
+	border: solid 2px;
+
+}
+.em-check:checked + label span::before {
+	/*background-color: green;*/
+	border: solid 2px;
+	border-color: hsl(0, 0%, 30%);
+    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/checkcross.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    /*opacity: .75;*/
+	/*outline: solid 3px black;*/
+}
+.em-element-check span::before {
+	content: '';
+
+	position: absolute;
+	left: -35px;
+
+	height: 1.7rem;
+	width: 1.7rem;
+	/*border-color: red;*/
+}
+
+.em-element-check-unchecked span::before {
+	border-color: hsl(0, 100%, 70%);
+}
+
+
+/* 3.7 help info */
+
+/* 3.7.1 help box */
+.em-ht {
+	display: flex;
+	align-items: center;
+
+	position: absolute;
+	right: -1.1rem;
+	bottom: 4rem;
+
+	width: 20rem;
+
+	padding: 2rem;
+
+	background-color: #96f;
+	color: white;
+
+	font-size: 1.4rem;
+	z-index: 199;
+
+	font-family: montserrat;
+	font-weight: 300;
+}
+
+.em-cc .em-ht {
+	bottom: 10rem;
+}
+
+.em-slidedown .em-ht {
+	bottom: 3.5rem;
+}
+
+.em-slidedown .em-cc .em-ht {
+	bottom: 8.5rem;
+}
+
+
+.em-ht-arrowdown {
+	position: absolute;
+
+	top: 101%;
+	right: 1.3rem;
+
+	width: 0; 
+	height: 0; 
+	border-left: 1rem solid transparent;
+	border-right: 1rem solid transparent;
+	border-top: 1rem solid hsl(0, 0%, 20%);
+}
+
+/* 3.7.2 help icon */
+.em-ht-q {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+
+
+	border: none;
+	padding: .5rem;
+
+	background-color: transparent;
+
+	font-weight: 400;
+	text-align: center;
+	line-height: 2rem;
+	background-color: white;
+}
+
+
+.em-part-lower-container .em-ht-q {
+	top: -.5rem;
+}
+
+/* 2.7.2.2 help icon text */
+.em-ht-mark {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 1.8rem;
+	border-radius: 50%;
+	background-color: #000;
+	color: #fff;
+	font-family: Montserrat;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.em-ht-q:focus {
+	outline: none;
+}
+
+.em-ht-q:focus .em-ht-mark {
+	/*box-shadow: 1px 1px hsl(120, 50%, 50%), -1px 1px hsl(120, 50%, 50%), 1px -1px hsl(120, 50%, 50%), -1px -1px hsl(120, 50%, 50%);*/
+	/*box-shadow: 1px 1px #96f, -1px 1px #96f, 1px -1px #96f, -1px -1px #96f;*/
+	box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f, -2px -2px #96f;
+}
+
+/* 3.8 label */
+.em-label {
+	display: block;
+	position: relative;
+	cursor: pointer;
+}
+
+/* 3.9 checkbox */
+
+/* 3.9.1 checkbox container */
+.em-cc-selector {
+	display: inline-flex;
+
+	width: 100%;
+}
+
+/* 3.9.2 checkbox buttons */
+.em-cc {
+	position: relative;
+}
+
+.em-cc-yes,
+.em-cc-no {
+	flex: 1;
+	text-align: center;
+	/*background-color: hsl(120, 0%, 90%);*/
+	background-color: white;
+	cursor: pointer;
+
+	padding: 1.1rem 1rem;
+	font-family: montserrat;
+}
+
+/*.em-part-lower-container .em-cc-yes {*/
+.em-cc-yes {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+/*.em-part-lower-container .em-cc-no {*/
+.em-cc-no {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+/*.em-part-lower-container .em-cc-yes,*/
+.em-cc-yes,
+.em-cc-no {
+/*.em-part-lower-container .em-cc-no {*/
+	padding: .5rem 0;
+	box-shadow: none;
+}
+
+.em-lower {
+	/*padding-left: 2rem;*/
+	/*background-color: hsla(0, 0%, 50%, .1);*/
+}
+
+/* 3.9.3 checkbox selected */
+.em-cc-green {
+	background-color: hsl(120, 80%, 60%);
+	background-color: #96f;
+
+	color: White;
+}
+
+
+/* 3.10 validation marker */
+.em-marker-val {
+	display: none;
+	position: absolute;
+	right: 0.7rem;
+	top: 3.9rem;
+	z-index: 50;
+}
+
+/* 3.11 error info */
+.em-error {
+	/*background-color: hsl(0, 50%, 90%);*/
+	color: hsl(0, 100%, 60%);
+	padding: .5rem;
+	font-size: 1.4rem;
+	margin-top: .5rem;
+}
+
+/* 4.0 specific elements */
+
+/* 4.1 loan amount */
+
+/* 4.1.1 loan amount container */
+.em-element-loan_amount {
+	grid-area: loan;
+
+
+	margin-bottom: 4rem;
+	/*display: flex;*/
+
+	/*align-items: flex-end;*/
+}
+
+/* 4.1.2 loan amount input container */
+.em-ic-loan_amount {
+	/*flex-grow: 1;*/
+	/*flex-basis: 0;*/
+	/*margin-right: 1rem;*/
+}
+
+/* 4.1.3 loan amount validation marker */
+.em-ic-loan_amount .em-marker-val {
+	display: none;
+}
+
+
+/* 4.1.4 loan amount input */
+.em-i-loan_amount {
+	text-align: center;
+	/*font-family: impact;*/
+	font-size: 2rem;
+	font-weight: 700;
+	padding: .5rem 0;
+	font-family: merriweather;
+	/*height: 5rem;*/
+	border-color: hsl(0, 0%, 20%) !important;
+}
+
+/* 4.1.5 loan amount range input */
+
+.em-slider-loan_amount {
+	border: solid 3px black !important;
+	height: 3rem;
+	margin-top: 4rem;
+
+}
+.em-slider-loan_amount .ui-widget-header {
+	border-radius: 0;
+	/*background-image: none;*/
+    background-image: repeating-linear-gradient(
+    	45deg, 
+    	#96f, 
+    	#96f 10px, 
+    	#85e 0px, 
+    	#85e 20px);
+
+
+   /* background-image: repeating-linear-gradient(
+    	45deg, 
+    	rgb(78, 202, 34), 
+    	rgb(78, 202, 34) 10px, 
+    	rgb(62, 177, 21) 0px, 
+    	rgb(62, 177, 21) 20px);*/
+	/*background: url('https://www.axofinans.no/images/slider-bg.png') repeat top;*/
+	/*background-color: #96f;*/
+	/*background: linear-gradient(45deg, black 0%, black 26%, transparent 26%), linear-gradient(-45deg, black 0%, black 27%, transparent 27%);*/
+}
+.em-slider-loan_amount .ui-slider-handle {
+	height: 4rem;
+	width: 3rem;
+	border: solid 3px black;
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+	background-color: #fff;
+	top: -.7rem;
+	margin-left: -2rem;
+	cursor: grab;
+}
+
+.em-slider-loan_amount .ui-state-active {
+	background-color: #fff;
+}
+
+.ui-corner-all {
+	border-radius: 0;
+}
+
+.em-r-loan_amount {
+	/*flex-grow: 1;*/
+	/*flex-basis: 0;*/
+
+	position: relative;
+    left: 0;
+	top: 0;
+
+	width: 100%;
+
+	/*margin: 0;*/
+	margin: 3.2rem 0 1rem;
+    -webkit-appearance: none;
+    /*position: relative;*/
+    overflow: hidden;
+    height: 2.8rem;
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+
+}
+
+/* 4.1.4.1 loan amount range track */
+.em-r-loan_amount::-webkit-slider-runnable-track {
+    background: #ddd;
+    background: white;
+}
+.em-r-loan_amount::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+.em-r-loan_amount::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 48px;
+    border: none;
+}
+
+/* 4.1.4.2 loan amount range thumb*/
+.em-r-loan_amount::-webkit-slider-thumb {
+  	-webkit-appearance: none;
+    width: 34px;
+    height: 58px;
+    background: #fff;
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
+    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/2.png');*/
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/piler.png');*/
+    background-repeat: no-repeat;
+    background-position: center; 
+    box-shadow: -100vw 0 0 100vw #96f;
+    /*box-shadow: -100vw 0 0 100vw hsl(120, 80%, 60%);*/
+}
+.em-r-loan_amount::-moz-range-thumb {
+    background: #fff;
+    height: 48px;
+    width: 40px;
+    border: 1px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+.em-r-loan_amount::-ms-thumb { 
+    background: #fff;
+    border: 1px solid #999;
+    height: 48px;
+    width: 40px;
+    box-sizing: border-box;
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/piler.png');*/
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+/* 4.1.4.3 misc IE parts */
+.em-r-loan_amount::-ms-fill-lower { 
+    background: hsl(120, 80%, 60%);
+}
+
+
+.em-r-loan_amount::-ms-ticks-after { 
+    display: none; 
+}
+
+.em-r-loan_amount::-ms-ticks-before { 
+    display: none; 
+}
+
+
+.em-r-loan_amount::-ms-tooltip { 
+    display: none;
+}
+
+
+.em-element-loan_amount .em-it {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+/* 4.2 tenure */
+
+/* 4.2.1 tenure container */
+.em-element-tenure {
+	grid-area: tenure;
+	margin-right: 1rem;
+	margin-bottom: 4rem;
+}
+
+/* 4.2.2 tenure input */
+.em-i-tenure {
+	/*text-align: center;*/
+	padding: 0 0 0 5rem;
+	/*width: auto;*/
+	/*padding-left: 0;*/
+	/*padding: 1rem 1.5rem 1rem 4.5rem;*/
+	font-family: Montserrat;
+	font-weight: 300;
+	font-size: 1.8rem;
+	border-color: hsl(0, 0%, 20%) !important;
+}
+
+/* 4.2.3 tenure validation marker */
+.em-ic-tenure > .em-val-marker {
+	display: none;
+}
+
+
+
+
+/* 4.3 refinancing / collect debt */
+.em-element-collect_debt {
+	grid-area: refinancing;
+	margin-left: 1rem;
+}
+
+/* 4.4 mobile number */
+.em-element-mobile_number {
+	grid-area: mobile;
+	margin-left: 5rem;
+}
+
+/* 4.5 email */
+.em-element-email {
+	grid-area: email;
+	margin-left: 5rem;
+}
+
+/* 4.6 axo accept */
+.em-element-axo_accept {
+	grid-area: axoaccept;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+/* 4.7 contact accept */
+.em-element-contact_accept {
+	grid-area: contactaccept;
+}
+
+/* 4.8 monthly cost */
+
+/* 4.8.1 monthly cost container */
+.em-element-monthly_cost {
+	grid-area: monthly;
+
+	position: relative;
+	top: 3.6rem;
+
+	justify-self: right;
+	align-self: flex-start;
+
+	padding: 0;
+	margin: 0;
+
+	/*margin-top: 1rem;*/
+	/*padding: 0 1rem;*/
+	background-color: transparent;
+	border: none;
+
+	text-align: center;
+
+	/*width: 100%;*/
+	/*overflow: visible;*/
+	/*text-align: center;*/
+
+	/*display: flex;
+	flex-direction: column;
+	align-items: center;*/
+}
+
+/* 4.8.2 monthly cost inner container */
+.em-container-monthly_cost {
+	font-family: montserrat;
+	/*font-family: monospace;*/
+	font-weight: 300;
+	margin-bottom: 1rem;
+	/*position: relative;*/
+	/*top: 1px;*/
+	/*max-width: 100%;*/
+	font-size: 2.2rem;
+	/*overflow: visible;*/
+	white-space: nowrap;
+	text-align: center;
+}
+
+/* 4.8.3 monthly cost input */
+.em-if-monthly_cost {
+	/*border: none;*/
+	background-color: transparent;
+	color: black;
+	text-align: center;
+	padding-left: 5px;
+	max-width: 18rem;
+
+	padding: 1rem 2rem;
+	font-family: merriweather;
+
+	/*border: solid 3px black;*/
+
+	font-weight: 700;
+	font-size: 2rem !important;
+	/*height: 5rem;*/
+
+}
+
+
+/* 4.9 compare to credit card */
+.em-element-collect_compare {
+	grid-area: compare;
+	display: none;
+	margin: 1rem 0;
+}
+
+.em-compare-text {
+	margin: 1rem 0;
+	/*font-family: montserrat;*/
+}
+
+.em-compare-save {
+	display: inline-block;
+	background-color: #96f;
+	font-size: 2rem;
+	padding: .7rem 0 1rem;
+	margin: 0 2rem;
+	color: white;
+	width: 16.5rem;
+	height: 5rem;
+	text-align: center;
+	font-weight: 700;
+}
+
+.em-compare-text-info {
+	margin-top: 3rem;
+
+	font-size: 1rem;
+}
+
+.em-compare-monthly {
+	white-space: nowrap;
+}
+
+/* 4.10 neste button */
+
+/* 4.10.1 neste container */
+.em-element-neste {
+	grid-area: neste;
+	/*justify-self: stretch;*/
+}
+
+/* 4.9.2 neste button */
+.em-b-neste {
+	/*border: none;*/
+	display: block;
+	width: 95%;
+	margin: 2rem 0;
+	padding: 1.3rem 0;
+	/*padding: .5rem 8rem;*/
+	font-weight: 700;
+	font-size: 2rem !important;
+	border: solid 2px hsl(0, 0%, 20%);
+	height: auto;
+	background-color: #fc6;
+	cursor: pointer;
+	font-family: merriweather;
+}
+
+.em-cc-yes:focus {
+	border: solid 2px #000 !important;
+	/*outline: solid 2px red;*/
+	/*box-shadow: 2px 2px #96f, 2px -2px #96f, -2px -2px #96f;*/
+	box-shadow: -2px 2px #96f, -2px -2px #96f;
+}
+
+.em-cc-no:focus {
+	border: solid 2px #000 !important;
+	/*outline: solid 2px red;*/
+	/*box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f;*/
+	box-shadow: 2px -2px #96f, 2px 2px #96f;
+}
+
+
+.em-part-1-grid .em-i,
+.em-if {
+	height: 5rem;
+}
+
+/*.em-i-tenure,
+.em-i-loan_amount,
+.em-i-mobile_number,
+.em-i-email,
+.em-if-monthly_cost,
+.em*/
+
+.em-income-alert {
+	margin-top: .5rem;
+}
+
+.em-income-button {
+	display: block;
+	margin-top: .5rem;
+	background-color: #96f;
+	border: solid 1px black;
+	font-size: 1.8rem;
+	color: #fff;
+	font-family: Merriweather;
+	font-weight: 900;
+	cursor: pointer;
+
+}
+
+
+/* 5.0 popup window */
+
+/* 5.1 popup container */
+.em-popup {
+	display: none;
+	position: relative;
+	height: 323px;
+	width: 90rem;
+	max-width: 100%;
+	margin: auto;
+
+	line-height: 3;
+
+	z-index: 999;
+}
+
+
+
+/* 5.4 popup close button */
+.em-pop-email-x,
+.em-popup-x {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+}
+
+
+/* 5.5 popup text */
+.em-popup-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-family: Merriweather;
+	font-weight: 700;
+	font-size: 2rem;
+
+	text-align: center;
+	/*grid-area: content;*/
+}
+
+/* 8.0 loan example */
+.em-loan-example {
+	margin: 1rem 10rem;
+	padding-bottom: .6rem;
+
+	text-align: center;
+	
+	font-family: Montserrat;
+	font-weight: 400;
+	font-size: 1.3rem;
+}
+
+/* 9.0 email/phone popup */
+.email-popup {
+	display: none;
+	position: fixed;
+	top: 20%;
+	left: 0;
+	right: 0;
+	background-color: white;
+	z-index: 101;
+	width: 90rem;
+	margin: auto;
+
+	padding: 4rem 15rem;
+
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+.email-popup-grid {
+	display: grid;
+
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: 
+		"title title"
+		"phone email"
+		"button button"
+		"text text";
+
+	grid-column-gap: 4rem;
+	grid-row-gap: 4rem
+}
+
+.pop-title {
+	grid-area: title;
+	margin: 0;
+}
+
+.pop-phone-container {
+	grid-area: phone;
+}
+
+.pop-email-container {
+	grid-area: email;
+}
+
+.pop-neste {
+	grid-area: button;
+	justify-self: center;
+	width: 50%;
+
+	font-family: montserrat;
+	font-weight: 400;
+}
+
+.pop-text {
+	grid-area: text;
+
+	font-family: Montserrat;
+	font-weight: 400;
+
+	font-size: 1.2rem;
+}
+
+.pop-link {
+	font-weight: 700;
+	color: black;
+	text-decoration: none;
+}
+
+.em-glass {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	opacity: .8;
+
+	background-color: black;
+
+	z-index: 100;
+}
+
+
+/* 10.0 modal popup */
+.modal-popup {
+	display: none;
+	position: fixed;
+	top: 2rem;
+	left: 0;
+	right: 0;
+	bottom: 2rem;
+	background-color: #fff;
+
+	margin: auto;
+
+	width: 40rem;
+	max-width: 100%;
+
+	font-size: 1.6rem;
+	z-index: 99999;
+	font-family: Montserrat;
+
+	overflow: auto;
+	/*height: 100%;*/
+}
+
+.modal-popup .content-title {
+	display: block;
+	font-size: 1.8rem;
+}
+
+.modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+
+	font-size: 2rem;
+	font-weight: 900;
+	font-family: Merriweather;
+
+	cursor: pointer;
+}
+
+.pvc2 {
+	position: static;
+	float: right;
+	margin: 0 1rem 1rem 0;
+}
+
+/* 10.0 sprites */
+
+/* 10.1 sprites container */
+.em-sprites {
+	overflow: hidden;
+	width: 90rem;
+	max-width: 100%;
+	margin: auto;
+}
+
+/* 10.2 sprites inner container */
+.em-sprite-container {
+	display: flex;
+	position: relative;
+
+	align-items: center;
+}
+
+/* 10.3 sprites animation */
+.em-sprite-container-animation {
+	animation-name: spriteslide;
+	animation-duration: 25s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	cursor: pointer;
+}
+@keyframes spriteslide {
+	from { left: 0; }
+	to { left: -1630px; }
+}
+
+
+.em-lock {
+	/*display: inline;*/
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	/*right: 14rem;*/
+}
+
+
+/* 10.4 sprites paused */
+.em-sprite-container-animation-paused {
+  animation-play-state: paused;
+}
+
+/* 10.5 sprite part element */
+.em-sprite {
+    background-repeat: no-repeat;
+    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/banklogoer.png');*/
+    background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/banklogoer.png');
+    flex: 0 0 auto;
+    margin-right: 3rem;
+    /*width: 30rem;*/
+    /*background-color: red;*/
+    /*max-width: 100%;*/
+    /*overflow: hidden;*/
+}
+
+/* 10.6 sprite parts */
+.sprite-bank-norwegian {
+    background-position: -263px 0;
+    width: 184px;
+    height: 60px
+}
+.sprite-bluestep {
+    background-position: 10px 0;
+    width: 148px;
+    height: 60px
+}
+.sprite-dnb {
+    background-position: -140px 0;
+    width: 118px;
+    height: 60px
+}
+.sprite-easybank {
+    background-position: -2px -120px;
+    width: 210px;
+    height: 60px
+}
+.sprite-komplett-bank {
+    background-position: -289px -120px;
+    width: 228px;
+    height: 57px
+}
+.sprite-nordax {
+    background-position: 0 -65px;
+    width: 246px;
+    height: 59px
+}
+.sprite-resurs-bank {
+    background-position: -260px -60px;
+    width: 114px;
+    height: 60px
+}
+.sprite-santander-consumer-bank {
+    background-position: -374px -60px;
+    width: 175px;
+    height: 60px
+}
+.sprite-ya-bank {
+    background-position: -222px -120px;
+    width: 63px;
+    height: 60px
+}
+.sprite-gjensidige {
+    background-position: 0 -179px;
+    width: 184px;
+    height: 60px
+}
+.sprite-expressbank {
+    background-position: -209px -179px;
+    width: 138px;
+    height: 60px
+}
+.sprite-bnbank {
+    background-position: -376px -179px;
+    width: 91px;
+    height: 60px
+}
+.sprite-remember {
+    background-position: 0 -238px;
+    width: 154px;
+    height: 60px
+}
+.sprite-nystart-bank {
+    background-position: -185px -280px;
+    width: 100px;
+    height: 60px
+}
+.sprite-monobank {
+    background-position: -14px -286px;
+    width: 125px;
+    height: 58px
+}
+.sprite-thorn {
+    background-position: -170px -231px;
+    width: 136px;
+    height: 57px
+}
+.sprite-optinbank {
+    background-position: -325px -240px;
+    width: 154px;
+    height: 50px
+}
+
+
+
+/* 20.0 INTERNET EXPLORER GRIDS AND OTHERWISE */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+	/* email/send popups, em-lower-container - js stuff */
+
+	/*button,*/
+/*	button:focus,
+	button:active,*/
+	.em-b,
+	.em-compare-save,
+	.em-ht,
+	.em-if,
+	.em-i {
+		border: solid 2.4px black;
+	}
+
+	.em-i {
+		height: 4rem;
+	}
+
+	.em-part-lower-container .em-lc::after {
+		bottom: 0;
+	}
+
+	.em-cc-yes {
+		border-right: solid 1.5px black;
+	}
+
+	.em-cc-no {
+		border-left: solid 1.5px black;
+	}
+	
+	select::-ms-expand {
+	    display: none;
+	}
+
+	.em-element-contact_accept span::before {
+		border: solid 2px;
+	}
+
+	.em-part-1-grid {
+		display: -ms-grid;
+
+		-ms-grid-columns: 25% 25% 25% 25%;
+		-ms-grid-rows: auto auto auto auto auto auto;
+
+	}
+
+	.em-element-loan_amount {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-monthly_cost {
+		-ms-grid-row: 1;
+		-ms-grid-column: 3;
+		-ms-grid-column-span: 2;
+		-ms-grid-column-align: end;
+	}
+
+	.em-element-neste {
+		-ms-grid-row: 2;
+		-ms-grid-column: 2;
+		-ms-grid-column-span: 2;		
+	}
+
+	.em-element-collect_compare {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 4;		
+	}
+
+	.em-element-tenure {
+		-ms-grid-row: 4;
+		-ms-grid-column: 1;
+	}
+
+	.em-element-collect_debt {
+		-ms-grid-row: 4;
+		-ms-grid-column: 2;
+	}
+
+	.em-element-mobile_number {
+		-ms-grid-row: 4;
+		-ms-grid-column: 3;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-email {
+		-ms-grid-row: 5;
+		-ms-grid-column: 3;
+		-ms-grid-column-span: 2;
+		-ms-grid-row-span: 2;
+	}
+
+	.em-element-axo_accept {
+		-ms-grid-row: 5;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-contact_accept {
+		-ms-grid-row: 6;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-part-lower-container {
+		display: -ms-grid;
+
+		-ms-grid-columns: 1fr 1fr auto 1fr;
+		-ms-grid-rows: auto auto auto auto auto auto;
+	}
+
+	.em-part-lower-titles {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+	}
+
+	.em-part-2 {
+		-ms-grid-row: 2;
+		-ms-grid-column: 1;
+		-ms-grid-column-align: center;
+	}
+
+	.em-part-3 {
+		-ms-grid-row: 2;
+		-ms-grid-column: 2;
+		-ms-grid-column-align: center;
+	}
+
+	
+	.em-part-4 {
+		-ms-grid-row: 2;
+		-ms-grid-column: 3;
+		-ms-grid-column-align: center;
+	}
+
+	
+	.em-part-5 {
+		-ms-grid-row: 2;
+		-ms-grid-column: 4;
+		-ms-grid-column-align: center;
+	}
+
+
+	.email-popup-grid {
+		display: -ms-grid;
+
+		-ms-grid-columns: 1fr 1fr;
+		-ms-grid-rows: auto auto auto auto;
+	}
+
+	.pop-title {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+		margin-bottom: 4rem;
+	}
+
+	.pop-phone-container {
+		-ms-grid-row: 2;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.pop-email-container {
+		-ms-grid-row: 2;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+
+	}
+
+	.pop-neste {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+		-ms-grid-column-align: center;
+
+		margin-top: 4rem;
+
+	}
+
+	.pop-text {
+		-ms-grid-row: 4;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+
+	}
+
+	.em-part-1-grid-2 {
+
+		-ms-grid-columns: 2fr 1fr 1fr 1fr;
+		-ms-grid-rows: auto auto;
+
+		/*grid-template-columns: 2fr 1fr 1fr 1fr;*/
+
+		/*grid-template-areas: */
+			/*"loan tenure refinancing monthly"*/
+			/*"compare compare compare compare";*/
+
+		/*grid-column-gap: 2rem;*/
+
+		padding: 4rem 6rem;
+	}
+
+
+	.em-part-1-grid-2 .em-element-loan_amount {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;		
+		-ms-grid-column-span: 1;
+		margin-right: 3rem;		
+	}
+
+	.em-part-1-grid-2 .em-element-tenure {
+		-ms-grid-row: 1;
+		-ms-grid-column: 2;		
+		margin-right: 3rem;		
+	}
+
+	.em-part-1-grid-2 .em-element-monthly_cost {
+		-ms-grid-row: 1;
+		-ms-grid-column: 4;		
+	}
+
+	.em-part-1-grid-2 .em-element-collect_debt {
+		-ms-grid-row: 1;
+		-ms-grid-column: 3;		
+		margin-right: 3rem;		
+	}
+
+	.em-part-1-grid-2 .em-element-compare_debt {
+		-ms-grid-row: 2;
+		-ms-grid-column: 1;		
+		-ms-grid-column-span: 4;		
+	}
+
+	.em-part-1-grid-2 .em-lc::after {
+		bottom: .5rem;
+		right: 6rem;
+	}
+}
+
+.em-hidden {
+	display: none;
+}
+
+/*.ui-widget-header {background-image:none;background-color:#887e6d;}*/

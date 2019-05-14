@@ -1,0 +1,135 @@
+.em-hidden {
+	display: none;
+}
+
+.em-settings-container {
+	/*position: relative;*/
+	/*box-sizing: content-box;*/
+
+	margin-right: 20px;
+	
+}
+
+.em-settings-nav {
+	position: relative;
+	top: 1px;
+	/*z-index: -1;*/
+
+	/*background-color: red;*/
+
+	/*margin-bottom: 10px;*/
+}
+
+.em-settings-form-container {
+	/*position: absolute;*/
+	/*top: 25px;*/
+
+	/*position: relative;*/
+	/*bottom: 1px;*/
+	border: solid 1px hsl(0, 0%, 80%);
+	background-color: hsl(120, 20%, 98%);
+	padding: 10px;
+	/*z-index: -1;*/
+	/*display: block;*/
+}
+
+.em-settings-anchor {
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+
+	/*padding: 10px;*/
+	border: solid 1px hsl(0, 0%, 80%);
+	border-bottom: none;
+	/*border-bottom: solid 1px hsla(0, 0%, 0%, 0);*/
+
+	font-size: 20px;
+
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: hsl(120, 0%, 88%);
+	/*z-index: 2;*/
+	/*z-index: 20;*/
+	color: black;
+
+	cursor: pointer;
+}
+
+.em-settings-anchor-name {
+	/*z-index: -2;*/
+	/*border: solid 1px black;*/
+	/*z-index: -1;*/
+
+	/*height: 30px;*/
+
+	/*padding: 30px;*/
+}
+
+.em-settings-anchor-active {
+	border-bottom: solid 1px hsla(0, 0%, 0%, 0);
+	background-color: hsl(120, 20%, 98%);
+	/*background-color: hsl(0, 0%, );*/
+}
+
+.em-settings-anchor:hover {
+	background-color: hsl(120, 20%, 88%);
+	color: black;
+}
+
+.em-settings-anchor-active:hover {
+	background-color: hsl(120, 20%, 98%);
+	/*background-color: hsl(0, 0%, );*/
+}
+
+.em-settings-anchor:focus {
+	outline: none;
+	border: solid 1px hsl(120, 50%, 80%);
+	border-bottom: solid 1px hsla(0, 0%, 0%, 0);
+}
+
+.form-table tr {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-table th {
+	margin: 0;
+	padding: 0;
+
+	font-size: 18px;
+}
+
+.form-table td {
+	padding: 0;
+
+	margin-bottom: 30px;
+}
+
+.form-table h4 {
+	font-weight: 400;
+}
+
+.em-settings-i {
+	display: block;
+	width: 800px;
+	max-width: 100%;
+}
+
+.em-settings-h4 {
+	margin: 0;
+}
+
+.em-settings-ab-container {
+	display: inline-grid;
+
+	grid-template-columns: auto auto auto;
+	grid-row-gap: 20px;
+
+	margin-top: 30px;
+}
+
+/*.em-settings-ab input,*/
+.em-settings-ab select {
+	height: 27px;
+	position: relative;
+	bottom: 2px;
+}

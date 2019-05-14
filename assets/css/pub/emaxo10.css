@@ -1,0 +1,1238 @@
+/**
+ * INDEX
+ * 
+ * 1.0 .emowl-form
+ * 		1.1 form title
+ * 		1.2 button container
+ * 			1.2.1 buttons
+ * 			1.2.2 hidden button
+ * 			1.2.5 progress bar
+ * 			
+ * 		1.3 qs-container
+ * 		1.3.1 .em-part
+ * 				1.3.1.1 .em-part-1
+ * 		 		1.3.1.2 .em-part-2
+ * 		 	 	1.3.1.3 .em-part-3
+ * 		  	 	1.3.1.4 .em-part-4
+ * 		  	 	
+ *      1.4. generic elements and element-parts
+ *      	1.4.1 element title
+ *      	1.4.2 text input
+ *      	1.4.3 range input
+ *      	1.4.4 helper text
+ *      	1.4.5 label
+ *      	1.4.6 checkbox
+ * 		    1.4.7 val marker
+ *
+ * 2.0 loam amount
+ * 		2.1 loan input container
+ * 			2.1.1 loan label
+ * 				2.1.1.1 loan title
+ * 			 	2.1.1.2 loan help text
+ * 			 	
+ * 			2.1.2 loan input
+ *
+ * 3.0 tenure
+ *
+ * 4.0 refinancing
+ * 
+ * 5.0 mobile number
+ *
+ * 6.0 email
+ *
+ * 7.0 monthly cost
+ *
+ * 8.0 social number (personnummer)
+ *
+ * 9.0 employment type
+ *
+ * 10.0 employment since
+ *
+ * 11.0 employer
+ *
+ * 12.0 eduction
+ *
+ * 13.0 education loan
+ *
+ * 14.0 norwegian (citizen)
+ *
+ * 15.0 years in norway
+ *
+ * 16.0 country of origin
+ *
+ * 17.0 income
+ *
+ * 18.0 civil status
+ *
+ * 19.0 living conditions
+ *
+ * 20.0 rent incone
+ *
+ * 21.0 mortgage
+ *
+ * 22.0 rent
+ *
+ * 23.0 address since
+ *
+ * 24.0 car/boat/mc mortgage
+ *
+ * 25.0 number of children
+ *
+ * 26.0 allimony per month
+ *
+ * 26.0 co-applicant yes/no
+ *
+ * 27.0 co-applicant name
+ *
+ * 28.0 co-applicant social number
+ *
+ * 29.0 co-applicant mobile number
+ *
+ * 30.0 co-applicant email
+ *
+ * 31.0 co-applicant employment type
+ *
+ * 32.0 co-applicant employment since
+ *
+ * 33.0 co-applicant employer
+ *
+ * 34.0 co-applicant education
+ *
+ * 35.0 co-applicant norwegian
+ *
+ * 36.0 co-applicant years in norway
+ *
+ * 37.0 co-applicant country of origin
+ *
+ * 38.0 co-applicant salery
+ *
+ * 39.0 popup window (on submit)
+ *
+ * 40.0 sprite of bank logos
+ */
+
+
+/* dev stuff */
+.em-element-container {
+	/*border: solid 1px black;*/
+	/*padding: 1rem;*/
+}
+
+.em-r,
+.em-i {
+	width: 100%;
+	/*position: relative;*/
+}
+
+.em-cc-selector {
+	/*width: 100px;*/
+}
+/* end of dev stuff */
+
+button.em-i {
+	padding: .5rem 1rem;
+}
+
+.content,
+.page-container {
+	background-color: hsl(260, 75%, 70%);
+	color: white;
+}
+
+.main {
+	display: flex;
+}
+
+.content-column {
+	align-self: center;
+	width: 1000px;
+}
+
+.content-title {
+	display: none;
+}
+
+/* 1.0 form element and container */
+.emowl-form {
+	/*display: inline-block;*/
+	/*display: inline-grid;*/
+	/*position: relative;*/
+	/*width: 50%;*/
+
+	/*width: 39.6rem;*/
+	/*width: 44.6rem;*/
+
+
+	background-color: white;
+	color: black;
+
+	padding: 4rem;
+	/*min-height: 45rem;*/
+	/*box-sizing: content-box;*/
+
+	/* form title - form elements - buttons */
+	/*grid-template-rows: auto 1fr auto;*/
+
+	/*font-size: 2rem;*/
+
+	/* light gray */
+	/*background-color: hsl(20, 0%, 98%);*/
+
+	/*padding: 2rem;*/
+
+	/*border-radius: 25px;*/
+	/*border: solid 2px  hsl(20, 0%, 97%);*/
+
+	user-select: none;
+	/*background-color: red;*/
+	/*font-size: 3rem;*/
+}
+
+.emowl-form,
+.emowl-form button,
+.emowl-form select,
+.emowl-form input {
+	font-size: 2.3rem;
+	padding: 1rem;
+	/*background-color: hsl(10, 90%, 98%);*/
+	/*width: 25rem;*/
+}
+
+
+
+/* 1.1 form title */
+.form-title {
+	margin: 0;
+}
+
+/* 1.2 next / prev buttons */
+/* button container */
+.em-b-container {
+	/*position: absolute;*/
+	/*bottom: 0;*/
+
+	/*left: 0;*/
+	/*right: 0;*/
+	display: grid;
+	/*display: flex;*/
+
+	margin: 1rem 2rem 0;
+
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "back progress next";
+
+	/* TODO: prev button on left - next button on right*/
+	/*flex-direction: row-reverse;*/
+
+	justify-content: space-between;
+	align-self: flex-end;
+	/*display: none;*/
+}
+
+/* 1.2.1 button */
+.em-b {
+	border: none;
+	/*outline: none;*/
+	/*display: inline;*/
+	cursor: pointer;
+
+	/*width: 20rem;*/
+
+
+	/*font-size: 3rem;*/
+	padding: .5rem;
+	border-radius: 5px;
+
+}
+
+.em-b:focus {
+	/*border: solid 1px hsl(120, 60%, 60%) !important;*/
+}
+
+/* 1.2.2 submit button */
+.em-b-submit {
+	background-color: hsl(120, 90%, 60%);
+	grid-area: next;
+}
+
+/* 1.2.3 back button */
+.em-b-back {
+	grid-area: back;
+	/*display: none;*/
+}
+
+/* 1.2.4 next button */
+
+.em-b-next {
+	background-color: hsl(30, 90%, 60%);
+	grid-area: next;
+}
+
+/* 1.2.5 progress bar */
+
+.progress-numbers {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	/*padding: 4rem 2rem 2rem;*/
+	margin: 0 2rem;
+	/*padding: 0 1rem;*/
+	/*height: 50px;*/
+}
+
+.progress-line {
+	position: absolute;
+	bottom: 50%;
+	top: 50%;
+	/*top: -10px;*/
+	/*top: 14px;*/
+	right: 2px;
+	left: 2px;
+	/*width: 100%;*/
+	border-bottom: solid 3px black;
+}
+
+.progress-nr {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*top: 10px;*/
+	color: white;
+	background: black;
+
+	/*padding: 1rem;*/
+
+	width: 4rem;
+	height: 4rem;
+
+	border-radius: 25px;
+	z-index: 10;
+	text-align: center;
+}
+
+.em-progress-container {
+	position: relative;
+	grid-area: progress;
+	align-self: center;
+	justify-self: center;
+	width: 80%;
+}
+
+
+.em-progress {
+	width: 100%;
+	appearance: none;
+	border: none;
+	background-color: white;
+}
+
+.em-progress-text {
+	position: absolute;
+
+	right: 0;
+	top: .1rem;
+}
+
+.em-progress::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	border: solid 1px hsl(0, 0%, 20%);
+}
+
+.em-progress::-webkit-progress-value {
+	/*background-color: orange;*/
+	border-right: solid 1px black;
+	background-image:
+		-webkit-linear-gradient( 135deg,
+								 transparent,
+								 transparent 33%,
+								 rgba(0,0,0,.1) 33%,
+								 rgba(0,0,0,.1) 66%,
+								 transparent 66%),
+    	-webkit-linear-gradient( top,
+								 rgba(255, 255, 255, .25),
+								 rgba(0,0,0,.2)),
+    	-webkit-linear-gradient( left, #09c, #4f4);
+}
+
+/* 1.3 part container */
+.em-part-container {
+}
+
+.em-part {
+	display: none;
+	/*overflow: hidden;*/
+}
+
+.em-part-1 {
+	display: block;
+}
+
+.em-part-1-grid {
+	display: grid;
+
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto;
+
+	grid-template-areas: 
+		"lan lan telefon epost"
+		"kostnad kostnad axo axo"
+		"kostnad kostnad norskfinans norskfinans"
+		"nedbetaling refinansiering . neste";
+
+	/*justify-content: space-between;*/
+	/*align-items: stretch;*/
+	/*grid-column-gap: 1rem;*/
+
+	/*align-items: center;*/
+	/*height: 100%;*/
+}
+
+.em-part-title-container {
+	overflow: hidden;
+}
+
+.em-part-title {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 1rem;
+/*	position: relative;
+	left: -400px;*/
+	/*z-index: -1;*/
+	/*overflow: hidden;*/
+}
+
+.em-part-1 .em-part-title {
+	display: none;
+}
+
+.em-part-1 .em-part-title::after {
+	content: 'Sjekk dine lånetilbud';
+}
+
+.em-part-2 .em-part-title::after {
+	content: 'Om deg';
+}
+
+.em-part-3 .em-part-title::after {
+	content: 'Søke sammen?';
+}
+
+.em-part-4 .em-part-title::after {
+	content: 'Ditt boforhold';
+}
+
+.em-part-5 .em-part-title::after {
+	content: 'Siste etappe';
+}
+
+.em-part-title-slide {
+	position: relative;
+	/*left: -400px;*/
+	animation-name: slideleft;
+	animation-duration: 2s;
+}
+
+@keyframes slideleft {
+	from { left: -250px; }
+	to { left: 0; }
+}
+
+
+/* 1.4 generic elements and element-parts */
+.em-element-container {
+	position: relative;
+
+	/*user-select: none;*/
+	margin-bottom: 1rem;
+
+	margin: 0 2rem;
+
+	padding: .5rem 0;
+
+	/*border: solid 2px black;*/
+	/*box-shadow: 0 0 5px black;*/
+	/*border-radius: 25px;*/
+	/*background-color: hsl(10, 90%, 98%);*/
+}	
+
+.em-element-container:hover {
+}
+
+/* 1.4.1 element title */
+.em-it {
+	margin: 0;
+	margin-bottom: .5rem;
+	font-size: 2.2rem;
+	font-family: georgia;
+	/*position: relative;*/
+}
+
+/* 1.4.2 text input */
+.em-i {
+	border: none;
+	/*outline: none;*/
+
+	padding: .5rem 0;
+
+	z-index: 20;
+
+	/*text-align: center;*/
+	padding-left: 1rem;
+	/*height: 5rem;*/
+
+	/*font-size: 3rem;*/
+
+	/*border-radius: 3px;*/
+
+	border: solid 6px hsl(0, 0%, 0%);
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+}
+
+/**/
+/*.em-lc .em-i:focus {*/
+
+.em-lc .em-i {
+	appearance: none;
+	-webkit-appearance: none;
+	padding-left: 1rem;
+}
+.em-i:focus {
+	/*border: solid 2px hsl(280, 80%, 60%);*/
+	box-shadow: 1px 1px 5px hsl(280, 80%, 60%);
+}
+
+/* 1.4.3 range input container */
+.em-rc {
+	margin-top: 1rem;
+}
+
+/* 1.4.3.1 range input */
+.em-r {
+	height: 4px;
+
+	position: relative;
+	bottom: 1.4rem;
+	right: 0.2rem;
+	
+	-webkit-appearance: none;
+	background: none;
+	outline: none;
+
+	/*background-color: hsla(120, 100%, 20%);*/
+	/*background-color: hsla(120, 100%, 20%, .2);*/
+
+	cursor: grab;
+}
+
+.em-r:focus {
+	/*background-color: hsla(120, 100%, 20%, .7);*/
+}
+
+/* 1.4.3.2 range tack */
+.em-r::-webkit-slider-thumb {
+  	-webkit-appearance: none;
+  	appearance: none;
+
+  	width: 6rem;
+  	height: 2rem;
+
+  	/*opacity: .8;*/
+  	background: hsl(280, 100%, 50%);
+  	/*background: hsl(120, 50%, 20%);*/
+  	/*border-radius: 150px;*/
+  	border: solid 6px black;
+ }
+
+
+/* 1.4.4 helper text */
+.em-ht {
+	font-size: 1.4rem;
+	display: flex;
+
+	align-items: center;
+
+	position: absolute;
+	top: 2.8rem;
+	/*right: 0;*/
+	right: -18.9rem;
+
+	/*background-color: hsl(0, 0%, 95%);*/
+	background-color: hsl(120, 100%, 99%);
+	padding: .5rem;
+	z-index: 99;
+	width: 20rem;
+	/*height: 3.3rem;*/
+	line-height: 1;
+	border: solid 1px hsl(0, 0%, 70%);
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+	/*box-shadow: 0 0 3px hsl(0, 0%, 30%);*/
+	z-index: 99;
+
+}
+
+.arrow-right {
+	/*display: inline-block;
+	position: relative;
+	bottom: .6rem;
+	right: 0.7rem;
+	width: 0; 
+	height: 0; 
+	border-top: 2.5rem solid transparent;
+	border-bottom: 2.5rem solid transparent;
+	  
+	border-left: 2.5rem solid hsl(0, 0%, 30%);*/
+}
+
+.em-ht-q {
+	/*content: '?';*/
+	position: absolute;
+	right: 0;
+	top: 1rem;
+	/*top: 13px;*/
+
+	font-weight: 400;
+	/*font-size: 1.4rem;*/
+
+	width: 2rem;
+	height: 2rem;
+
+	border-radius: 25px;
+	border: solid 3px black;
+
+	background-color: transparent;
+
+	text-align: center;
+	line-height: 2rem;
+	cursor: pointer;
+}
+
+.em-ht-q:hover {
+	background-color: hsl(0, 0%, 90%);
+}
+
+.em-ht-q > span {
+	position: relative;
+	bottom: 1.2rem;
+	right: .34rem;
+
+	font-size: 1.6rem;
+
+	font-weight: 700;
+}
+
+/* 1.4.5 label */
+.em-label {
+	cursor: pointer;
+}
+
+/* 1.4.6 checkbox  buttons */
+.em-cc-selector {
+	display: inline-flex;
+
+	/*user-select: none;*/
+
+	/*height: 5rem;*/
+	width: 100%;
+
+}
+
+/* 1.4.6.1 checkbox buttons */
+.em-cc-yes,
+.em-cc-no {
+	flex: 1;
+	border: solid 6px #000;
+	text-align: center;
+	background-color: hsl(120, 0%, 90%);
+
+	cursor: pointer;
+	/*outline: none;*/
+	/*outline: solid 2px black;*/
+
+	/*font-size: 2rem;*/
+
+	/*width: 50%;*/
+}
+
+/* 1.4.6.2 checkbox yes */
+.em-cc-yes {
+
+	/*border-top-left-radius: 25px;*/
+	/*border-bottom-left-radius: 25px;*/
+
+
+	border-right: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+/* 1.4.6.3 checkbox no */
+.em-cc-no {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+
+	/*border-top-right-radius: 25px;*/
+	/*border-bottom-right-radius: 25px;*/
+
+}
+
+/* 1.4.6.4 checkbox selected */
+.em-cc-green {
+	background-color: hsl(120, 80%, 60%);
+}
+
+
+/* 1.4.7 val marker */
+/*.em-i::after {*/
+.em-marker-val {
+	/*content: '';*/
+	color: green;
+	position: absolute;
+	/*font-size: 2.4rem;*/
+	right: .2rem;
+	top: 3.6rem;
+	z-index: 50;
+	/*border: solid 1px green;*/
+
+	height: 2.8rem;
+	width: 2.8rem;
+
+	opacity: .5;
+}
+
+/*.em-val-marker-no::after {
+	background-image: url('/wp/wp-content/plugins/em-axowl/assets/img/redtick.png');
+}
+
+.em-val-marker-yes::after {
+	background-image: url('/wp/wp-content/plugins/em-axowl/assets/img/greentick.png');
+}*/
+
+.em-element-neste {
+	grid-area: neste;
+
+	align-self: flex-end;
+	/*justify-self: stretch;*/
+}
+
+.em-b-neste {
+	width: 100%;
+
+	border: none;
+
+	background-color: hsl(30, 100%, 50%);
+
+	border: solid 4px hsl(30, 100%, 50%);
+
+	cursor: pointer;
+}
+
+/* 2.0 loan amount element container */
+.em-element-loan_amount {
+	grid-area: lan;
+
+}
+
+/* 2.1 loan amount input container */
+.em-ic-loan_amount {
+}
+
+.em-ic-loan_amount > .em-val-marker {
+	display: none;
+}
+
+/* 2.1.1 loan amount label */
+.em-label-loan_amount {
+}
+
+/* 2.1.1.1 loan amount title */
+.em-it-loan_amount {
+
+}
+
+/* 2.1.1.2 loan amount help text */
+.em-ht-loan_amount {
+}
+
+/* 2.1.2 loan amount input */
+.em-i-loan_amount {
+	text-align: center;
+	width: 100% !important;
+}
+
+/* 2.1.3 loan amount range input */
+.em-r-loan_amount {
+	width: 100% !important;
+}
+
+/* 3.0 tenure */
+.em-element-tenure {
+	grid-area: nedbetaling;
+	display: block !important;
+}
+
+.em-ic-tenure > .em-val-marker {
+	display: none;
+}
+
+.em-i-tenure {
+	text-align: center;
+}
+
+/* 4.0 refinancing / collect debt */
+.em-element-collect_debt {
+	grid-area: refinansiering;
+	display: block !important;
+	/*display: none;*/
+}
+
+/* 5.0 mobile number */
+.em-element-mobile_number {
+	grid-area: telefon;
+	display: block !important;
+	/*display: none;*/
+}
+
+/* 6.0 email */
+.em-element-email {
+	grid-area: epost;
+	/*opacity: .2;*/
+	display: block !important;
+	/*display: none;*/
+}
+
+
+
+/* 7.0 monthly cost */
+.em-element-monthly_cost {
+	grid-area: kostnad;
+	background-color: transparent;
+	/*border-bottom: dashed 1px hsl(0, 0%, 50%);*/
+	/*margin-bottom: 1rem;*/
+}
+
+.em-container-monthly_cost {
+	/*font-size: 3rem;*/
+	position: relative;
+	top: 1px;
+}
+
+.em-if-monthly_cost {
+	position: relative;
+	top: .3rem;
+	right: 2.7rem;
+	border: none;
+	background-color: transparent;
+	color: black;
+	text-align: right;
+	padding: 0 !important;
+	/*padding-left: 5px;*/
+	width: 12.8rem;
+
+	font-weight: 700;
+	font-size: 2.2rem !important;
+
+}
+
+/* 8.0 axo accept */
+.em-element-check {
+	font-size: 1.4rem;
+	padding-left: 32px;
+}
+
+.em-element-axo_accept {
+	grid-area: axo;
+	padding-bottom: 0;
+	margin-bottom: 0;
+
+	/*justify-self: center;*/
+	/*align-self: center;*/
+	display: block !important;
+}
+
+.em-element-contact_accept label,
+.em-element-axo_accept label {
+	position: relative;
+}
+
+input[type="checkbox"]:checked + label span::before {
+	background-color: green;
+}
+
+.em-element-contact_accept span::before,
+.em-element-axo_accept span::before {
+	content: '';
+
+	position: absolute;
+	left: -30px;
+	/*top: 10px;*/
+	/*bottom: 0;*/
+
+	height: 1.5rem;
+	width: 1.5rem;
+	border: solid 6px black;
+}
+
+.em-element-contact_accept {
+	grid-area: norskfinans;
+
+	align-self: center;
+	display: block !important;
+
+	/*font-size: 2rem;*/
+	/*justify-self: center;*/
+	/*display: none;*/
+}
+
+.em-check {
+	display: none;
+	/*position: relative;*/
+	/*top: .3rem;*/
+	width: auto;
+
+	height: 2rem;
+	width: 2rem;
+
+	outline: solid 4px black;
+
+	apperance: none;
+
+	background-color: transparent;
+}
+
+/* 39.0 popup window */
+.em-popup {
+	display: none;
+	/*display: grid;*/
+	/*opacity: 0;*/
+
+/*	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto auto;
+
+	grid-template-areas: 
+		"lan lan telefon epost"
+		"kostnad kostnad axo"
+		"kostnad kostnad norskfinans"
+		"nedbetaling refinansiering neste";*/
+
+	position: fixed;
+	width: 70rem;
+	max-width: 90%;
+	height: 20rem;
+
+	top: 20%;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	border: double 4px hsl(0, 0%, 50%);
+
+	background-color: hsl(120, 80%, 95%);
+	z-index: 999;
+}
+
+.em-popup-show {
+	display: grid;
+	/*opacity: 0;*/
+
+	animation-name: popup;
+	animation-duration: .5s;
+}
+
+@keyframes popup {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+/* 39.1 */
+.em-popup-title {
+	grid-area: title;
+}
+
+
+/* 39.2 */
+.em-popup-x {
+	grid-area: x;
+
+	background-color: transparent;
+
+	align-self: flex-start;
+
+	margin: 1rem 1rem 0 0;
+
+	border: none;
+	cursor: pointer;
+}
+
+.em-popup-x::after {
+	content: 'X';
+	font-size: 2rem;
+}
+
+.em-popup-x:hover {
+	font-weight: 700;
+	/*border: solid 1px hsl(0, 0%, 50%);*/
+}
+
+/* 39.3 */
+.em-popup-content {
+	grid-area: content;
+
+}
+
+/* 39.4 */
+.em-popup-button {
+	grid-area: button;
+
+	justify-self: center;
+
+	background-color: transparent;
+	border: none;
+	font-size: 3rem;
+	cursor: pointer;
+}
+
+
+/* 40.0 sprites */
+.em-sprites {
+	overflow: hidden;
+	/*background-color: hsl(0, 0%, 98%);*/
+}
+
+.em-sprite-container {
+	display: flex;
+	position: relative;
+
+	align-items: center;
+	/*animation-fill-mode: forwards;*/
+}
+
+.em-sprite-container-animation {
+	/*overflow: hidden;*/
+	/*flex-wrap: wrap*/
+	animation-name: spriteslide;
+	animation-duration: 25s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	cursor: pointer;
+}
+
+.em-sprite-container-animation-paused {
+  animation-play-state: paused;
+}
+
+@keyframes spriteslide {
+	from { left: 0; }
+	to { left: -1630px; }
+}
+
+.em-sprite {
+    background-repeat: no-repeat;
+    /*display: block;*/
+    /*border: solid 1px black;*/
+    background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/banklogoer.png');
+    flex: 0 0 auto;
+    margin-right: 3rem;
+}
+
+
+.sprite-bank-norwegian {
+    background-position: -263px 0;
+    width: 184px;
+    height: 60px
+}
+
+.sprite-bluestep {
+    background-position: 10px 0;
+    width: 148px;
+    height: 60px
+}
+
+.sprite-dnb {
+    background-position: -140px 0;
+    width: 118px;
+    height: 60px
+}
+
+.sprite-easybank {
+    background-position: -2px -120px;
+    width: 210px;
+    height: 60px
+}
+
+.sprite-komplett-bank {
+    background-position: -289px -120px;
+    width: 228px;
+    height: 57px
+}
+
+.sprite-nordax {
+    background-position: 0 -65px;
+    width: 246px;
+    height: 59px
+}
+
+.sprite-resurs-bank {
+    background-position: -260px -60px;
+    width: 114px;
+    height: 60px
+}
+
+.sprite-santander-consumer-bank {
+    background-position: -374px -60px;
+    width: 175px;
+    height: 60px
+}
+
+.sprite-ya-bank {
+    background-position: -222px -120px;
+    width: 63px;
+    height: 60px
+}
+
+.sprite-gjensidige {
+    background-position: 0 -179px;
+    width: 184px;
+    height: 60px
+}
+
+.sprite-expressbank {
+    background-position: -209px -179px;
+    width: 138px;
+    height: 60px
+}
+
+.sprite-bnbank {
+    background-position: -376px -179px;
+    width: 91px;
+    height: 60px
+}
+
+.sprite-remember {
+    background-position: 0 -238px;
+    width: 154px;
+    height: 60px
+}
+
+.sprite-nystart-bank {
+    background-position: -185px -280px;
+    width: 100px;
+    height: 60px
+}
+
+.sprite-monobank {
+    background-position: -14px -286px;
+    width: 125px;
+    height: 58px
+}
+
+.sprite-thorn {
+    background-position: -170px -231px;
+    width: 136px;
+    height: 57px
+}
+
+.sprite-optinbank {
+    background-position: -325px -240px;
+    width: 154px;
+    height: 50px
+}
+
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.em-part-1-grid {
+		display: -ms-inline-grid;
+
+		-ms-grid-columns: 1fr 1fr;
+		-ms-grid-rows: auto auto auto auto auto auto;
+	}
+
+	.em-element-monthly_cost {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-loan_amount {
+		-ms-grid-row: 2;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-tenure {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+	}
+
+	.em-element-collect_debt {
+		-ms-grid-row: 3;
+		-ms-grid-column: 2;
+	}
+
+	.em-element-mobile_number {
+		-ms-grid-row: 4;
+		-ms-grid-column: 1;
+	}
+
+	.em-element-email {
+		-ms-grid-row: 4;
+		-ms-grid-column: 2;
+	}
+
+	.em-element-axo_accept {
+		-ms-grid-row: 5;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-contact_accept {
+		-ms-grid-row: 6;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+
+	.em-b-container {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr 1fr;
+	}
+
+	.em-b-back {
+		-ms-grid-column: 1;
+
+	}
+
+	.em-progress-container {
+		-ms-grid-column: 2;
+		height: 2.1rem;
+		margin: 0 10%;
+	}
+
+
+	.em-b-submit,
+	.em-b-next {
+		-ms-grid-column: 3;
+
+	}
+
+	.em-r {
+		height: auto;
+		background-color: transparent;
+	}
+
+	.em-ht-q > span {
+		position: relative;
+		bottom: .1rem;
+		right: .3rem;
+
+		font-size: 1.6rem;
+	}
+
+
+
+}
+
+.em-hidden {
+	display: none;
+}
