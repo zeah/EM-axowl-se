@@ -141,7 +141,7 @@ final class Axowl_settings_se {
 			// 'co_applicant_years_in_norway' => 'The number of years the co applicant has lived in Norway.',
 			// 'co_applicant_country_of_origin' => 'Select a value from list.',
 			'co_applicant_monthly_income' => 'Monthly income before taxes ("bruttolønn")',
-			'living_togehter' => 'Whether the co applicant lives together with the main applicant',
+			'living_together' => 'Whether the co applicant lives together with the main applicant',
 			'co_applicant_civilstatus' => 'List',
 			'co_applicant_living_conditions' => 'Boforhold',
 			'co_applicant_address_since_year' => 'Bodd på addressen (år.)',

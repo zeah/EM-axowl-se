@@ -280,7 +280,7 @@ final class Axowl_shortcode_parts_se {
 			
 			$o['name'],
 			
-			$o['text'],
+			$o['text'] ? $o['text'] : '&nbsp;',
 
 			(isset($o['value']['help']) && isset($o['ht'])) ? $this->help_element($o['name'], $o['ht']) : '',
 			

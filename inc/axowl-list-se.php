@@ -343,12 +343,17 @@ final class Axowl_list_se {
 				];
 
 	const civilstatus = [
-					'Gift/partner', 
-					'Skilt', 
-					'Ugift', 
-					'Enke/enkemann', 
-					'Samboer', 
-					'Separert'
+					'Gift',
+					'Sambo',
+					'Ensamstående',
+					'Skild',
+					'Änka/änkling'
+					// 'Gift/partner', 
+					// 'Skilt', 
+					// 'Ugift', 
+					// 'Enke/enkemann', 
+					// 'Samboer', 
+					// 'Separert'
 				];
 
 	const living_conditions = [
@@ -372,6 +377,12 @@ final class Axowl_list_se {
 				];
 
 	const loan_purpose = [
+					'Köpa bil/fordon/båt' => 'Köpa bil/fordon/båt',
+					'Renovering' => 'Renovering',
+					'Konsumtion' => 'Konsumtion',
+					'Köpa bostad/handpenning' => 'Köpa bostad/handpenning', 
+					'Resa' => 'Resa',
+					'Övrigt' => 'Övrigt'
 	];
 
 }

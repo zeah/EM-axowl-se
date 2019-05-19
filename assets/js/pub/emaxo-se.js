@@ -21,6 +21,9 @@
 
 // 	return data;
 // };
+// 
+// 
+// /hei/.test('hei') ? console.log('y') : console.log('n');
 
 var sendGa = function(label, value = 0) {
 
@@ -53,10 +56,10 @@ var sendGa = function(label, value = 0) {
 	var kroner = function(n) {
 		n = numb(n);
 
-		if (n === 0) return 'kr 0';
+		if (n === 0) return '0 kr';
 		if (n == '' || !n) return '';
 
-		return 'kr '+String(n).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+		return String(n).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")+' kr';
 	}
 
 	var cost = function(i) {
@@ -127,205 +130,85 @@ var sendGa = function(label, value = 0) {
 	payment();
 
 	$.fn.extend({
-		validate: function() { try { return this[0].val() } catch (e) { } },
+		validate: function() { try { return this[0].val() } catch (e) { return true } },
 		validation: function() { try { return validation.call(this[0]) } catch (e) { } }
 	});
 
 	var val = {
-		list: function() { if (this.value == '') return false; return true },
+		list: function() { return /.+/.test(this.value) },
 		
-		number: function() { if (/^\d+$/.test(this.value)) return true; return false },
+		number: function() { return /^\d+$/.test(this.value) },
 		
-		phone: function() {
-			if (!this.value) return false;
-
-			var n = this.value.replace(/\D/g, '');
-			if (/^(4|9)\d+$/.test(n) && n.length == 8) return true; 
-			return false 
-		},
+		phone: function() { return /^07\d{8}$/.test(this.value.replace(/\s/g, '')) },
 		
-		email: function() { 
-			// var dict = function() {
-			// 	var mails = {
-			// 		'gmail.com': ['g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm'],
-			// 		'hotmail.com': ['h', 'o', 't', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm'],
-			// 		'online.no': ['o', 'n', 'l', 'i', 'n', 'e', '.', 'n', 'o'],
-
-			// 		'live.com': ['l', 'i', 'v', 'e', '.', 'c', 'o', 'm'],
-			// 		'yahoo.no': ['y', 'a', 'h', 'o', 'o', '.', 'n', 'o'],
-			// 		'yahoo.com': ['y', 'a', 'h', 'o', 'o', '.', 'c', 'o', 'm'],
-			// 		'hotmail.no': ['h', 'o', 't', 'm', 'a', 'i', 'l', '.', 'n', 'o'],
-			// 		'c2i.net': ['c', '2', 'i', '.', 'n', 'e', 't'],
-			// 		'broadpark.no': ['b', 'r', 'o', 'a', 'd', 'p', 'a', 'r', 'k', '.', 'n', 'o'],
-			// 		'frisurf.no': ['f', 'r', 'i', 's', 'u', 'r', 'f', '.', 'n', 'o'],
-
-			// 		'start.no': ['s', 't', 'a', 'r', 't', '.', 'n', 'o'],
-
-			// 		'lyse.no': ['l', 'y', 's', 'e', '.', 'n', 'o'],
-
-			// 		'live.no': ['l', 'i', 'v', 'e', '.', 'n', 'o'],
-			// 		'msn.com': ['m', 's', 'n', '.', 'c', 'o', 'm'],
-			// 		'outlook.com': ['o', 'u', 't', 'l', 'o', 'o', 'k', '.', 'c', 'o', 'm'],
-
-
-			// 		'gmail.no': ['g', 'm', 'a', 'i', 'l', '.', 'n', 'o'],
-			// 		'googlemail.com': ['g', 'o', 'o', 'g', 'l', 'e', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm'],
-
-			// 		'adsl.no': ['a', 'd', 's', 'l', '.', 'n', 'o'],
-			// 		'telenor.com': ['t', 'e', 'l', 'e', 'n', 'o', 'r', '.', 'c', 'o', 'm'],
-					
-			// 		'inbox.com': ['i', 'n', 'b', 'o', 'x', '.', 'c', 'o', 'm'],
-			// 		// 'mail.com': ['m', 'a', 'i', 'l', '.', 'c', 'o', 'm'],
-			// 		'protonmail.com': ['p', 'r', 'o', 't', 'o', 'n', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm']
-			// 	}
-
-			// 	var v = this.value.substring(this.value.indexOf('@')+1).toLowerCase();
-			// 	// var c = 0;
-
-			// 	var f = false;
-
-			// 	// correctly spelled
-			// 	for (var a in mails)
-			// 		if (v == a) {
-			// 			f = true;
-			// 			break;
-			// 		}
-
-
-			// 	if (!f) for (var a in mails) {
-			// 		var c = 0;
-
-			// 		console.log('');
-			// 		console.log(mails[a]+' '+v);
-			// 		for (var i = 0; i < mails[a].length; i++) {
-			// 			console.log(mails[a][i]+' # '+v.charAt(i));
-			// 			if (v.charAt(i) != mails[a][i]) c++;
-						
-			// 		}
-			// 		console.log(c);
-			// 		console.log();
-			// 		// if (v.length > a.length+1) continue;
-
-			// 		// for (var b in mails[a]) {
-			// 		// 	if (v.indexOf(mails[a][b]) === -1)
-			// 		// 		c++;
-			// 		// }
-			// 		// console.log(mails[a]);
-			// 		// console.log(c);
-			// 		// console.log();
-
-			// 		// if ((c > 0 && c < 3) || (c == 0 && v != a)) {
-			// 		// 	if (confirm('Mente du '+a+'?')) {
-			// 		// 		this.value = this.value.replace(/\@.+/, '@'+a);
-			// 		// 		break;
-			// 		// 	}
-			// 		// 	else {
-
-			// 		// 	}
-			// 		// }
-			// 		// c = 0;
-			// 	}
-			// }
-
-			if (/.+\@.+\..{2,}/.test(this.value)) return true; return false 
-		},
+		email: function() { return /.+\@.+\..{2,}/.test(this.value) },
 		
-		currency: function() { 
-			if (!this.value) return false;
-			if (/^\d+$/.test(this.value.replace(/[kr\.\s]/g, ''))) return true; return false 
-		},
+		currency: function() { return /^\d+$/.test(this.value.replace(/[kr\.\s]/g, '')) },
 		
-		text: function() { if (/^[A-ZØÆÅa-zøæå\s]+$/.test(this.value)) return true; return false },
+		text: function() { return /^[A-ZÅÄÖa-zåäö\s]+$/.test(this.value) },
 		
-		empty: function() { if (/.+/.test(this.value)) return true; return false },
+		empty: function() { return /.+/.test(this.value) },
 		
 		check: function() { return this.checked },
 		
-		bankaccount: function() { 
-			if (!this.value || this.value == '00000000000') return false;
-
-			var n = this.value.replace(/[^0-9]/g, '');
-			if (!n) return false;
-
-			if (n.length == 11) {
-
-				var cn = [2,3,4,5,6,7];
-				var cnp = -1;
-				var ccn = function() {
-					cnp++;
-					if (cnp == cn.length) cnp = 0;
-					return cn[cnp];
-				}
-
-				var control = n.toString().split('').pop();
-
-				var c = n.substring(0, n.length-1);
-
-				var sum = 0;
-				for (var i = c.length-1; i >= 0; i--)
-					sum += c[i] * ccn();
-
-
-				sum = sum % 11;
-				sum = 11 - sum;
-
-				if (sum == control) return true;
-			}
-
-			return false;
-		},
-		
 		socialnumber: function() {
-			if (!this.value) return false;
 
-			var d = this.value.replace(/[^0-9]/g, '');
+			var v = this.value.replace(/\D/g, '');
+			// console.log('hi');
 
-			if (d.length == 11) {
-				
-				// special rule
-				if (d == '00000000000') return false;
-				var f = d.split('');
-			    
-			    // first control number
-			    var k1 = (11 - (((3 * f[0]) + (7 * f[1]) + (6 * f[2])
-			            + (1 * f[3]) + (8 * f[4]) + (9 * f[5]) + (4 * f[6])
-			            + (5 * f[7]) + (2 * f[8])) % 11)) % 11;
-			    
-			    // second control number
-			    var k2 = (11 - (((5 * f[0]) + (4 * f[1]) + (3 * f[2])
-			            + (2 * f[3]) + (7 * f[4]) + (6 * f[5]) + (5 * f[6])
-			            + (4 * f[7]) + (3 * f[8]) + (2 * k1)) % 11)) % 11;
-			    
-			    if (k1 == 11) k1 = 0;
+			if (/10|12/.test(v.length)) return false;
+			// if (!(v.length == 10 || v.length == 12)) return false;
 
-			    // failed validation
-			    if (k1 != f[9] || k2 != f[10]) return false;
-			    
-			    // success
-			    return true;
+			if (v.length == 12) v = v.substring(2);
+
+			var c = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+
+			var t = 0;
+
+			for (var i in c) {
+				var o = c[i] * v[i];
+				if (o > 9) {
+					var te = 0;
+					var split = String(o).split('');
+					for (var j in split) 
+						te += parseInt(split[j]);
+					t += te;
+				}
+				else t += o;
 			}
+
+			if (v.slice(-1) == (10 - String(t).slice(-1))) return true;
 
 			return false;
 		}
 	}
 
+
 	// formats
 	var input = {
 		list: function() { validation.call(this) },
+
 		number: function() { this.value = this.value.replace(/[^0-9]/g, '') },
+
 		phone: function() { 
 			var v = this.value;
 			this.value = v.replace(/[^0-9\s]/g, '');
 
 			var c = v.replace(/\s/g, '');  
-			if (c.length == 8) validation.call(this);
-			else if (c.length > 8) this.value = v.substring(0, v.length-1); 
+			if (c.length == 10) validation.call(this);
+			else if (c.length > 10) this.value = v.substring(0, v.length-1); 
 		},
+
 		email: function() {},
+
 		currency: function() {},
+
 		text: function() { this.value = this.value.replace(/[^A-ZØÆÅa-zøæå\s]/g, '') },
+
 		notempty: function() {},
+
 		check: function() { if (!this.val()) invalid.call(this); else valid.call(this) },
+
 		bankaccount: function() {
 			this.value = this.value
 							.replace(/[^\d\.\s]/g, '')
@@ -336,13 +219,18 @@ var sendGa = function(label, value = 0) {
 			if (c.length == 11) validation.call(this);
 			else if (c.length > 11) this.value = this.value.substring(0, this.value.length-1); 
 		},
+
 		socialnumber: function() {
 			var v = this.value;
-			this.value = v.replace(/[^0-9\s]/g, '');
+			var c = v.replace(/\D/g, '');
 
-			var c = v.replace(/\s/g, '');  
-			if (c.length == 11) validation.call(this);
-			else if (c.length > 11) this.value = v.substring(0, v.length-1); 
+			// input limits
+			this.value = v.replace(/[^0-9\s-\+]/g, '');
+			if (c.length > 12) this.value = v.substring(0, v.length-1); 
+
+			// if valid length, then check number
+			var c = v.replace(/\D/g, '');  
+			if (/10|12/.test(c.length)) validation.call(this);
 		}
 	}
 
@@ -361,13 +249,15 @@ var sendGa = function(label, value = 0) {
 		list: function() {},
 		number: function() { },
 		phone: function() {
-			// dont do anything of spaces already put in
+			// dont do anything if spaces already put in
 			if (/\s/.test(this.value)) return;
 
 			// convert to number with spaces
 			var v = this.value.replace(/\D/g, '');
-			var m = v.match(/^(\d{3})(\d{2})(\d{3})/); 
-			if (m) this.value = m[1]+' '+m[2]+' '+m[3];
+			this.value = v.replace(/(\d)(?=(\d{2})+(?!\d))/g, '$1 ');
+			// this.value = v.replace(/^(\d{3})+$/, '$1 ');
+			// var m = v.match(/^(\d{3})(\d{2})(\d{3})/); 
+			// if (m) this.value = m[1]+' '+m[2]+' '+m[3];
 		},
 		email: function() {},
 		currency: function() {
@@ -384,9 +274,15 @@ var sendGa = function(label, value = 0) {
 			if (m) this.value = m[1]+' '+m[2]+' '+m[3];
 		},
 		socialnumber: function() {
-			var d = this.value.replace(/[\D]/g, '');
-			var m = d.match(/^(\d{6})(\d{5})$/);
-			if (m) this.value = m[1]+' '+m[2];
+
+			var d = this.value.replace(/\D/, '');
+
+			if (d.length == 12) this.value = d.replace(/(\d{8})(\d{4})/, '$1-$2');
+			else if (d.length == 10) this.value = d.replace(/(\d{6})(\d{4})/, '$1-$2');
+
+			// var d = this.value.replace(/[\D]/g, '');
+			// var m = d.match(/^(\d{6})(\d{5})$/);
+			// if (m) this.value = m[1]+' '+m[2];
 		}
 	}
 
@@ -433,76 +329,77 @@ var sendGa = function(label, value = 0) {
 	$('.emowl-form *[data-val]').each(function() { 
 		try {
 			$(this).focusout(validation);
+			// console.log($(this)[0]);
 
 			$(this).focus(function() { $(this).removeClass('em-valid-border em-invalid-border') });
 
-			$(this).focus(function() {
+			// $(this).focus(function() {
 
-				var c = $(this)[0].className;
+			// 	var c = $(this)[0].className;
 
-				if (/tenure/.test(c)) return;
+			// 	if (/tenure/.test(c)) return;
 
-				var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
+			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
 
-				if (!m || !m[0]) return;
+			// 	if (!m || !m[0]) return;
 
-				c = m[0].replace(/em-i-/, '');
+			// 	c = m[0].replace(/em-i-/, '');
 
-				$.post(emurl.ajax_url, {
-					action: 'gdoc_se',
-					type: 'focus',
-					name: c
-				}, function(data) {
-					// console.log(data);
-				}); 
-			});
+			// 	$.post(emurl.ajax_url, {
+			// 		action: 'gdoc_se',
+			// 		type: 'focus',
+			// 		name: c
+			// 	}, function(data) {
+			// 		// console.log(data);
+			// 	}); 
+			// });
 
-			$(this).focusout(function() {
+			// $(this).focusout(function() {
 
-				var c = $(this)[0].className;
+			// 	var c = $(this)[0].className;
 
-				if (/tenure/.test(c)) return;
+			// 	if (/tenure/.test(c)) return;
 
-				var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
+			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
 
-				if (!m || !m[0]) return;
+			// 	if (!m || !m[0]) return;
 
-				c = m[0].replace(/em-i-/, '');
+			// 	c = m[0].replace(/em-i-/, '');
 
-				$.post(emurl.ajax_url, {
-					action: 'gdoc_se',
-					type: 'unfocus',
-					name: c
-				}, function(data) {
-					// console.log(data);
-				}); 
-			});
+			// 	$.post(emurl.ajax_url, {
+			// 		action: 'gdoc_se',
+			// 		type: 'unfocus',
+			// 		name: c
+			// 	}, function(data) {
+			// 		// console.log(data);
+			// 	}); 
+			// });
 
 
-			var validlive = function() {
-				if ($(this).validate()) $(this).off('focusout', validlive);
-				else return;
+			// var validlive = function() {
+			// 	if ($(this).validate()) $(this).off('focusout', validlive);
+			// 	else return;
 
-				var c = $(this)[0].className;
+			// 	var c = $(this)[0].className;
 
-				if (/tenure/.test(c)) return;
+			// 	if (/tenure/.test(c)) return;
 
-				var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
+			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
 
-				if (!m || !m[0]) return;
+			// 	if (!m || !m[0]) return;
 
-				c = m[0].replace(/em-i-/, '');
+			// 	c = m[0].replace(/em-i-/, '');
 
-				$.post(emurl.ajax_url, {
-					action: 'gdoc_se',
-					type: 'valid',
-					name: c
-				}, function(data) {
-					// console.log(data);
-				}); 
-			}
+			// 	$.post(emurl.ajax_url, {
+			// 		action: 'gdoc_se',
+			// 		type: 'valid',
+			// 		name: c
+			// 	}, function(data) {
+			// 		// console.log(data);
+			// 	}); 
+			// }
 
-			$(this).on('focusout', validlive);
+			// $(this).on('focusout', validlive);
 
 
 		} catch (e) { console.error(e) }
@@ -528,7 +425,8 @@ var sendGa = function(label, value = 0) {
 			
 			case 'socialnumber': 
 				$(this)[0].val = val.socialnumber;
-				$(this).on('input', input.socialnumber).focus(focus.number).focusout(focusout.socialnumber);
+				$(this).on('input', input.socialnumber).focusout(focusout.socialnumber);
+				// $(this).on('input', input.socialnumber).focus(focus.socialnumber).focusout(focusout.socialnumber);
 				break;
 			
 			case 'bankaccount': 
@@ -899,14 +797,18 @@ var sendGa = function(label, value = 0) {
 
 	$.fn.extend({
 		down: function() {
-			this.slideDown(300);
-			this.removeClass('em-hidden');
+			// this.fadeIn(200);
+			this.slideDown(300, function() {
+				$(this).removeClass('em-hidden');
+			});
 
 		},
 
 		up: function() {
-			this.slideUp(300);
-			this.addClass('em-hidden');
+			// this.fadeOut(200);
+			this.slideUp(300, function() {
+				$(this).addClass('em-hidden');
+			});
 		}
 	});
 
@@ -947,13 +849,13 @@ var sendGa = function(label, value = 0) {
 		var show = function() { $(ele).down() }
 		var hide = function() { $(ele).up() }
 
+			// console.log($input);
 
 		$(this).parent().find('.em-cc-yes').click(function() {
 
 			$input.val(1);
 			$(this).addClass('em-cc-green');
 			$(this).siblings('.em-cc-no').removeClass('em-cc-green');
-
 			// co_applicant
 			if (ele == '.em-part-4') {
 				if (desktop()) {
@@ -1018,12 +920,62 @@ var sendGa = function(label, value = 0) {
 		});
 	});
 
+	$('.em-element-living_together .em-cc-yes').click(function() {
+		$(this).parent().parent().find('.em-c').val(1);
+
+		$(this).addClass('em-cc-green');
+		$(this).siblings('.em-cc-no').removeClass('em-cc-green');
+
+		$('.em-element-co_applicant_address_since_year, .em-element-co_applicant_address_since_month, .em-element-co_applicant_rent').up();
+
+	});	
+
+	$('.em-element-living_together .em-cc-no').click(function() {
+		$(this).parent().parent().find('.em-c').val(0);
+
+		$(this).addClass('em-cc-green');
+		$(this).siblings('.em-cc-yes').removeClass('em-cc-green');
+
+		$('.em-element-co_applicant_address_since_year, .em-element-co_applicant_address_since_month').down();
+
+		switch ($('.em-i-co_applicant_living_conditions').val()) {
+			case 'Hyresrätt':
+			case 'Bostadsrätt':
+			case 'Inneboende': $('.em-element-co_applicant_rent').down();
+		} 
+
+	});
+
+
+	// collect debt, loan purpose etc
+	$('.em-element-collect_debt .em-cc-yes').click(function() {
+		// $('.em-i-loan_purpose').val('Lösa blanco/krediter');
+		$('.em-element-credit_loan_amount').down();
+		$('.em-element-loan_purpose').up();
+
+		if ($('.em-i-credit_loan_amount').val())
+			$('.em-element-privatloan, .em-element-creditloan').down();
+	});
+
+	$('.em-element-collect_debt .em-cc-no').click(function() {
+		// $('.em-i-loan_purpose').val();
+		// $('.em-i-loan_purpose').validation();
+		$('.em-element-loan_purpose').down();
+		$('.em-element-credit_loan_amount, .em-element-privatloan, .em-element-creditloan').up();
+	});
+
 	$('.em-check-span').on('keypress', function(e) {
 		if (e.keyCode == 13 || e.keyCode == 32) {
 			e.preventDefault();
 			var $check = $(this).parent().prev();
 			$check.prop('checked', !$check.attr('checked'));
 		}
+	});
+
+	$('.em-i-credit_loan_amount').keyup(function() {
+		if ($(this).val()) $('.em-element-privatloan, .em-element-creditloan').down();
+		else $('.em-element-privatloan, .em-element-creditloan').up();
+
 	});
 
 
@@ -1050,6 +1002,22 @@ var sendGa = function(label, value = 0) {
 				break;
 
 			default: $('.em-element-employment_since_year, .em-element-employment_since_month, .em-element-employment_last_year, .em-element-employment_last_month, .em-element-employer, .em-element-work_number').up();
+		}
+	});
+
+	$('.em-i-co_applicant_employment_type').change(function() {
+		switch ($(this).val()) {
+			case 'Vikariat':
+				$('.em-element-co_applicant_employment_since_year, .em-element-co_applicant_employment_since_month').up();
+				$('.em-element-co_applicant_employment_last_year, .em-element-co_applicant_employment_last_month, .em-element-co_applicant_employer, .em-element-co_applicant_work_number').down(); 
+				break;
+			case 'Fast anställd':
+			case 'Egen rörelse': 
+				$('.em-element-co_applicant_employment_last_year, .em-element-co_applicant_employment_last_month').up(); 
+				$('.em-element-co_applicant_employment_since_year, .em-element-co_applicant_employment_since_month, .em-element-co_applicant_employer, .em-element-co_applicant_work_number').down(); 
+				break;
+
+			default: $('.em-element-co_applicant_employment_since_year, .em-element-co_applicant_employment_since_month, .em-element-co_applicant_employment_last_year, .em-element-co_applicant_employment_last_month, .em-element-co_applicant_employer, .em-element-co_applicant_work_number').up();
 		}
 	});
 
@@ -1091,6 +1059,17 @@ var sendGa = function(label, value = 0) {
 
 			// default:
 			// 	$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').up();
+		}
+	});
+
+	$('.em-i-co_applicant_living_conditions').change(function() {
+		console.log($(this).val());
+		switch ($(this).val()) {
+			case 'Hyresrätt':
+			case 'Bostadsrätt':
+			case 'Inneboende': $('.em-element-co_applicant_rent').down(); break;
+			default: $('.em-element-co_applicant_rent').up();
+
 		}
 	});
 

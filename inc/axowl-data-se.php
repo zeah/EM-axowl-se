@@ -253,6 +253,9 @@ final class Axowl_data_se {
 		// unset($data['contact_accept']);
 		unset($data['axo_accept']);
 
+		if (isset($data['collect_debt']) && $data['collect_debt'] == '1')
+			$data['loan_purpose'] = 'Lösa blanco/krediter';
+
 
 		if (isset($data['unsecured_debt_balance'])) {
 			$data['unsecured_debt_lender'] = ['Til Refinansiering'];

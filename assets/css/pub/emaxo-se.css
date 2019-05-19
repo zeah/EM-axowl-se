@@ -2043,7 +2043,7 @@ select.em-i {
 }
 
 .em-slidedown {
-	display: block;
+	/*display: block;*/
 }
 
 /*.ui-widget-header {background-image:none;background-color:#887e6d;}*/
