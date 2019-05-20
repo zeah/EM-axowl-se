@@ -62,14 +62,14 @@ final class Axowl_data_se {
 		add_action( 'wp_ajax_popup_se', [$this, 'popup']);
 
 
-		add_action( 'wp_ajax_nopriv_gdoc_se', [$this, 'gdoc']);
-		add_action( 'wp_ajax_gdoc_se', [$this, 'gdoc']);
+		// add_action( 'wp_ajax_nopriv_gdoc_se', [$this, 'gdoc']);
+		// add_action( 'wp_ajax_gdoc_se', [$this, 'gdoc']);
 
 		add_action( 'wp_ajax_nopriv_del_se', [$this, 'del']);
 		add_action( 'wp_ajax_del_se', [$this, 'del']);
 
-		add_action( 'wp_ajax_nopriv_gan_se', [$this, 'gan']);
-		add_action( 'wp_ajax_gan_se', [$this, 'gan']);
+		// add_action( 'wp_ajax_nopriv_gan_se', [$this, 'gan']);
+		// add_action( 'wp_ajax_gan_se', [$this, 'gan']);
 	}
 
 
@@ -103,31 +103,30 @@ final class Axowl_data_se {
 	/**
 	 *
 	 */
-	public function gan() {
-		if (!isset($_POST['neste'])) exit;
+	// public function gan() {
+	// 	if (!isset($_POST['neste'])) exit;
 
-		$this->test('neste', $_POST);
+	// 	$this->test('neste', $_POST);
 
-		$this->ga('neste', 0);
-		exit;
-	}
+	// 	$this->ga('neste', 0);
+	// 	exit;
+	// }
 
 
 	/**
 	 * 
 	 */
-	public function gdoc() {
-		$this->test();
+	// public function gdoc() {
+	// 	$this->test();
 
-		// echo $_POST['test'];
-		$url = 'https://script.google.com/macros/s/AKfycbwNrVPopf3GHOh-JoDNkHFai9wwAOlXgtBJxSq7uAXvsugorSWP/exec?';
+	// 	$url = 'https://script.google.com/macros/s/AKfycbwNrVPopf3GHOh-JoDNkHFai9wwAOlXgtBJxSq7uAXvsugorSWP/exec?';
 
-		$url .= 'type='.$_POST['type'].'&';
-		$url .= 'name='.$_POST['name'];
+	// 	$url .= 'type='.$_POST['type'].'&';
+	// 	$url .= 'name='.$_POST['name'];
 
-		wp_remote_get($url);
-		exit;
-	}
+	// 	wp_remote_get($url);
+	// 	exit;
+	// }
 
 
 	/**
@@ -184,7 +183,7 @@ final class Axowl_data_se {
 		$this->test('incomplete', $data);
 
 		$this->send(http_build_query($data), 'sql_info');
-		$this->ga('incomplete', 0);
+		// $this->ga('incomplete', 0);
 		exit;
 	}
 
@@ -201,8 +200,10 @@ final class Axowl_data_se {
 
 		// $ga = isset($_POST['ga']) ? $_POST['ga'] : [];
 
-		if (isset($_POST['pop-email']) && $this->val_email($_POST['pop-email'])) $email = $_POST['pop-email'];
-		if (isset($_POST['pop-phone']) && $this->val_phone($_POST['pop-phone'])) $phone = $_POST['pop-phone'];
+		// if (isset($_POST['pop-email']) && $this->val_email($_POST['pop-email'])) $email = $_POST['pop-email'];
+		if (isset($_POST['pop-email'])) $email = $_POST['pop-email'];
+		if (isset($_POST['pop-phone'])) $phone = $_POST['pop-phone'];
+		// if (isset($_POST['pop-phone']) && $this->val_phone($_POST['pop-phone'])) $phone = $_POST['pop-phone'];
 
 		if (!$email && !$phone) exit;
 
@@ -213,20 +214,20 @@ final class Axowl_data_se {
 		$this->test('popup', $data);
 
 		$this->send(http_build_query($data), 'sql_info');
-		$this->ga('popup', 0);
+		// $this->ga('popup', 0);
 
 		exit;
 	}
 
-	private function val_email($email) {
-		if (strpos($email, '@') === false) return false;
-		return true;
-	}
+	// private function val_email($email) {
+	// 	if (strpos($email, '@') === false) return false;
+	// 	return true;
+	// }
 
-	private function val_phone($phone) {
-		if (preg_match('/^\d{8}$/', $phone) === 0) return false;
-		return true;
-	}
+	// private function val_phone($phone) {
+	// 	if (preg_match('/^\d{8}$/', $phone) === 0) return false;
+	// 	return true;
+	// }
 
 
 	/**
@@ -236,8 +237,12 @@ final class Axowl_data_se {
 	 */
 	private function send_axo($data) {
 		$settings = get_option('em_axowl_se');
+
 		if (!isset($settings['form_url']) || !isset($settings['name'])
-			|| !$settings['form_url'] || !$settings['name']) return;
+			|| !$settings['form_url'] || !$settings['name']) {
+			echo 'axo links not set.';
+			return;
+		}
 		
 		// axo url
 		$url = $settings['form_url'].'?';
@@ -324,7 +329,7 @@ final class Axowl_data_se {
 		// google analytics
 		$value = get_option('em_axowl_se');
 		$value = isset($value['payout']) ? $value['payout'] : 0;
-		$this->ga('accepted', $value);
+		// $this->ga('accepted', $value);
 	}
 
 
@@ -345,7 +350,7 @@ final class Axowl_data_se {
 		$this->send(http_build_query($data), 'sql_info');
 
 		// google analytics
-		$this->ga('rejected', 0);
+		// $this->ga('rejected', 0);
 	}
 
 	private function validation_error($data) {
@@ -480,98 +485,98 @@ final class Axowl_data_se {
 
 
 	/**/
-	private function ga($status, $value, $cat = 'axo form') {
-		// DISABLED - sending to GA from js instead
-		return;
+	// private function ga($status, $value, $cat = 'axo form') {
+	// 	// DISABLED - sending to GA from js instead
+	// 	return;
 
-		// TODO shortcode number to event action
+	// 	// TODO shortcode number to event action
 
-		if (is_user_logged_in()) return;
+	// 	if (is_user_logged_in()) return;
 
-		// echo "\npost in ga:\n\n".print_r($_POST, true)."\n\n\n";
+	// 	// echo "\npost in ga:\n\n".print_r($_POST, true)."\n\n\n";
 
-		$data = false;
+	// 	$data = false;
 
-		if (isset($_POST['ga'])) $data = $_POST['ga'];
-		elseif (isset($_POST['data']['ga'])) $data = $_POST['data']['ga'];
-
-
-		if (!$data) return;
-
-		$tag = get_option('em_axowl_se');
-
-		// if (!isset($tag['ga_code']) && $tag['ga_code'] != '') return;
-
-		if (isset($tag['ga_code']) && $tag['ga_code'] != '') $tag = $tag['ga_code'];
-		else return;
-
-		// if (!$tag) $tag = 'test_tag';
-		// $tag = isset($tag['ga_code']) ? $tag['ga_code'] : 'test_tag';
-		// $tag = 'test_tag';
+	// 	if (isset($_POST['ga'])) $data = $_POST['ga'];
+	// 	elseif (isset($_POST['data']['ga'])) $data = $_POST['data']['ga'];
 
 
-		// $abname = 'none';
-		// if (isset($data['abname'])) $abname = $data['abname'];
-		// $absc = isset($data['absc']) ? $data['absc'] : 'na';
+	// 	if (!$data) return;
 
-		$action = isset($data['name']) ? $data['name'] : 'n/a';
+	// 	$tag = get_option('em_axowl_se');
 
-		// $action .= ' - '.$absc;
+	// 	// if (!isset($tag['ga_code']) && $tag['ga_code'] != '') return;
 
+	// 	if (isset($tag['ga_code']) && $tag['ga_code'] != '') $tag = $tag['ga_code'];
+	// 	else return;
 
-		$d = [
-			'v' => '1', 
-			'tid' => $tag, 
-			// 'cid' => $data['ga'],
-			'uip' => $_SERVER['REMOTE_ADDR'],
-			'ua' => $_SERVER['HTTP_USER_AGENT'],
-			't' => 'event', 
-			// TODO make ec into axo form # .. for ab testing
-			'ec' => $cat, 
-			'ea' => $action, // for ab-testing - abname or postname + shortcode #
-			'el' => $status, // accepted, rejected or incomplete or popup
-			'ev' => $value, // value of conversion
-		];
-
-		// cid
-		if (!isset($data['id'])) $data['id'] = $_COOKIE['_ga'] ? $_COOKIE['_ga'] : false;
-		if ($data['id']) $d['cid'] = $data['id'];
+	// 	// if (!$tag) $tag = 'test_tag';
+	// 	// $tag = isset($tag['ga_code']) ? $tag['ga_code'] : 'test_tag';
+	// 	// $tag = 'test_tag';
 
 
-		// dr
-		// $ref = $this->get_referer();
-		// if  ($ref) $d['dr'] = $ref;
+	// 	// $abname = 'none';
+	// 	// if (isset($data['abname'])) $abname = $data['abname'];
+	// 	// $absc = isset($data['absc']) ? $data['absc'] : 'na';
 
-		if (isset($data['referrer'])) $d['dr'] = $data['referrer'];
+	// 	$action = isset($data['name']) ? $data['name'] : 'n/a';
 
-		if (isset($data['viewport'])) $d['vp'] = $data['viewport'];
-		if (isset($data['screen'])) $d['sr'] = $data['screen'];
+	// 	// $action .= ' - '.$absc;
 
-		// getting site url without query string
-		global $wp;
-		$dl = home_url($wp->request);
-		$d['dl'] = preg_replace('/\?.*$/', '', $dl);
 
-		// echo "\nGA:\n";
-		// echo print_r($d, true);
-		// echo "\n\n\n";
-		// return;
+	// 	$d = [
+	// 		'v' => '1', 
+	// 		'tid' => $tag, 
+	// 		// 'cid' => $data['ga'],
+	// 		'uip' => $_SERVER['REMOTE_ADDR'],
+	// 		'ua' => $_SERVER['HTTP_USER_AGENT'],
+	// 		't' => 'event', 
+	// 		// TODO make ec into axo form # .. for ab testing
+	// 		'ec' => $cat, 
+	// 		'ea' => $action, // for ab-testing - abname or postname + shortcode #
+	// 		'el' => $status, // accepted, rejected or incomplete or popup
+	// 		'ev' => $value, // value of conversion
+	// 	];
 
-		$this->test('ga', $d);
+	// 	// cid
+	// 	if (!isset($data['id'])) $data['id'] = $_COOKIE['_ga'] ? $_COOKIE['_ga'] : false;
+	// 	if ($data['id']) $d['cid'] = $data['id'];
 
-		// sending to google analytics
-		wp_remote_post('https://www.google-analytics.com/collect', [
-			'method' => 'POST',
-			'timeout' => 30,
-			'redirection' => 5,
-			// 'httpversion' => '1.0',
-			'blocking' => false,
-			'headers' => [],
-			'body' => $d,
-			'cookies' => []
-			]
-		);
-	}
+
+	// 	// dr
+	// 	// $ref = $this->get_referer();
+	// 	// if  ($ref) $d['dr'] = $ref;
+
+	// 	if (isset($data['referrer'])) $d['dr'] = $data['referrer'];
+
+	// 	if (isset($data['viewport'])) $d['vp'] = $data['viewport'];
+	// 	if (isset($data['screen'])) $d['sr'] = $data['screen'];
+
+	// 	// getting site url without query string
+	// 	global $wp;
+	// 	$dl = home_url($wp->request);
+	// 	$d['dl'] = preg_replace('/\?.*$/', '', $dl);
+
+	// 	// echo "\nGA:\n";
+	// 	// echo print_r($d, true);
+	// 	// echo "\n\n\n";
+	// 	// return;
+
+	// 	$this->test('ga', $d);
+
+	// 	// sending to google analytics
+	// 	wp_remote_post('https://www.google-analytics.com/collect', [
+	// 		'method' => 'POST',
+	// 		'timeout' => 30,
+	// 		'redirection' => 5,
+	// 		// 'httpversion' => '1.0',
+	// 		'blocking' => false,
+	// 		'headers' => [],
+	// 		'body' => $d,
+	// 		'cookies' => []
+	// 		]
+	// 	);
+	// }
 
 
 	private function get_clid() {

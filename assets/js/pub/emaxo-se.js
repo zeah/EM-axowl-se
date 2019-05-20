@@ -4,27 +4,6 @@
  */
 
 
-// var gaInfo = function() {
-
-// 	var data = {
-// 		viewport: jQuery(window).width()+'x'+jQuery(window).height(),
-// 		screen: screen.width+'x'+screen.height
-// 	}
-
-// 	var match = /(?:^|;| )(?:_ga=GA1\.\d\.)(.*?)(?:;|$)/.exec(document.cookie);
-// 	if (match && match[1]) data.id = match[1];
-
-// 	if (jQuery('#abtesting-post')) data.name = jQuery('#abtesting-post').val();
-
-// 	match = /(?:^|;| )(?:referrer=)(.*?)(?:;|$)/.exec(document.cookie);
-// 	if (match && match[1]) data.referrer = match[1];
-
-// 	return data;
-// };
-// 
-// 
-// /hei/.test('hei') ? console.log('y') : console.log('n');
-
 var sendGa = function(label, value = 0) {
 
 	// sending ga via gtm
@@ -329,7 +308,6 @@ var sendGa = function(label, value = 0) {
 	$('.emowl-form *[data-val]').each(function() { 
 		try {
 			$(this).focusout(validation);
-			// console.log($(this)[0]);
 
 			$(this).focus(function() { $(this).removeClass('em-valid-border em-invalid-border') });
 
@@ -545,24 +523,9 @@ var sendGa = function(label, value = 0) {
 			}).removeClass('em-hidden');
 		});
 
-
-		// TODO uncomment
-		// window.addEventListener('beforeunload', unload);
+		window.addEventListener('beforeunload', unload);
 
 		sendGa('neste', 0);
-
-		// try {
-		// 	ga('send', 'event', 'axo form', $('#abtesting-post').val(), 'neste');
-		// }
-		// catch (e) { console.log(e) }
-
-		// $.post(emurl.ajax_url, {
-		// 	action: 'gan',
-		// 	'ga': gaInfo(),
-		// 	'neste': '1'
-		// }, function(data) {
-		// 	console.log(data);
-		// }); 
 
 	}
 	$('.em-b-neste').one('click', showNeste);
@@ -577,25 +540,19 @@ var sendGa = function(label, value = 0) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		// if (!valid) return;
+		if (!valid) return;
 
 		location.hash = 'form';
-		// if ($('.em-check-contact_accept')[0].checked)
 		$.post(emurl.ajax_url, {
 			action: 'wlinc_se',
 			'contact_accept': $('.em-check-contact_accept')[0].checked ? '1' : '0',
 			'email': $('.em-i-email').val(),
 			'mobile_number': $('.em-i-mobile_number').val().replace(/[\D]/g, '')
-			// 'ga': gaInfo()
 		}, function(data) {
 			console.log(data);
 		}); 
 		
 		sendGa('incomplete', 0);
-		// try {
-		// 	ga('send', 'event', 'axo form', $('#abtesting-post').val(), 'incomplete');
-		// }
-		// catch (e) { console.log(e) }
 
 
 		$('.content-post > div:not(.em-form-container)').each(function() {
@@ -627,8 +584,6 @@ var sendGa = function(label, value = 0) {
 				$('.em-part-1-grid').addClass('em-part-1-grid-2');
 
 				$('.em-element-tenure, .em-element-collect_debt, .em-element-monthly_cost').css({
-					// 'align-self': 'center',
-					// 'justify-self': 'center',
 					'margin': '0',
 					'top': '.3rem'
 				});
@@ -723,8 +678,6 @@ var sendGa = function(label, value = 0) {
 
 		data['clid'] = clid();
 
-		// data['ga'] = gaInfo();
-
 		$(this).off('click');
 		$(this).html('Søknad Sendes ...');
 
@@ -743,23 +696,9 @@ var sendGa = function(label, value = 0) {
 				return;				
 			}
 
-			if (d === '1') {
-				sendGa('accepted', 1200);
+			if (d === '1') sendGa('accepted', 1200);
 
-				// try {
-				// 	ga('send', 'event', 'axo form', $('#abtesting-post').val(), 'accepted');
-				// }
-				// catch (e) { console.log(e) }
-			}
-
-			if (d === '0') {
-				sendGa('rejected', 0);
-
-				// try {
-				// 	ga('send', 'event', 'axo form', $('#abtesting-post').val(), 'rejected');
-				// }
-				// catch (e) { console.log(e) }
-			}
+			if (d === '0') sendGa('rejected', 0);
 
 			$('.emowl-form').slideUp(800, function() {
 				$('.em-popup-x').one('click', function() { $('.em-popup').slideUp(); })
@@ -776,8 +715,6 @@ var sendGa = function(label, value = 0) {
 			});
 
 			window.removeEventListener('beforeunload', unload);
-
-			// console.log(d);
 		});
 	});
 
@@ -797,7 +734,6 @@ var sendGa = function(label, value = 0) {
 
 	$.fn.extend({
 		down: function() {
-			// this.fadeIn(200);
 			this.slideDown(300, function() {
 				$(this).removeClass('em-hidden');
 			});
@@ -805,7 +741,6 @@ var sendGa = function(label, value = 0) {
 		},
 
 		up: function() {
-			// this.fadeOut(200);
 			this.slideUp(300, function() {
 				$(this).addClass('em-hidden');
 			});
@@ -849,7 +784,6 @@ var sendGa = function(label, value = 0) {
 		var show = function() { $(ele).down() }
 		var hide = function() { $(ele).up() }
 
-			// console.log($input);
 
 		$(this).parent().find('.em-cc-yes').click(function() {
 
@@ -868,9 +802,6 @@ var sendGa = function(label, value = 0) {
 				}
 				else show();
 
-				// $('.em-element-spouse_income:not(.em-hidden)').each(function() {
-				// 	$(this).slideUp(300).addClass('em-hidden');
-				// });
 			}
 
 
@@ -892,7 +823,6 @@ var sendGa = function(label, value = 0) {
 				if (desktop()) {
 					$('.em-part-lower-container').find('.em-part:not(.em-part-4)').animate({
 						width: '25rem'
-						// width: '30rem'
 					});
 
 					$('.em-part-4').animate({
@@ -903,12 +833,6 @@ var sendGa = function(label, value = 0) {
 					});	
 				} else hide();
 
-				// switch ($('.em-i-civilstatus').val()) {
-				// 	case 'Gift/partner':
-				// 	case 'Samboer':
-				// 		$('.em-element-spouse_income').slideDown(300).removeClass('em-hidden'); 
-				// 		break;
-				// }
 			}
 
 
@@ -949,7 +873,6 @@ var sendGa = function(label, value = 0) {
 
 	// collect debt, loan purpose etc
 	$('.em-element-collect_debt .em-cc-yes').click(function() {
-		// $('.em-i-loan_purpose').val('Lösa blanco/krediter');
 		$('.em-element-credit_loan_amount').down();
 		$('.em-element-loan_purpose').up();
 
@@ -958,8 +881,6 @@ var sendGa = function(label, value = 0) {
 	});
 
 	$('.em-element-collect_debt .em-cc-no').click(function() {
-		// $('.em-i-loan_purpose').val();
-		// $('.em-i-loan_purpose').validation();
 		$('.em-element-loan_purpose').down();
 		$('.em-element-credit_loan_amount, .em-element-privatloan, .em-element-creditloan').up();
 	});
@@ -981,13 +902,6 @@ var sendGa = function(label, value = 0) {
 
 
 	// LISTS 
-	// $('.em-i-education').change(function() {
-	// 	switch ($(this).val()) {
-	// 		case 'Høysk./universitet 1-3 år':
-	// 		case 'Høysk./universitet 4+år': $('.em-element-education_loan').down(); break;
-	// 		default: $('.em-element-education_loan').up();			
-	// 	}
-	// });
 
 	$('.em-i-employment_type').change(function() {
 		switch ($(this).val()) {
@@ -1021,17 +935,6 @@ var sendGa = function(label, value = 0) {
 		}
 	});
 
-	// $('.em-i-civilstatus').change(function() {
-	// 	switch ($(this).val()) {
-	// 		case 'Gift/partner':
-	// 		case 'Samboer':
-	// 			if ($('.em-c-co_applicant').val() == 0)
-	// 				$('.em-element-spouse_income').down(); break;
-			
-	// 		default: $('.em-element-spouse_income').up();
-	// 	}
-	// });
-
 	$('.em-i-living_conditions').change(function() {
 		console.log($(this).val());
 		switch ($(this).val()) {
@@ -1039,26 +942,6 @@ var sendGa = function(label, value = 0) {
 			case 'Bostadsrätt':
 			case 'Inneboende': $('.em-element-rent').down(); break;
 			default: $('.em-element-rent').up();
-
-
-			// case 'Leier':
-			// case 'Bor hos foreldre':
-			// 	$('.em-element-rent').down();
-			// 	$('.em-element-rent_income, .em-element-mortgage').up();
-			// 	break;
-
-			// case 'Aksje/andel/borettslag':
-			// case 'Selveier': 
-			// 	$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').down();
-			// 	break;
-
-			// case 'Enebolig':
-			// 	$('.em-element-rent_income, .em-element-mortgage').down();
-			// 	$('.em-element-rent').up();
-			// 	break;
-
-			// default:
-			// 	$('.em-element-rent, .em-element-rent_income, .em-element-mortgage').up();
 		}
 	});
 
@@ -1072,31 +955,6 @@ var sendGa = function(label, value = 0) {
 
 		}
 	});
-
-	// $('.em-i-number_of_children').change(function() {
-	// 	if ($(this).val() > 0) $('.em-element-allimony_per_month').down();
-	// 	else $('.em-element-allimony_per_month').up() ;
-	// });
-
-
-	// $('.em-i-total_unsecured_debt').on('input', function() {
-	// 	if ($(this).val() && $(this).val() != '0') $('.em-element-unsecured_debt_balance').down();
-	// 	else $('.em-element-unsecured_debt_balance').up();
-	// });
-
-	// $('.em-i-co_applicant_employment_type').change(function() {
-	// 	switch ($(this).val()) {
-	// 		case 'Fast ansatt (privat)':
-	// 		case 'Fast ansatt (offentlig)':
-	// 		case 'Midlertidig ansatt/vikar':
-	// 		case 'Selvst. næringsdrivende':
-	// 		case 'Langtidssykemeldt': 
-	// 			$('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').down(); break;
-
-	// 		default: $('.em-element-co_applicant_employment_since, .em-element-co_applicant_employer').up();
-	// 	}
-	// });
-
 
 })(jQuery);
 
@@ -1137,23 +995,16 @@ var sendGa = function(label, value = 0) {
 			$.post(emurl.ajax_url, 
 				{
 					action: 'popup_se',
-					// 'ga': gaInfo(),
 					'ab-name': $('#abtesting-post').val(),
 					'ab-sc': $('#abtesting-sc').val(),
 					'pop-email': $('#pop-email').val(),
 					'pop-phone': numb($('#pop-phone').val())
 				}, 
 				function(data) {
-					// console.log(data);
 				}
 			);
 
 			sendGa('popup', 0);
-
-			// try {
-			// 		ga('send', 'event', 'axo form', $('#abtesting-post').val(), 'popup');
-			// 	}
-			// catch (e) { console.log(e) }
 
 			// cookie
 			var date = new Date();

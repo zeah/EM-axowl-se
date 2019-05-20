@@ -19,7 +19,6 @@ final class Axowl_shortcode_se {
 	}
 
 	private function __construct() {
-
 		self::$parts = Axowl_shortcode_parts_se::get_instance(); 		
 
 		$this->hooks();
@@ -32,8 +31,6 @@ final class Axowl_shortcode_se {
 		add_shortcode('axowl-se', [$this, 'shortcode']);
 
 		add_shortcode('axowl-delete-se', [$this, 'delete']);
-
-		// add_shortcode('axowlicon', [$this, 'icon']);
 	}
 
 
@@ -50,11 +47,6 @@ final class Axowl_shortcode_se {
 		switch ($atts[0]) {
 			case '1': return $this->shortcode_1($atts, $content); break;
 			// case '2': return $this->shortcode_2($atts, $content); break;
-			// case '3': return $this->shortcode_3($atts, $content); break;
-			// case '4': return $this->shortcode_4($atts, $content); break;
-			// case '5': return $this->shortcode_5($atts, $content); break;
-			// case '7': return $this->shortcode_7($atts, $content); break;
-			// case '10': return $this->shortcode_10($atts, $content); break;
 		}
 	}
 	/**
@@ -68,24 +60,17 @@ final class Axowl_shortcode_se {
 		add_action('wp_enqueue_scripts', [$this, 'sands']);
 		add_filter('google_link', [$this, 'fonts']);
 
-		if (!is_user_logged_in()) 
-			if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
+		// if (!is_user_logged_in()) 
+			// if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
 
 		// shortcode-parts.php
 		$p = self::$parts;
 		global $post;
-		// TODO get transient
 
-		// wp_die('<xmp>'.print_r($post->post_name, true).'</xmp>');
-		
-
-		// add_action('wp_footer', [$this, 'footer']);
-		// add_action('wp_head', [$this, 'sands']);
 
 		$data = get_option('em_axowl_se');
 		if (!is_array($data)) $data = [];
 		$data = $this->sanitize($data);
-		// wp_die('<xmp>'.print_r($data, true).'</xmp>');
 		$inputs = AXOWL_inputs_se::$inputs;
 
 		$lock = '<div class="em-lock" title="Kryptert og sikker kommunikasjon"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>';
@@ -122,11 +107,6 @@ final class Axowl_shortcode_se {
 			$lock
 		);
 
-
-		// $html = sprintf('<form class="emowl-form"%s><h1 class="form-title">Søk Lån hos Axo Finans</h1>',
-		// 			(isset($atts['style']) ? ' style="'.$atts['style'].'"' : '')
-		// 	    );
-
 		$html .= '<input type="hidden" name="fax">';
 
 		$html .= '<div class="em-part-container">';
@@ -151,22 +131,16 @@ final class Axowl_shortcode_se {
 			<button type="button" class="em-b em-b-send">Send Søknad</button>
 			<div class="em-b-text">Du mottar et helt uforpliktende tilbud som er gyldig i 30 dager.</div>
 			</div>';
-		// $html .= $p->form_buttons(['hidden' => true, 'hide_prog' => true]);
 
 		$html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
-
-		// $html .= $p->popup().'</div>';
 
 		$html .= '<input type="hidden" id="abtesting-sc" value="1">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';
 
-		// if (!isset($data['abtesting']))
-			// $html .= sprintf('<input type="hidden" id="abtesting-name" value="%s">', $post->post_name);
-		// wp_die('<xmp>'.print_r($data, true).'</xmp>');
-		
 		// TODO set transient
-		if (!is_user_logged_in()) 
-			set_transient('axowl_se_sc1', $html);
+		// if (!is_user_logged_in()) 
+			// set_transient('axowl_se_sc1', $html);
+			// 
 		return $html;
 	}
 
@@ -178,7 +152,6 @@ final class Axowl_shortcode_se {
 
 	public function delete($atts, $content = null) {
 		add_action('wp_enqueue_scripts', [$this, 'sands_delete']);
-		// add_action('wp_head', [$this, 'sands_delete']);
 
 		return '<div class="axodel-container">
 				<div class="axodel-form">
@@ -252,12 +225,8 @@ final class Axowl_shortcode_se {
 
 	public function sands_delete() {
 
-       	// wp_enqueue_style('axodel-style', EM_AXOWL_PLUGIN_URL.'assets/css/pub/axodel.css', array(), '0.0.1', '(min-width: 901px)');
-        // wp_enqueue_style('axodel-mobile', EM_AXOWL_PLUGIN_URL.'assets/css/pub/axodel-mobile.css', array(), '0.0.1', '(max-width: 900px)');
-        wp_enqueue_script('cndjq', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, false);
-        
+        wp_enqueue_script('jquery');
         wp_enqueue_script('axodel-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/axodel.js', [], '0.0.1');
-        // wp_add_inline_script('axodel', $script);
 		wp_localize_script('axodel-se', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
 	}
 
@@ -268,34 +237,6 @@ final class Axowl_shortcode_se {
 
 
 
-
-
-
-
-
-
-
-
-
-
-	// public function icon($atts, $content = null) {
-	// 	add_action('wp_head', [$this, 'sands_icons']);
-		
-	// 	$banks = [
-	// 				'bank-norwegian', 'bluestep', 'dnb', 'easybank', 'komplett-bank', 'nordax', 
-	// 				'resurs-bank', 'santander-consumer-bank', 'ya-bank', 'expressbank',
-	// 				'bnbank', 'remember', 'nystart-bank', 'monobank', 'thorn', 'optinbank'
-	// 			];
-
-	// 	$out = '';
-	// 	foreach ($banks as $b)
-	// 		$out .= sprintf('<div class="em-sprite sprite-%s"></div>', $b);
-
-	// 	return '<div class="em-sprites">
-	// 				<div class="em-sprite-container em-sprite-container-animation" onclick="this.classList.toggle(\'em-sprite-container-animation-paused\');">'.
-	// 				$out.'</div></div>';
-
-	// }
 
 
 	/**
@@ -318,20 +259,12 @@ final class Axowl_shortcode_se {
         wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se.css', array(), '0.0.1', '(min-width: 901px)');
         wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-mobile-se.css', array(), '0.0.1', '(max-width: 900px)');
         
-        wp_enqueue_script('jquery-cdn', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, true);
-        wp_enqueue_script('jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js', [], false, true);
-        wp_enqueue_script('jquery-touch', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', [], false, true);
+        wp_enqueue_script('jquery-touch');
 
         wp_enqueue_script('emaxowl-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/emaxo-se.js', [], '0.0.1', true);
 		
 		wp_localize_script( 'emaxowl-se', 'emurl', ['ajax_url' => admin_url( 'admin-ajax.php')]);
 	}
-
-	// public function sands_icons() {
- //        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se.css', array(), '1.0.6', '(min-width: 816px)');
- //        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-mobile-se.css', array(), '1.0.2', '(max-width: 815px)');
-	// }
-
 
 
 	public function fonts($data) {

@@ -3,7 +3,7 @@
 /*
 Plugin Name: EM Axo WL SE
 Description: Axo White Label Sverige
-Version: 0.0.1
+Version: 0.0.2
 GitHub Plugin URI: zeah/EM-axowl-se
 */
 
@@ -34,6 +34,11 @@ final class EM_axowl_se {
 	}
 
 	private function __construct() {
+		wp_deregister_script('jquery');
+        wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, true);
+        wp_register_script('jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js', ['jquery'], false, true);
+        wp_register_script('jquery-touch', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', ['jquery-ui'], false, true);
+
 		Axowl_settings_se::get_instance();
 		Axowl_shortcode_se::get_instance();
 		Axowl_data_se::get_instance();
