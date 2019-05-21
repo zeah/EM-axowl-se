@@ -133,30 +133,37 @@ var sendGa = function(label, value = 0) {
 		socialnumber: function() {
 
 			var v = this.value.replace(/\D/g, '');
-			// console.log('hi');
 
-			if (/10|12/.test(v.length)) return false;
-			// if (!(v.length == 10 || v.length == 12)) return false;
+			if (!(/10|12/.test(v.length))) return false;
 
 			if (v.length == 12) v = v.substring(2);
 
 			var c = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+			v = v.split('');
 
-			var t = 0;
+			var add = function(n) {
+				if (n < 10) return n;
 
-			for (var i in c) {
-				var o = c[i] * v[i];
-				if (o > 9) {
-					var te = 0;
-					var split = String(o).split('');
-					for (var j in split) 
-						te += parseInt(split[j]);
-					t += te;
-				}
-				else t += o;
+				var b = String(n).split('');
+
+				var c = 0;
+				for (var i in b)
+					c += parseInt(b[i]);
+
+				return c;
 			}
 
-			if (v.slice(-1) == (10 - String(t).slice(-1))) return true;
+			var t = 0;
+			for (var i in c) {
+				var n = c[i] * parseInt(v[i]);
+
+				t += parseInt(add(n));
+			}
+
+			var x = 10 - (t % 10);
+			var y = v.slice(-1);
+
+			if (x == y) return true;
 
 			return false;
 		}
@@ -188,23 +195,44 @@ var sendGa = function(label, value = 0) {
 
 		check: function() { if (!this.val()) invalid.call(this); else valid.call(this) },
 
-		bankaccount: function() {
-			this.value = this.value
-							.replace(/[^\d\.\s]/g, '')
-							.replace(/\.{2,}/g, '.')
-							.replace(/\s{2,}/g, ' ');
+		// bankaccount: function() {
+		// 	this.value = this.value
+		// 					.replace(/[^\d\.\s]/g, '')
+		// 					.replace(/\.{2,}/g, '.')
+		// 					.replace(/\s{2,}/g, ' ');
 
-			var c = this.value.replace(/[\s\. ]/g, '');
-			if (c.length == 11) validation.call(this);
-			else if (c.length > 11) this.value = this.value.substring(0, this.value.length-1); 
-		},
+		// 	var c = this.value.replace(/[\s\. ]/g, '');
+		// 	if (c.length == 11) validation.call(this);
+		// 	else if (c.length > 11) this.value = this.value.substring(0, this.value.length-1); 
+		// },
 
 		socialnumber: function() {
 			var v = this.value;
 			var c = v.replace(/\D/g, '');
 
-			// input limits
-			this.value = v.replace(/[^0-9\s-\+]/g, '');
+			// var p = v.replace(/-/, '%FD%');
+
+			// p = p.replace(/\D|(%FD%)/g, '').replace('%FD%', '-');
+			function removeDup(string, regex) {
+			  var count = 0
+			  var replaceWith = ''
+			  return string.replace(regex, function (match) {
+			    count++
+			    if (count === 1) {
+			      return match
+			    } else {
+			      return replaceWith
+			    }
+			  })
+			}
+
+
+			this.value = v.replace(/[^0-9-+]/g, '');
+			this.value = removeDup(this.value, /-|\+/g);
+
+			if (!/^(\d{6})|(\d{8})(-|\+)?\d*$/.test(this.value)) this.value = this.value.replace(/\D/g, '');
+			// if (/^\d{7}|\d{9}(-|\+)?.+/.test(this.value)) this.value = this.value.replace(/\D/g, '');
+
 			if (c.length > 12) this.value = v.substring(0, v.length-1); 
 
 			// if valid length, then check number
@@ -540,7 +568,7 @@ var sendGa = function(label, value = 0) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		if (!valid) return;
+		// if (!valid) return;
 
 		location.hash = 'form';
 		$.post(emurl.ajax_url, {
@@ -552,7 +580,7 @@ var sendGa = function(label, value = 0) {
 			console.log(data);
 		}); 
 		
-		sendGa('incomplete', 0);
+		// sendGa('incomplete', 0);
 
 
 		$('.content-post > div:not(.em-form-container)').each(function() {

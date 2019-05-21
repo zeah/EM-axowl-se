@@ -34,15 +34,20 @@ final class EM_axowl_se {
 	}
 
 	private function __construct() {
-		wp_deregister_script('jquery');
-        wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, true);
-        wp_register_script('jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js', ['jquery'], false, true);
-        wp_register_script('jquery-touch', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', ['jquery-ui'], false, true);
+        add_filter('wp_enqueue_scripts', [$this, 'add_sands']);
 
 		Axowl_settings_se::get_instance();
 		Axowl_shortcode_se::get_instance();
 		Axowl_data_se::get_instance();
 		Axowl_unsub_se::get_instance();
+	}
+
+	public function add_sands() {
+		wp_deregister_script('jquery');
+        wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js', [], false, true);
+        wp_register_script('jquery-ui', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js', ['jquery'], false, true);
+        wp_register_script('jquery-touch', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js', ['jquery-ui'], false, true);
+		
 	}
 
 }
