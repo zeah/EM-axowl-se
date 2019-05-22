@@ -26,7 +26,7 @@ final class Axowl_inputs_se {
 		'mobile_number' => ['text' => true, 'type' => 'tel', 'validation' => 'phone', 'digits' => 8, 'hidden' => true],
 		'email' => ['text' => true, 'type' => 'email', 'validation' => 'email', 'hidden' => true],
 		'axo_accept' => ['check' => true, 'validation' => 'check', 'hidden' => true],
-		'contact_accept' => ['check' => true, 'hidden' => true],
+		'contact_accepted' => ['check' => true, 'hidden' => true],
 		'neste' => ['button' => true, 'button_text' => 'Neste'],
 		'/div0' => '',
 		

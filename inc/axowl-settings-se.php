@@ -159,7 +159,7 @@ final class Axowl_settings_se {
 			// 'total_unsecured_debt' => 'Sum of other, unsecured loans in the household. (forbrukslån)',
 			// 'account_number' => 'The bank account the loan will be paid out to, <br>without e.g. spaces and dots. CDV control is recommended',
 			'axo_accept' => 'Checkbox for accepting data usage by axo.',
-			'contact_accept' => 'Checkbox for accepting data usage by axo.',
+			'contact_accepted' => 'Checkbox for accepting data usage by axo.',
 			'popup_text' => 'Bottom text for email/phone popup collector'
 		];
 

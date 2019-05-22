@@ -573,7 +573,7 @@ var sendGa = function(label, value = 0) {
 		location.hash = 'form';
 		$.post(emurl.ajax_url, {
 			action: 'wlinc_se',
-			'contact_accept': $('.em-check-contact_accept')[0].checked ? '1' : '0',
+			'contact_accepted': $('.em-check-contact_accepted')[0].checked ? '1' : '0',
 			'email': $('.em-i-email').val(),
 			'mobile_number': $('.em-i-mobile_number').val().replace(/[\D]/g, '')
 		}, function(data) {
@@ -625,7 +625,7 @@ var sendGa = function(label, value = 0) {
 
 				$('.em-compare-text').css('font-size', '2rem');
 
-				$('.em-element-axo_accept, .em-element-contact_accept').hide(50, function() {
+				$('.em-element-axo_accept, .em-element-contact_accepted').hide(50, function() {
 					$('.em-slidedown').slideDown(800, function() {
 						if (!$('.em-i-social_number').is(':focus')) $('.em-i-social_number').focus();
 					}).removeClass('em-hidden');
@@ -647,7 +647,7 @@ var sendGa = function(label, value = 0) {
 			$('.em-element-email').detach().prependTo('.em-part-2');
 			$('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
 			$('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
-			$('.em-element-axo_accept, .em-element-contact_accept').hide(0);
+			$('.em-element-axo_accept, .em-element-contact_accepted').hide(0);
 			$('.em-slidedown').slideDown(800).removeClass('em-hidden');
 			$('.em-part-1-grid').slideUp(800);
 			$('.em-b-endre, .em-b-send, .em-b-text').show();
@@ -701,7 +701,7 @@ var sendGa = function(label, value = 0) {
 
 		if (!valid) return;
 		
-		data['contact_accept'] = $('.em-check-contact_accept')[0].checked ? '1' : '0';
+		data['contact_accepted'] = $('.em-check-contact_accepted')[0].checked ? '1' : '0';
 		data['axo_accept'] = $('.em-check-axo_accept')[0].checked;
 
 		data['clid'] = clid();

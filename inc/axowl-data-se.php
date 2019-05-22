@@ -177,8 +177,9 @@ final class Axowl_data_se {
 		if (isset($_POST['email'])) $data['email'] = $_POST['email'];
 		if (isset($_POST['mobile_number'])) $data['mobile_number'] = preg_replace('/[^0-9]/', '', $_POST['mobile_number']);
 		$data['customer_ip'] = $_SERVER['REMOTE_ADDR'];
+		$data['server_name'] = $_SERVER['SERVER_NAME'];
 		
-		if (isset($_POST['contact_accept'])) $data['nyhetsbrev'] = $_POST['contact_accept'];
+		if (isset($_POST['contact_accepted'])) $data['contact_accepted'] = $_POST['contact_accepted'];
 
 		$this->test('incomplete', $data);
 
@@ -210,6 +211,8 @@ final class Axowl_data_se {
 		$data['email'] = $email;
 		$data['mobile_number'] = $phone;
 		$data['customer_ip'] = $_SERVER['REMOTE_ADDR'];
+		$data['contact_accepted'] = '1';
+		$data['server_name'] = $_SERVER['SERVER_NAME'];
 
 		$this->test('popup', $data);
 
@@ -256,7 +259,7 @@ final class Axowl_data_se {
 
 
 		// unset($data['contact_accept']);
-		unset($data['axo_accept']);
+		unset($data['axo_accepted']);
 
 		if (isset($data['collect_debt']) && $data['collect_debt'] == '1')
 			$data['loan_purpose'] = 'Lösa blanco/krediter';
@@ -289,11 +292,12 @@ final class Axowl_data_se {
 			if (!is_array($res) || !isset($res['status'])) return;
 		}
 
-		if (isset($data['contact_accept'])) $data['nyhetsbrev'] = $data['contact_accept'];
-		else $data['nyhetsbrev'] = '0';
+		if (isset($data['contact_accepted'])) $data['contact_accepted'] = $data['contact_accepted'];
+		// else $data['nyhetsbrev'] = '0';
 
 		$data = $this->remove_confidential($data);
 		$data['transactionId'] = isset($res['transactionId']) ? $res['transactionId'] : '';
+		$data['server_name'] = $_SERVER['SERVER_NAME'];
 
 
 		switch ($res['status']) {

@@ -28,6 +28,7 @@ final class Axowl_shortcode_se {
 	 * [hooks description]
 	 */
 	private function hooks() {
+
 		add_shortcode('axowl-se', [$this, 'shortcode']);
 
 		add_shortcode('axowl-delete-se', [$this, 'delete']);

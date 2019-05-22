@@ -333,7 +333,7 @@
 }
 
 /* 3.6.4 check text */
-.em-element-contact_accept span::before,
+.em-element-contact_accepted span::before,
 .em-element-axo_accept span::before {
 	border-color: hsl(0, 100%, 70%);
 	border: solid 2px;

@@ -255,7 +255,7 @@ body {
 .em-if-monthly_cost,
 /*.em-element-monthly_cost,*/
 /*.em-r-loan_amount::-webkit-slider-thumb,*/
-/*.em-element-contact_accept span::before,
+/*.em-element-contact_accepted span::before,
 .em-element-axo_accept span::before,
 */.em-progress,
 /*.em-b-neste,*/
@@ -271,7 +271,7 @@ body {
 	/*outline: solid 1px hsl(0, 0%, 35%);*/
 }
 
-.em-element-contact_accept span::before {
+.em-element-contact_accepted span::before {
 	border: solid 2px hsl(0, 0%, 10%);
 
 }
@@ -451,7 +451,7 @@ body {
 .em-if-monthly_cost,
 /*.em-element-monthly_cost,*/
 /*.em-r-loan_amount::-webkit-slider-thumb,*/
-.em-element-contact_accept span::before,
+.em-element-contact_accepted span::before,
 .em-element-axo_accept span::before,
 .em-progress,
 /*.em-b-neste,*/
@@ -562,7 +562,7 @@ body {
 	grid-column-gap: 2rem
 }
 
-.em-part-1-done .em-element-contact_accept,
+.em-part-1-done .em-element-contact_accepted,
 .em-part-1-done .em-element-axo_accept {
 	display: none;
 }
@@ -1258,7 +1258,7 @@ select.em-i {
 }
 
 /* 4.7 contact accept */
-.em-element-contact_accept {
+.em-element-contact_accepted {
 	grid-area: contactaccept;
 }
 
@@ -1830,7 +1830,7 @@ select.em-i {
 	    display: none;
 	}
 
-	.em-element-contact_accept span::before {
+	.em-element-contact_accepted span::before {
 		border: solid 2px;
 	}
 
@@ -1896,7 +1896,7 @@ select.em-i {
 		-ms-grid-column-span: 2;
 	}
 
-	.em-element-contact_accept {
+	.em-element-contact_accepted {
 		-ms-grid-row: 6;
 		-ms-grid-column: 1;
 		-ms-grid-column-span: 2;
