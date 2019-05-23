@@ -278,18 +278,20 @@ final class Axowl_data_se {
 			$res = ['status' => 'Rejected'];
 		}
 		else { 
-			$url .= http_build_query($data);
 
-			// sending to axo
-			$response = wp_remote_get($url);
-			if (is_wp_error($response)) {
-				echo '{"status": "error", "code": "'.wp_remote_retrieve_response_code($response).'"}';
-				return;
-			}
+			$res = $this->to_axo($url, $data);
+			// $url .= http_build_query($data);
 
-			$res = json_decode(wp_remote_retrieve_body($response), true);
+			// // sending to axo
+			// $response = wp_remote_get($url);
+			// if (is_wp_error($response)) {
+			// 	echo '{"status": "error", "code": "'.wp_remote_retrieve_response_code($response).'"}';
+			// 	return;
+			// }
 
-			if (!is_array($res) || !isset($res['status'])) return;
+			// $res = json_decode(wp_remote_retrieve_body($response), true);
+
+			if (!is_array($res) || !isset($res['status']) || !$res) return;
 		}
 
 		if (isset($data['contact_accepted'])) $data['contact_accepted'] = $data['contact_accepted'];
@@ -308,6 +310,31 @@ final class Axowl_data_se {
 		}
 	}
 
+
+	private function to_axo($url, $data) {
+
+		// $settings = get_option('em_axowl_se');
+
+		// if (!isset($settings['form_url']) || !isset($settings['name'])
+		// 	|| !$settings['form_url'] || !$settings['name']) {
+		// 	echo 'axo links not set.';
+		// 	return;
+		// }
+
+		// $url = $settings['form_url'].'?';
+		$url .= http_build_query($data);
+
+		// sending to axo
+		$response = wp_remote_get($url);
+		if (is_wp_error($response)) {
+			echo '{"status": "error", "code": "'.wp_remote_retrieve_response_code($response).'"}';
+			return false;
+		}
+
+		$res = json_decode(wp_remote_retrieve_body($response), true);
+
+		return $res;
+	}
 
 	/**
 	 * [accepted description]
