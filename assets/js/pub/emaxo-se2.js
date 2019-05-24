@@ -595,43 +595,45 @@ var sendGa = function(label, value = 0) {
 		else $('.navbar-menu').fadeTo(0, 0);
 
 		if (desktop()) {
-			$('.em-part-1-grid').slideUp(800, function() {
+			// $('.em-part-1-grid').slideUp(800, function() {
 
 				$('.content, .main').css('margin-bottom', '0');
 				$('.em-form-container').css('margin-bottom', '0');
-				$('.emowl-form').css('width', 'auto');
-				$('.em-element-loan_amount').css('margin-bottom', '0');
-				$('.em-element-mobile_number').detach().prependTo('.em-part-2');
-				$('.em-element-email').detach().prependTo('.em-part-2');
-				$('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
-
+				// $('.emowl-form').css('width', 'auto');
+				// $('.em-element-loan_amount').css('margin-bottom', '0');
+				// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
+				// $('.em-element-email').detach().prependTo('.em-part-2');
+				$('.em-b-container').slideUp(500, function() {
+					$('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
+					$(this).slideDown(500);
+				});
 
 				$('.em-b-endre, .em-b-send, .em-b-text').show();
 				$('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
 
-				$('.em-part-1-grid').addClass('em-part-1-grid-2');
+				// $('.em-part-1-grid').addClass('em-part-1-grid-2');
 
-				$('.em-element-tenure, .em-element-collect_debt, .em-element-monthly_cost').css({
-					'margin': '0',
-					'top': '.3rem'
-				});
+				// $('.em-element-tenure, .em-element-collect_debt, .em-element-monthly_cost').css({
+				// 	'margin': '0',
+				// 	'top': '.3rem'
+				// });
 				
-				$('.em-i-tenure, .em-cc-collect_debt, .em-if-monthly_cost').css({
-					'width': '15rem'
-				});
+				// $('.em-i-tenure, .em-cc-collect_debt, .em-if-monthly_cost').css({
+				// 	'width': '15rem'
+				// });
 
-				$('.em-lc-tenure').addClass('em-lc-lower');
+				// $('.em-lc-tenure').addClass('em-lc-lower');
 
 
-				$('.em-compare-text').css('font-size', '2rem');
+				// $('.em-compare-text').css('font-size', '2rem');
 
-				$('.em-element-axo_accept, .em-element-contact_accepted').hide(50, function() {
+				$('.em-element-axo_accept, .em-element-contact_accepted').slideUp(500, function() {
 					$('.em-slidedown').slideDown(800, function() {
 						if (!$('.em-i-social_number').is(':focus')) $('.em-i-social_number').focus();
 					}).removeClass('em-hidden');
 				});
 
-			});
+			// });
 		
 			$('.em-b-endre').click(function() {
 					$('.em-part-1-grid').slideToggle();
