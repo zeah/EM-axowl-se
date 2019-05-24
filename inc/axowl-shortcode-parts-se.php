@@ -43,7 +43,7 @@ final class Axowl_shortcode_parts_se {
 			<div class="em-b-container%s"><div class="em-b-inner">
 				<button class="em-b em-b-next" type="button">Neste</button>
 				%s
-				<button class="em-b em-b-submit em-hidden" type="button">Send inn</button>
+				<button class="em-b em-b-submit em-hidden" type="button">Ansök nu</button>
 			</div></div>
 		',
 			isset($o['hidden']) ? ' em-hidden' : '',
@@ -448,7 +448,7 @@ final class Axowl_shortcode_parts_se {
 
 	private function button($o = []) {
 		return sprintf('
-			<button class="em-b em-b-neste" onclick="void(0)" type="button">%s</button>',
+			<button class="em-b em-b-neste" type="button">%s</button>',
 			$o['text']
 		);
 	}

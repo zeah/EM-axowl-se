@@ -188,7 +188,14 @@ final class Axowl_data_se {
 		}
 		else { 
 
+
+			echo "\nsending to axo";
+			print_r($data);
+
 			$res = $this->to_axo($url, $data);
+
+			echo "\nresponse";
+			print_r($res);
 
 			if (!is_array($res) || !isset($res['status']) || !$res) return;
 		}
@@ -375,10 +382,25 @@ final class Axowl_data_se {
 		// adding age from social number
 		if (isset($data['social_number']) && $data['social_number']) {
 			$d = $data['social_number'];
-			$data['age'] = sprintf('%s-%s-%s', 
-							(intval(substr($d, 4, 2)) < 20) ? '20'.substr($d, 4, 2) : '19'.substr($d, 4, 2), 
-							substr($d, 2, 2), 
-							substr($d, 0, 2));
+
+			if (strlen($d) == 10) {
+				$cent = '19';
+				if (intval(substr($d, 0, 2)) < 10) $cent = '20';
+
+				$data['age'] = sprintf('%s-%s-%s',
+					$cent.substr($d, 0, 2),
+					substr($d, 2, 2),
+					substr($d, 4, 2)
+				);
+
+				if (substr($d, 8, 1) % 2) $data['gender'] = 'man';
+				else $data['gender'] = 'woman';
+			}
+
+			// $data['age'] = sprintf('%s-%s-%s', 
+			// 				(intval(substr($d, 0, 2)) < 20) ? '20'.substr($d, 0, 2) : '19'.substr($d, 0, 2), 
+			// 				substr($d, 2, 2), 
+			// 				substr($d, 4, 2));
 
 			unset($data['social_number']);
 		}

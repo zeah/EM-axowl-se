@@ -92,7 +92,7 @@ final class Axowl_shortcode_se {
 					 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
 					</div>
 				 	
-				 	<button type="button" class="em-b pop-neste">Neste</button>
+				 	<button type="button" class="em-b pop-neste">Näste</button>
 
 				 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
 
@@ -127,13 +127,14 @@ final class Axowl_shortcode_se {
 		$html .= '</div></div>';
 
 		$html .= '<div class="em-b-container">
-			<button type="button" class="em-b em-b-next">Neste</button>
-			<button type="button" class="em-b em-b-endre">Endre Lånebeløp</button>
-			<button type="button" class="em-b em-b-send">Send Søknad</button>
-			<div class="em-b-text">Du mottar et helt uforpliktende tilbud som er gyldig i 30 dager.</div>
+			<button type="button" class="em-b em-b-next">Näste</button>
+			<button type="button" class="em-b em-b-endre">Ändra lånebeloppet</button>
+			<button type="button" class="em-b em-b-send">Ansök nu</button>
+			<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
 			</div>';
 
-		$html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
+		// $html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
+		$html .= '<div class="em-loan-example">Individuell ränta från 2,95% - 24%. Exempel: 5,3%. 70 000 kr på 15 år. Eff. ränta 6,54 %. Tot. belopp 108 346 kr. Kostn./mån: 600 kr. Startavg. 495 kr. Avikostn. 35 kr/mån.</div></form></div>';
 
 		$html .= '<input type="hidden" id="abtesting-sc" value="1">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';

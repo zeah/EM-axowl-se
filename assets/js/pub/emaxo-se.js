@@ -905,12 +905,12 @@ var sendGa = function(label, value = 0) {
 		$('.em-element-loan_purpose').up();
 
 		if ($('.em-i-credit_loan_amount').val())
-			$('.em-element-privatloan, .em-element-creditloan').down();
+			$('.em-element-privateloan, .em-element-creditloan').down();
 	});
 
 	$('.em-element-collect_debt .em-cc-no').click(function() {
 		$('.em-element-loan_purpose').down();
-		$('.em-element-credit_loan_amount, .em-element-privatloan, .em-element-creditloan').up();
+		$('.em-element-credit_loan_amount, .em-element-privateloan, .em-element-creditloan').up();
 	});
 
 	$('.em-check-span').on('keypress', function(e) {
@@ -922,8 +922,8 @@ var sendGa = function(label, value = 0) {
 	});
 
 	$('.em-i-credit_loan_amount').keyup(function() {
-		if ($(this).val()) $('.em-element-privatloan, .em-element-creditloan').down();
-		else $('.em-element-privatloan, .em-element-creditloan').up();
+		if ($(this).val()) $('.em-element-privateloan, .em-element-creditloan').down();
+		else $('.em-element-privateloan, .em-element-creditloan').up();
 
 	});
 
@@ -981,6 +981,24 @@ var sendGa = function(label, value = 0) {
 			case 'Inneboende': $('.em-element-co_applicant_rent').down(); break;
 			default: $('.em-element-co_applicant_rent').up();
 
+		}
+	});
+
+	$('.em-i-monthly_income').focusout(function() {
+		// console.log('ya');
+		// if (numb($(this).val()) < 10000) {
+
+		var val = parseInt(String($(this).val()).replace(/\D/g, ''));
+
+		if (val < 6000 || val > 90000) {
+			if (!$('.em-income-alert')[0]) {
+				$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
+				$('.em-income-button').one('click touch', function() {
+					$(this).parent().slideUp(300, function() {
+						$(this).remove();
+					})
+				});
+			}
 		}
 	});
 

@@ -17,7 +17,7 @@ final class Axowl_inputs_se {
 
 	public static $inputs = [
 		'div0' => ['class' => 'em-part-1-grid'],
-		'monthly_cost' => ['text_field' => 'Månedskostnad fra', 'notInput' => true],
+		'monthly_cost' => ['text_field' => 'Månadkostnad', 'notInput' => true],
 		'loan_amount' => ['text' => true, 'range' => true, 'validation' => 'currency', 
 						  'format' => 'currency', 'max' => 500000, 'min' => 10000, 'default' => 250000, 'step' => 10000],
 		'tenure' => ['list' => Axowl_list_se::tenure, 'validation' => 'list', 'empty' => false, 'start' => 5, 'key_as_value' => true, 'hidden' => true],
@@ -27,7 +27,7 @@ final class Axowl_inputs_se {
 		'email' => ['text' => true, 'type' => 'email', 'validation' => 'email', 'hidden' => true],
 		'axo_accept' => ['check' => true, 'validation' => 'check', 'hidden' => true],
 		'contact_accepted' => ['check' => true, 'hidden' => true],
-		'neste' => ['button' => true, 'button_text' => 'Neste'],
+		'neste' => ['button' => true, 'button_text' => 'Näste'],
 		'/div0' => '',
 		
 		'/div55' => [],
@@ -93,7 +93,7 @@ final class Axowl_inputs_se {
 
 		'credit_loan_amount' => ['text' => true, 'page' => '5', 'validation' => 'currency', 'format' => 'currency', 'hidden' => true],
 		'loan_purpose' => ['list' => Axowl_list_se::loan_purpose, 'validation' => 'list'],
-		'privatloan' => ['text' => true, 'validation' => 'currency', 'format' => 'currency', 'hidden' => true],
+		'privateloan' => ['text' => true, 'validation' => 'currency', 'format' => 'currency', 'hidden' => true],
 		'creditloan' => ['text' => true, 'validation' => 'currency', 'format' => 'currency', 'hidden' => true],
 
 		'/div98' => '',

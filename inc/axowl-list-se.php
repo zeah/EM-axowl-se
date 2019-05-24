@@ -377,12 +377,15 @@ final class Axowl_list_se {
 				];
 
 	const loan_purpose = [
-					'Köpa bil/fordon/båt' => 'Köpa bil/fordon/båt',
-					'Renovering' => 'Renovering',
+					'Köpa fordon' => 'Köpa fordon',
+					'Renovering/köpa möbler' => 'Renovering/köpa möbler',
+					// 'Köpa bil/fordon/båt' => 'Köpa bil/fordon/båt',
+					// 'Renovering' => 'Renovering',
 					'Konsumtion' => 'Konsumtion',
-					'Köpa bostad/handpenning' => 'Köpa bostad/handpenning', 
+					// 'Köpa bostad/handpenning' => 'Köpa bostad/handpenning', 
 					'Resa' => 'Resa',
-					'Övrigt' => 'Övrigt'
+					'Övrigt' => 'Övrigt',
+					'Sjukvård'
 	];
 
 }
