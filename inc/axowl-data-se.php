@@ -1,40 +1,7 @@
 <?php 
-
-
-
-
 defined('ABSPATH') or die('Blank Space');
 
 final class Axowl_data_se {
-
-	/**
-	 * from_form() recieves ajax from front end
-	 *
-	 * send_axo() sends data to axo and waits for response
-	 *
-	 * accepted() if response from axo is accepted
-	 * 		-> anonymized info to datastore
-	 * 		-> slack for conversion upate
-	 * 		-> sql for conversion storage
-	 * 		-> google docs for google ads import
-	 *   	-> GA for event hit (accepted) (or ecommerce)
-	 * 
-	 * rejected() if response from axo is rejected
-	 * 		-> all info to datastore (without confidential info)
-	 * 		-> google docs with email and phone number (or just get from datastore?)
-	 * 		-> GA for event hit (rejected)
-	 *
-	 * ga() sends post data to google analytics
-	 * 
-	 * helper functions:
-	 * send() get method with query and name of url
-	 * sql_conversions() fixes data for database
-	 * gdocs_ads() fixed data for gdocs for gads.
-	 * get_url() gets url from WP options
-	 * remove_confidential()
-	 * get_clid() gets the google or bing click id - either from cookie or query string
-	 * 
-	 */
 
 	/* singleton */
 	private static $instance = null;
@@ -62,14 +29,9 @@ final class Axowl_data_se {
 		add_action( 'wp_ajax_popup_se', [$this, 'popup']);
 
 
-		// add_action( 'wp_ajax_nopriv_gdoc_se', [$this, 'gdoc']);
-		// add_action( 'wp_ajax_gdoc_se', [$this, 'gdoc']);
-
 		add_action( 'wp_ajax_nopriv_del_se', [$this, 'del']);
 		add_action( 'wp_ajax_del_se', [$this, 'del']);
 
-		// add_action( 'wp_ajax_nopriv_gan_se', [$this, 'gan']);
-		// add_action( 'wp_ajax_gan_se', [$this, 'gan']);
 	}
 
 
@@ -85,7 +47,7 @@ final class Axowl_data_se {
 
 		// match from inputs.php
 		$data_keys = array_keys($data);
-		$input_keys = array_keys(Axowl_inputs::$inputs);
+		$input_keys = array_keys(Axowl_inputs_se::$inputs);
 
 		$send = [];
 
@@ -98,35 +60,6 @@ final class Axowl_data_se {
 
 		exit;
 	}
-
-
-	/**
-	 *
-	 */
-	// public function gan() {
-	// 	if (!isset($_POST['neste'])) exit;
-
-	// 	$this->test('neste', $_POST);
-
-	// 	$this->ga('neste', 0);
-	// 	exit;
-	// }
-
-
-	/**
-	 * 
-	 */
-	// public function gdoc() {
-	// 	$this->test();
-
-	// 	$url = 'https://script.google.com/macros/s/AKfycbwNrVPopf3GHOh-JoDNkHFai9wwAOlXgtBJxSq7uAXvsugorSWP/exec?';
-
-	// 	$url .= 'type='.$_POST['type'].'&';
-	// 	$url .= 'name='.$_POST['name'];
-
-	// 	wp_remote_get($url);
-	// 	exit;
-	// }
 
 
 	/**
@@ -158,8 +91,6 @@ final class Axowl_data_se {
 	}
 
 
-
-
 	/**
 	 * When first next button is clicked on the form, then 
 	 * an incomplete is sent.
@@ -167,12 +98,7 @@ final class Axowl_data_se {
 	 */
 	public function incomplete() {
 
-		// checkbox
-		// if (!isset($_POST['contact_accept']) || $_POST['contact_accept'] == 'off') exit;
-
 		$data = ['status' => 'incomplete'];
-
-		// $ga = isset($_POST['ga']) ? $_POST['ga'] : false;
 
 		if (isset($_POST['email'])) $data['email'] = $_POST['email'];
 		if (isset($_POST['mobile_number'])) $data['mobile_number'] = preg_replace('/[^0-9]/', '', $_POST['mobile_number']);
@@ -184,7 +110,6 @@ final class Axowl_data_se {
 		$this->test('incomplete', $data);
 
 		$this->send(http_build_query($data), 'sql_info');
-		// $this->ga('incomplete', 0);
 		exit;
 	}
 
@@ -199,12 +124,8 @@ final class Axowl_data_se {
 		$email = false;
 		$phone = false;
 
-		// $ga = isset($_POST['ga']) ? $_POST['ga'] : [];
-
-		// if (isset($_POST['pop-email']) && $this->val_email($_POST['pop-email'])) $email = $_POST['pop-email'];
 		if (isset($_POST['pop-email'])) $email = $_POST['pop-email'];
 		if (isset($_POST['pop-phone'])) $phone = $_POST['pop-phone'];
-		// if (isset($_POST['pop-phone']) && $this->val_phone($_POST['pop-phone'])) $phone = $_POST['pop-phone'];
 
 		if (!$email && !$phone) exit;
 
@@ -217,20 +138,8 @@ final class Axowl_data_se {
 		$this->test('popup', $data);
 
 		$this->send(http_build_query($data), 'sql_info');
-		// $this->ga('popup', 0);
-
 		exit;
 	}
-
-	// private function val_email($email) {
-	// 	if (strpos($email, '@') === false) return false;
-	// 	return true;
-	// }
-
-	// private function val_phone($phone) {
-	// 	if (preg_match('/^\d{8}$/', $phone) === 0) return false;
-	// 	return true;
-	// }
 
 
 	/**
@@ -246,7 +155,7 @@ final class Axowl_data_se {
 			echo 'axo links not set.';
 			return;
 		}
-		
+
 		// axo url
 		$url = $settings['form_url'].'?';
 		
@@ -280,27 +189,15 @@ final class Axowl_data_se {
 		else { 
 
 			$res = $this->to_axo($url, $data);
-			// $url .= http_build_query($data);
-
-			// // sending to axo
-			// $response = wp_remote_get($url);
-			// if (is_wp_error($response)) {
-			// 	echo '{"status": "error", "code": "'.wp_remote_retrieve_response_code($response).'"}';
-			// 	return;
-			// }
-
-			// $res = json_decode(wp_remote_retrieve_body($response), true);
 
 			if (!is_array($res) || !isset($res['status']) || !$res) return;
 		}
 
 		if (isset($data['contact_accepted'])) $data['contact_accepted'] = $data['contact_accepted'];
-		// else $data['nyhetsbrev'] = '0';
 
 		$data = $this->remove_confidential($data);
 		$data['transactionId'] = isset($res['transactionId']) ? $res['transactionId'] : '';
 		$data['server_name'] = $_SERVER['SERVER_NAME'];
-
 
 		switch ($res['status']) {
 			case 'Accepted': $this->accepted($data); break;
@@ -312,16 +209,6 @@ final class Axowl_data_se {
 
 
 	private function to_axo($url, $data) {
-
-		// $settings = get_option('em_axowl_se');
-
-		// if (!isset($settings['form_url']) || !isset($settings['name'])
-		// 	|| !$settings['form_url'] || !$settings['name']) {
-		// 	echo 'axo links not set.';
-		// 	return;
-		// }
-
-		// $url = $settings['form_url'].'?';
 		$url .= http_build_query($data);
 
 		// sending to axo
@@ -332,9 +219,9 @@ final class Axowl_data_se {
 		}
 
 		$res = json_decode(wp_remote_retrieve_body($response), true);
-
 		return $res;
 	}
+
 
 	/**
 	 * [accepted description]
@@ -360,10 +247,7 @@ final class Axowl_data_se {
 		// google analytics
 		$value = get_option('em_axowl_se');
 		$value = isset($value['payout']) ? $value['payout'] : 0;
-		// $this->ga('accepted', $value);
 	}
-
-
 
 
 	/**
@@ -380,8 +264,6 @@ final class Axowl_data_se {
 		
 		$this->send(http_build_query($data), 'sql_info');
 
-		// google analytics
-		// $this->ga('rejected', 0);
 	}
 
 	private function validation_error($data) {
@@ -400,7 +282,6 @@ final class Axowl_data_se {
 	 * @return [type]        [description]
 	 */
 	private function send($query, $name) {
-		// $this->test();
 
 		$url = $this->get_url($name);
 
@@ -410,8 +291,6 @@ final class Axowl_data_se {
 
 		wp_remote_get(trim($url).$query, ['blocking' => false]);
 	}
-
-
 
 
 	/**
@@ -447,7 +326,6 @@ final class Axowl_data_se {
 	 */
 	private function gdocs_ads($data) {
 		// Google Click ID, Conversion Name, Conversion Time, Conversion Value, Conversion Currency
-
 		$opt = get_option('em_axowl_se');
 
 		// if not set in settings
@@ -472,7 +350,6 @@ final class Axowl_data_se {
 	}
 
 
-
 	/**
 	 * [get_url description]
 	 * @param  [type] $value [description]
@@ -485,8 +362,6 @@ final class Axowl_data_se {
 
 		return false;
 	}
-
-
 
 
 	/**
@@ -514,123 +389,12 @@ final class Axowl_data_se {
 	}
 
 
-
-	/**/
-	// private function ga($status, $value, $cat = 'axo form') {
-	// 	// DISABLED - sending to GA from js instead
-	// 	return;
-
-	// 	// TODO shortcode number to event action
-
-	// 	if (is_user_logged_in()) return;
-
-	// 	// echo "\npost in ga:\n\n".print_r($_POST, true)."\n\n\n";
-
-	// 	$data = false;
-
-	// 	if (isset($_POST['ga'])) $data = $_POST['ga'];
-	// 	elseif (isset($_POST['data']['ga'])) $data = $_POST['data']['ga'];
-
-
-	// 	if (!$data) return;
-
-	// 	$tag = get_option('em_axowl_se');
-
-	// 	// if (!isset($tag['ga_code']) && $tag['ga_code'] != '') return;
-
-	// 	if (isset($tag['ga_code']) && $tag['ga_code'] != '') $tag = $tag['ga_code'];
-	// 	else return;
-
-	// 	// if (!$tag) $tag = 'test_tag';
-	// 	// $tag = isset($tag['ga_code']) ? $tag['ga_code'] : 'test_tag';
-	// 	// $tag = 'test_tag';
-
-
-	// 	// $abname = 'none';
-	// 	// if (isset($data['abname'])) $abname = $data['abname'];
-	// 	// $absc = isset($data['absc']) ? $data['absc'] : 'na';
-
-	// 	$action = isset($data['name']) ? $data['name'] : 'n/a';
-
-	// 	// $action .= ' - '.$absc;
-
-
-	// 	$d = [
-	// 		'v' => '1', 
-	// 		'tid' => $tag, 
-	// 		// 'cid' => $data['ga'],
-	// 		'uip' => $_SERVER['REMOTE_ADDR'],
-	// 		'ua' => $_SERVER['HTTP_USER_AGENT'],
-	// 		't' => 'event', 
-	// 		// TODO make ec into axo form # .. for ab testing
-	// 		'ec' => $cat, 
-	// 		'ea' => $action, // for ab-testing - abname or postname + shortcode #
-	// 		'el' => $status, // accepted, rejected or incomplete or popup
-	// 		'ev' => $value, // value of conversion
-	// 	];
-
-	// 	// cid
-	// 	if (!isset($data['id'])) $data['id'] = $_COOKIE['_ga'] ? $_COOKIE['_ga'] : false;
-	// 	if ($data['id']) $d['cid'] = $data['id'];
-
-
-	// 	// dr
-	// 	// $ref = $this->get_referer();
-	// 	// if  ($ref) $d['dr'] = $ref;
-
-	// 	if (isset($data['referrer'])) $d['dr'] = $data['referrer'];
-
-	// 	if (isset($data['viewport'])) $d['vp'] = $data['viewport'];
-	// 	if (isset($data['screen'])) $d['sr'] = $data['screen'];
-
-	// 	// getting site url without query string
-	// 	global $wp;
-	// 	$dl = home_url($wp->request);
-	// 	$d['dl'] = preg_replace('/\?.*$/', '', $dl);
-
-	// 	// echo "\nGA:\n";
-	// 	// echo print_r($d, true);
-	// 	// echo "\n\n\n";
-	// 	// return;
-
-	// 	$this->test('ga', $d);
-
-	// 	// sending to google analytics
-	// 	wp_remote_post('https://www.google-analytics.com/collect', [
-	// 		'method' => 'POST',
-	// 		'timeout' => 30,
-	// 		'redirection' => 5,
-	// 		// 'httpversion' => '1.0',
-	// 		'blocking' => false,
-	// 		'headers' => [],
-	// 		'body' => $d,
-	// 		'cookies' => []
-	// 		]
-	// 	);
-	// }
-
-
 	private function get_clid() {
 
 		if (isset($_POST['clid'])) return $_POST['clid'];
 
 		return false;
 	}
-
-
-	// private function get_referer() {
-	// 	if (isset($_SERVER['REFERER']) && $_SERVER['REFERER']) {
-
-	// 		$r = $_SERVER['HTTP_REFERER'];
-
-	// 		if (strpos($r, $_SERVER['SERVER_NAME']) === false) return $r;
-	// 	}
-
-	// 	elseif (isset($_COOKIE['referer'])) return $_COOKIE['referer'];
-
-	// 	return false;
-	// }
-	// 
 
 
 	/**

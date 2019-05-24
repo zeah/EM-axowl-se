@@ -692,7 +692,7 @@ var sendGa = function(label, value = 0) {
 				case 'bankaccount':
 				case 'currency':
 				case 'number':
-				case 'phone': value = numb(value); break;
+				case 'phone': value = String(value).replace(/\D/g, ''); break;
 			}
 
 
@@ -713,7 +713,7 @@ var sendGa = function(label, value = 0) {
 			action: 'axowl_se',
 			data: data
 		}, function(d) {
-
+			console.log(d);
 			if (d === 'Validation Error') {
 				alert('Teknisk Feil - last inn siden på nytt og prøv igjen eller kontakt oss på epost.');
 				return;
@@ -964,7 +964,7 @@ var sendGa = function(label, value = 0) {
 	});
 
 	$('.em-i-living_conditions').change(function() {
-		console.log($(this).val());
+		// console.log($(this).val());
 		switch ($(this).val()) {
 			case 'Hyresrätt':
 			case 'Bostadsrätt':
@@ -974,7 +974,7 @@ var sendGa = function(label, value = 0) {
 	});
 
 	$('.em-i-co_applicant_living_conditions').change(function() {
-		console.log($(this).val());
+		// console.log($(this).val());
 		switch ($(this).val()) {
 			case 'Hyresrätt':
 			case 'Bostadsrätt':
