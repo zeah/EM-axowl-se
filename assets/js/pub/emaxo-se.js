@@ -6,6 +6,8 @@
 
 var sendGa = function(label, value = 0) {
 
+	if (emurl.logged_in) return;
+
 	// sending ga via gtm
 	try {
 		var action = $('#abtesting-post').val() ? $('#abtesting-post').val() : 'na';

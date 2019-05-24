@@ -25,6 +25,14 @@ final class Axowl_shortcode_parts_se {
 		if (!$nr) return '';
 
 		return sprintf(
+			'<div class="em-part em-part-%s%s">',
+
+				$nr,
+
+				$class ? ' '.$class : ''
+		);
+
+		return sprintf(
 			'<div class="em-part em-part-%s%s">
 				<div class="em-part-title-container">
 					<h2 class="em-part-title"></h2>
@@ -95,11 +103,13 @@ final class Axowl_shortcode_parts_se {
 		// div element (container)
 		if (substr($key, 0,3) == 'div') {
 			return sprintf(
-				'<div class="%s%s">', 
+				'<div class="%s%s">%s', 
 			
 				isset($value['class']) ? $value['class'] : '',
 				
-				isset($value['hidden']) ? ' em-hidden' : ''
+				isset($value['hidden']) ? ' em-hidden' : '',
+
+				isset($value['html']) ? $value['html'] : ''
 			);
 		}
 
@@ -274,7 +284,7 @@ final class Axowl_shortcode_parts_se {
 				<input class="em-c em-c-%1$s" name="%1$s" type="hidden" value="%6$s"%7$s>
 				<div class="em-cc-selector">
 					<button type="button" class="em-i em-cc-yes%4$s">Ja</button>
-					<button type="button" class="em-i em-cc-no%5$s">Nei</button>
+					<button type="button" class="em-i em-cc-no%5$s">Nej</button>
 				</div>
 			</div>',
 			

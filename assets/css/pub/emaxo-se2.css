@@ -1,4 +1,4 @@
-/**
+/*
  * INDEX
  *
  *	0.1 theme stuff
@@ -128,7 +128,7 @@
 
 
  .em-slidedown {
- 	padding: 3rem 1rem;
+ 	/*padding: 3rem 1rem;*/
  	/*display: block !important;*/
  }
 
@@ -165,7 +165,7 @@ body {
 .forside-overskrift,
 .forside-overtext,
 .em-qa-container {
-	width: 90rem;
+	width: 75rem;
 	max-width: 100%;
 	margin: auto;
 }
@@ -225,11 +225,11 @@ body {
 
 	position: relative;
 
-	width: 90rem;
+	width: 75rem;
 	max-width: 100%;
 
-
-	border: solid 3px #22a;
+	padding-top: 2rem;
+	border: solid 3px #333;
 	border-radius: 15px;
 
 	/*padding-bottom: 2rem;*/
@@ -274,6 +274,8 @@ body {
 	/*border: solid 2.6px hsl(0, 0%, 20%);*/
 	border: 1px solid #949494;
 	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
+	border-radius: 3px;
+	font-family: Source Sans Pro;
 	/*outline: solid 1px hsl(0, 0%, 35%);*/
 }
 
@@ -330,12 +332,19 @@ body {
 .em-i:focus {
 	/*box-shadow: 0 0 6px #96f;*/
 	/*border-color: hsl(240, 70%, 60%) !important;*/
-	border-color: #96f !important;
+	/*border-color: #96f !important;*/
 	outline: none;
+	border-bottom: dashed 2px #333;
 }
-.em-check-span:focus,
+.em-check-span:focus {
+	outline: none;
+	box-shadow: 0 0 1px #333;
+
+}
 .ui-slider-handle:focus {
-	outline: solid 1px #96f;
+	outline: none;
+	box-shadow: 0 0 5px #333;
+	/*outline: solid 1px #96f;*/
 }
 
 /* 1.2 form title */
@@ -366,7 +375,7 @@ body {
 	height: auto;
 	background-color: #fc6;
 	cursor: pointer;
-	font-family: merriweather;
+	/*font-family: merriweather;*/
 }
 
 .em-b:focus {
@@ -408,9 +417,9 @@ body {
 
 .em-b-text {
 	display: none;
-	margin-top: 2rem;
-	text-align: left;
-	font-weight: 900;
+	/*margin-top: 2rem;*/
+	text-align: center;
+	font-weight: 400;
 
 }
 
@@ -439,46 +448,33 @@ body {
 
 /* 2.1.1 generic */
 .em-part {
-	margin-top: 5rem;
+	/*margin-top: 5rem;*/
 }
 
-.em-part-lower-container .em-part {
-	width: 25rem;
+/*.em-part-lower-container .em-part {*/
+	/*width: 25rem;*/
 	/*width: 30rem;*/
-}
+/*}*/
 
-.em-part-lower-container .em-part-4 {
+/*.em-part-lower-container .em-part-4 {
 	width: 0;
 	display: none;
-}
+}*/
 
 
 .em-part-lower-container .em-part {
 	margin-top: 0;
 }
 
-/*.em-part-lower-container .em-i {*/
 .em-if-monthly_cost,
-/*.em-element-monthly_cost,*/
-/*.em-r-loan_amount::-webkit-slider-thumb,*/
 .em-element-contact_accepted span::before,
 .em-element-axo_accept span::before,
 .em-progress,
-/*.em-b-neste,*/
-/*.em-b-next,*/
-/*.em-b-submit,*/
 .em-i,
 .em-r {
-/*.em-r,
-.em-if,
-.em-i {*/
-	/*border: solid 1px #949494;*/
-	/*border: solid 3px hsl(0, 0%, 30%);*/
-	/*box-shadow: 0 0 0 transparent, inset 0 2px 2px #d4d4d4;*/
-	/*border-radius: 3px;*/
 	height: 4rem;
 	font-size: 1.6rem;
-	font-family: Merriweather;
+	/*font-family: Merriweather;*/
 }
 
 /* 2.1.2 part 1*/
@@ -488,13 +484,8 @@ body {
 
 	margin-top: 0;
 
-	/*padding: 4rem 8rem 0;*/
 }
 
-/* 2.1.2.1 text */
-/*.em-part-1 .em-part-title::after {
-	content: 'Sjekk dine lånetilbud';
-}*/
 
 /* 2.1.2.3 part 1 title */
 .em-part-1 .em-part-title {
@@ -506,27 +497,22 @@ body {
 
 	background-color: white;
 
-	/*border-top-right-radius: 25px;*/
-	/*border-top-left-radius: 25px;*/
 }
 
-.em-part-2 .em-part-title {
-	/*border-top-left-radius: 25px;*/
 
+.em-part-title {
+	display: none;
 }
 
-.em-part-5 .em-part-title {
-	/*border-top-right-radius: 25px;*/
+.em-part {
+	padding: 0 3rem;
 }
 
 /* 2.1.2.4 part 1 inner */
 .em-part-1-grid {
 	display: grid;
 
-	/*grid-template-columns: 25% 30% 45%;*/
-	/*grid-template-columns: 1fr 1fr 1fr 1fr;*/
-	grid-template-columns: 50% 50%;
-	/*grid-template-columns: 25% 25% 25% 25%;*/
+	grid-template-columns: 1fr 1fr;
 
 	grid-template-areas: 
 	"monthly monthly"
@@ -536,65 +522,81 @@ body {
 	"mobile email"
 	"axoaccept axoaccept"
 	"contactaccept contactaccept";
-	/*"loan loan monthly monthly"*/
-	/*". neste neste ."*/
-	/*"compare compare compare compare"*/
-	/*"tenure refinancing mobile mobile"*/
-	/*"tenure refinancing mobile mobile"*/
-	/*"axoaccept axoaccept email email"*/
-	/*"contactaccept contactaccept email email";*/
-/*	"monthly monthly"
-	"loan loan"
-	"neste neste"
-	"refinancing tenure"
-	"mobile email"
-	"axoaccept axoaccept"
-	"contactaccept contactaccept";*/
-	padding: 4rem 10rem 0;
+	/*padding: 4rem 10rem 0;*/
 
 	justify-content: space-between;
 	align-items: stretch;
-	/*grid-column-gap: 1rem;*/
 }
 
-.em-part-1-grid-2 {
-	grid-template-columns: 2fr 1fr 1fr 1fr;
+
+/* 2.1.3 part 2*/
+
+.em-part-2,
+.em-part-5 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+}
+
+.em-part-2 {
+	grid-area: two;
 
 	grid-template-areas: 
-		"loan tenure refinancing monthly"
-		"compare compare compare compare";
-
-	grid-column-gap: 2rem;
-
-	padding: 4rem 6rem;
+		"coapplicant ."
+		"employmenttype monthlyincome"
+		"employ employ"
+		"civil children"
+		"living since"
+		"rent .";
 }
 
-/*.em-part-1-done {
+.em-element-co_applicant {
+	grid-area: coapplicant;
+}
+
+.em-element-employment_type {
+	grid-area: employmenttype;
+}
+
+.em-element-monthly_income {
+	grid-area: monthlyincome;
+}
+
+.em-employ {
+	grid-area: employ;
+
+	display: grid;
+
 	grid-template-columns: 1fr 1fr;
 
 	grid-template-areas: 
-	"loan monthly"
-	"tenure refinancing"
-	"mobile email";
+	"employer since";
 
-	grid-column-gap: 2rem
+	grid-column-gap: 2rem;
 }
 
-.em-part-1-done .em-element-contact_accepted,
-.em-part-1-done .em-element-axo_accept {
-	display: none;
+.em-employ .em-element-employer {
+	grid-area: employer;
 }
 
-.em-part-1-done .em-element-container {
-	margin: 0;
+.em-element-civilstatus {
+	grid-area: civil;
 }
 
-.em-part-done .em-element-loan_amount {
-}*/
+.em-element-number_of_children {
+	grid-area: children;
+}
 
-/* 2.1.3 part 2*/
-.em-part-2 {
-	grid-area: two;
+.em-element-living_conditions {
+	grid-area: living;
+}
+
+.em-part-2 .em-date {
+	grid-area: since;
+}
+
+.em-element-rent {
+	grid-area: rent;
 }
 
 /* 2.1.3.1 text */
@@ -630,9 +632,101 @@ body {
 	overflow: visible;
 }
 
+.em-co-applicant {
+	display: grid;
+
+	grid-template-columns: 1fr 1fr;
+
+	grid-template-areas:
+		"title title" 
+		"livingtogether socialnumber"
+		"mobile epost"
+		"employmenttype monthlyincome"
+		"employ employ"
+		"civil livingconditions"
+		"rent since";
+
+	grid-column-gap: 2rem;
+}
+
+.em-co-applicant-title {
+	grid-area: title;
+}
+
+.em-co-applicant-h4 {
+	margin-bottom: 0;
+}
+
+.em-element-living_together {
+	grid-area: livingtogether;
+}
+
+.em-element-co_applicant_social_number {
+	grid-area: socialnumber;
+}
+
+.em-element-co_applicant_mobile_number {
+	grid-area: mobile;
+}
+
+.em-element-co_applicant_email {
+	grid-area: epost;
+}
+
+.em-element-co_applicant_employment_type {
+	grid-area: employmenttype;
+}
+
+.em-co-applicant .em-employ {
+	grid-area: employ;
+}
+
+.em-element-co_applicant_monthly_income {
+	grid-area: monthlyincome;
+}
+
+.em-element-co_applicant_civilstatus {
+	grid-area: civil;
+}
+
+.em-element-co_applicant_living_conditions {
+	grid-area: livingconditions;
+}
+
+.em-element-co_applicant_rent {
+	grid-area: rent;
+}
+
+.em-date-co_applicant_living_conditions {
+	grid-area: since;
+}
+
+/*.em-element-*/
+
 /* 2.1.6 part 5*/
 .em-part-5 {
 	grid-area: five;
+
+	grid-template-areas: 
+	 "loanpurpose socialnumber"
+	 "privateloan creditloan";
+}
+
+.em-element-credit_loan_amount,
+.em-element-loan_purpose {
+	grid-area: loanpurpose;
+}
+
+.em-element-social_number {
+	grid-area: socialnumber;
+}
+
+.em-element-privateloan {
+	grid-area: privateloan;
+}
+
+.em-element-creditloan {
+	grid-area: creditloan;
 }
 
 /* 2.1.6.1 text */
@@ -657,7 +751,7 @@ body {
 	/*text-align: center;*/
 	font-size: 2rem;
 	overflow: hidden;
-	font-family: Merriweather;
+	/*font-family: Merriweather;*/
 	font-weight: 900;
 }
 
@@ -720,12 +814,13 @@ body {
 .em-it {
 	margin: 0;
 	font-size: 1.6rem;
-	margin-bottom: 1rem;
+	/*margin-bottom: 1rem;*/
 
 	white-space: nowrap;
 	overflow: hidden;
-	font-family: Merriweather;
-	font-weight: 900;
+	font-family: Source Sans Pro;
+	/*font-family: Merriweather;*/
+	font-weight: 400;
 }
 
 .em-it:hover {
@@ -1016,11 +1111,6 @@ select.em-i {
 	box-shadow: none;
 }
 
-.em-lower {
-	/*padding-left: 2rem;*/
-	/*background-color: hsla(0, 0%, 50%, .1);*/
-}
-
 /* 3.9.3 checkbox selected */
 .em-cc-green {
 	background-color: hsl(120, 80%, 60%);
@@ -1107,6 +1197,7 @@ select.em-i {
 	margin-left: 1rem;
 
 	width: 50%;
+    border-radius: 3px !important;
 
 }
 .em-slider-loan_amount .ui-widget-header {
@@ -1132,10 +1223,10 @@ select.em-i {
 }
 .em-slider-loan_amount .ui-slider-handle {
 	height: 4rem;
-	width: 3rem;
+	width: 4rem;
 	/*border: solid 3px black;*/
 	border: 1px solid #949494;
-	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
 
     background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
     background-repeat: no-repeat;
@@ -1144,6 +1235,8 @@ select.em-i {
 	top: -.6rem;
 	margin-left: -2rem;
 	cursor: grab;
+    border-radius: 3px;
+
 }
 
 .em-slider-loan_amount .ui-state-active {
@@ -1154,101 +1247,12 @@ select.em-i {
 	border-radius: 0;
 }
 
-.em-r-loan_amount {
-	/*flex-grow: 1;*/
-	/*flex-basis: 0;*/
 
-	position: relative;
-    left: 0;
-	top: 0;
-
-	width: 100%;
-
-	/*margin: 0;*/
-	margin: 3.2rem 0 1rem;
-    -webkit-appearance: none;
-    /*position: relative;*/
-    overflow: hidden;
-    height: 2.8rem;
-    cursor: pointer;
-    border-radius: 0; /* iOS */
-
-}
-
-/* 4.1.4.1 loan amount range track */
-.em-r-loan_amount::-webkit-slider-runnable-track {
-    background: #ddd;
-    background: white;
-}
-.em-r-loan_amount::-moz-range-track {
-    height: 40px;
-    background: #ddd;
-}
-.em-r-loan_amount::-ms-track { 
-    background: #ddd;
-    color: transparent;
-    height: 48px;
-    border: none;
-}
-
-/* 4.1.4.2 loan amount range thumb*/
-.em-r-loan_amount::-webkit-slider-thumb {
-  	-webkit-appearance: none;
-    width: 34px;
-    height: 58px;
-    background: #fff;
-    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
-    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/2.png');*/
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/piler.png');*/
-    background-repeat: no-repeat;
-    background-position: center; 
-    box-shadow: -100vw 0 0 100vw #96f;
-    /*box-shadow: -100vw 0 0 100vw hsl(120, 80%, 60%);*/
-}
-.em-r-loan_amount::-moz-range-thumb {
-    background: #fff;
-    height: 48px;
-    width: 40px;
-    border: 1px solid #999;
-    border-radius: 0 !important;
-    box-shadow: -100vw 0 0 100vw dodgerblue;
-    box-sizing: border-box;
-}
-.em-r-loan_amount::-ms-thumb { 
-    background: #fff;
-    border: 1px solid #999;
-    height: 48px;
-    width: 40px;
-    box-sizing: border-box;
-    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/piler.png');*/
-    background-repeat: no-repeat;
-    background-position: center; 
-}
-
-/* 4.1.4.3 misc IE parts */
-.em-r-loan_amount::-ms-fill-lower { 
-    background: hsl(120, 80%, 60%);
-}
-
-
-.em-r-loan_amount::-ms-ticks-after { 
-    display: none; 
-}
-
-.em-r-loan_amount::-ms-ticks-before { 
-    display: none; 
-}
-
-
-.em-r-loan_amount::-ms-tooltip { 
-    display: none;
-}
 
 
 .em-element-loan_amount .em-it {
 	/*font-size: 2rem;*/
-	margin-bottom: 1rem;
+	/*margin-bottom: 1rem;*/
 }
 
 /* 4.2 tenure */
@@ -1263,14 +1267,14 @@ select.em-i {
 /* 4.2.2 tenure input */
 .em-i-tenure {
 	/*text-align: center;*/
-	padding: 0 0 0 5rem;
+	padding: 0 0 0 1rem;
 	/*width: auto;*/
 	/*padding-left: 0;*/
 	/*padding: 1rem 1.5rem 1rem 4.5rem;*/
-	font-family: Montserrat;
+	/*font-family: Montserrat;*/
 	font-weight: 300;
-	font-size: 1.8rem;
-	border-color: hsl(0, 0%, 20%) !important;
+	/*font-size: 1.8rem;*/
+	/*border-color: hsl(0, 0%, 20%) !important;*/
 }
 
 /* 4.2.3 tenure validation marker */
@@ -1344,14 +1348,16 @@ select.em-i {
 
 /* 4.8.2 monthly cost inner container */
 .em-container-monthly_cost {
-	font-family: montserrat;
+	/*font-family: montserrat;*/
+	font-family: Source Sans Pro;
+	font-weight: 400;
 	/*font-family: monospace;*/
-	font-weight: 300;
-	margin-bottom: 1rem;
+	/*font-weight: 300;*/
+	/*margin-bottom: 1rem;*/
 	/*position: relative;*/
 	/*top: 1px;*/
 	/*max-width: 100%;*/
-	font-size: 2.2rem;
+	font-size: 2rem;
 	/*overflow: visible;*/
 	white-space: nowrap;
 	text-align: center;
@@ -1445,23 +1451,27 @@ select.em-i {
 }
 
 .em-cc-yes:focus {
-	border: solid 2px #000 !important;
+	border-bottom: solid 2px #000;
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+	/*border: solid 2px #000 !important;*/
 	/*outline: solid 2px red;*/
 	/*box-shadow: 2px 2px #96f, 2px -2px #96f, -2px -2px #96f;*/
-	box-shadow: -2px 2px #96f, -2px -2px #96f;
+	/*box-shadow: -2px 2px #96f, -2px -2px #96f;*/
 }
 
 .em-cc-no:focus {
-	border: solid 2px #000 !important;
+	border-bottom: solid 2px #333;
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+	/*border: solid 2px #000 !important;*/
 	/*outline: solid 2px red;*/
 	/*box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f;*/
-	box-shadow: 2px -2px #96f, 2px 2px #96f;
+	/*box-shadow: 2px -2px #96f, 2px 2px #96f;*/
 }
 
 
 .em-part-1-grid .em-i,
 .em-if {
-	height: 5rem;
+	/*height: 5rem;*/
 }
 
 /*.em-i-tenure,
@@ -1473,6 +1483,7 @@ select.em-i {
 
 .em-income-alert {
 	margin-top: .5rem;
+	font-size: 1.4rem;
 }
 
 .em-income-button {
@@ -1518,7 +1529,8 @@ select.em-i {
 	display: none;
 	position: relative;
 	height: 323px;
-	width: 90rem;
+	width: 75rem;
+	/*width: 75rem;*/
 	max-width: 100%;
 	margin: auto;
 
@@ -1578,7 +1590,7 @@ select.em-i {
 	right: 0;
 	background-color: white;
 	z-index: 101;
-	width: 90rem;
+	width: 75rem;
 	margin: auto;
 
 	padding: 4rem 15rem;
@@ -1700,152 +1712,7 @@ select.em-i {
 	margin: 0 1rem 1rem 0;
 }
 
-/* 10.0 sprites */
 
-/* 10.1 sprites container */
-.em-sprites {
-	overflow: hidden;
-	width: 90rem;
-	max-width: 100%;
-	margin: auto;
-}
-
-/* 10.2 sprites inner container */
-.em-sprite-container {
-	display: flex;
-	position: relative;
-
-	align-items: center;
-}
-
-/* 10.3 sprites animation */
-.em-sprite-container-animation {
-	animation-name: spriteslide;
-	animation-duration: 25s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-
-	cursor: pointer;
-}
-@keyframes spriteslide {
-	from { left: 0; }
-	to { left: -1630px; }
-}
-
-
-.em-lock {
-	/*display: inline;*/
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	/*right: 14rem;*/
-}
-
-
-/* 10.4 sprites paused */
-.em-sprite-container-animation-paused {
-  animation-play-state: paused;
-}
-
-/* 10.5 sprite part element */
-.em-sprite {
-    background-repeat: no-repeat;
-    /*background-image: url('/wp/wp-content/plugins/EM-axowl/assets/img/banklogoer.png');*/
-    background-image: url('https://norskfinans.no/wp-content/uploads/2019/02/banklogoer.png');
-    flex: 0 0 auto;
-    margin-right: 3rem;
-    /*width: 30rem;*/
-    /*background-color: red;*/
-    /*max-width: 100%;*/
-    /*overflow: hidden;*/
-}
-
-/* 10.6 sprite parts */
-.sprite-bank-norwegian {
-    background-position: -263px 0;
-    width: 184px;
-    height: 60px
-}
-.sprite-bluestep {
-    background-position: 10px 0;
-    width: 148px;
-    height: 60px
-}
-.sprite-dnb {
-    background-position: -140px 0;
-    width: 118px;
-    height: 60px
-}
-.sprite-easybank {
-    background-position: -2px -120px;
-    width: 210px;
-    height: 60px
-}
-.sprite-komplett-bank {
-    background-position: -289px -120px;
-    width: 228px;
-    height: 57px
-}
-.sprite-nordax {
-    background-position: 0 -65px;
-    width: 246px;
-    height: 59px
-}
-.sprite-resurs-bank {
-    background-position: -260px -60px;
-    width: 114px;
-    height: 60px
-}
-.sprite-santander-consumer-bank {
-    background-position: -374px -60px;
-    width: 175px;
-    height: 60px
-}
-.sprite-ya-bank {
-    background-position: -222px -120px;
-    width: 63px;
-    height: 60px
-}
-.sprite-gjensidige {
-    background-position: 0 -179px;
-    width: 184px;
-    height: 60px
-}
-.sprite-expressbank {
-    background-position: -209px -179px;
-    width: 138px;
-    height: 60px
-}
-.sprite-bnbank {
-    background-position: -376px -179px;
-    width: 91px;
-    height: 60px
-}
-.sprite-remember {
-    background-position: 0 -238px;
-    width: 154px;
-    height: 60px
-}
-.sprite-nystart-bank {
-    background-position: -185px -280px;
-    width: 100px;
-    height: 60px
-}
-.sprite-monobank {
-    background-position: -14px -286px;
-    width: 125px;
-    height: 58px
-}
-.sprite-thorn {
-    background-position: -170px -231px;
-    width: 136px;
-    height: 57px
-}
-.sprite-optinbank {
-    background-position: -325px -240px;
-    width: 154px;
-    height: 50px
-}
 
 
 
@@ -2101,4 +1968,4 @@ select.em-i {
 	/*display: block;*/
 }
 
-/*.ui-widget-header {background-image:none;background-color:#887e6d;}*/
+/*.ui-widget-header {background-image:none;background-color:#887e6d;}

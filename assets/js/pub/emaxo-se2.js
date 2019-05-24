@@ -5,6 +5,9 @@
 
 
 var sendGa = function(label, value = 0) {
+	
+	// dont send to GA if logged in
+	if (emurl.logged_in) return;
 
 	// sending ga via gtm
 	try {
@@ -547,7 +550,9 @@ var sendGa = function(label, value = 0) {
 
 		$('.em-part-1-grid > .em-hidden, .em-b-container').each(function() {
 			$(this).slideDown(600, function() {
-				$('.em-i-tenure').focus();
+				// $('.em-i-tenure').focus();
+				if (!$('.em-cc-collect_debt .em-cc-yes').is(':focus')) $('.em-cc-collect_debt .em-cc-yes').focus();
+
 			}).removeClass('em-hidden');
 		});
 
@@ -568,7 +573,7 @@ var sendGa = function(label, value = 0) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		if (!valid) return;
+		// if (!valid) return;
 
 		location.hash = 'form';
 		$.post(emurl.ajax_url, {
@@ -604,7 +609,7 @@ var sendGa = function(label, value = 0) {
 				// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
 				// $('.em-element-email').detach().prependTo('.em-part-2');
 				$('.em-b-container').slideUp(500, function() {
-					$('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
+					$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 4rem');
 					$(this).slideDown(500);
 				});
 
@@ -629,7 +634,8 @@ var sendGa = function(label, value = 0) {
 
 				$('.em-element-axo_accept, .em-element-contact_accepted').slideUp(500, function() {
 					$('.em-slidedown').slideDown(800, function() {
-						if (!$('.em-i-social_number').is(':focus')) $('.em-i-social_number').focus();
+						// if (!$('.em-i-social_number').is(':focus')) $('.em-i-social_number').focus();
+						if (!$('.em-cc-co_applicant .em-cc-yes').is(':focus')) $('.em-cc-co_applicant .em-cc-yes').focus();
 					}).removeClass('em-hidden');
 				});
 
@@ -822,15 +828,16 @@ var sendGa = function(label, value = 0) {
 			$(this).siblings('.em-cc-no').removeClass('em-cc-green');
 			// co_applicant
 			if (ele == '.em-part-4') {
-				if (desktop()) {
-					$('.em-part-lower-container').css('grid-template-areas', '"title title title title" "two three four five"');
-					$('.em-part-lower-container').find('.em-part').animate({
-						width: '20rem'
-						// width: '25rem'
-					});
-					$('.em-part-4').show().removeClass('em-hidden');
-				}
-				else show();
+				// if (desktop()) {
+				// 	$('.em-part-lower-container').css('grid-template-areas', '"title title title title" "two three four five"');
+				// 	$('.em-part-lower-container').find('.em-part').animate({
+				// 		width: '20rem'
+				// 		// width: '25rem'
+				// 	});
+				// 	$('.em-part-4').show().removeClass('em-hidden');
+				// }
+				// else 
+					show();
 
 			}
 
@@ -850,18 +857,19 @@ var sendGa = function(label, value = 0) {
 			// co_applicant
 			if (ele == '.em-part-4') {
 
-				if (desktop()) {
-					$('.em-part-lower-container').find('.em-part:not(.em-part-4)').animate({
-						width: '25rem'
-					});
+				// if (desktop()) {
+				// 	$('.em-part-lower-container').find('.em-part:not(.em-part-4)').animate({
+				// 		width: '25rem'
+				// 	});
 
-					$('.em-part-4').animate({
-						width: '0rem'
-					}, function() {
-						$(this).hide().addClass('em-hidden');
-						$('.em-part-lower-container').css('grid-template-areas', '"title title title" "two three five"');
-					});	
-				} else hide();
+				// 	$('.em-part-4').animate({
+				// 		width: '0rem'
+				// 	}, function() {
+				// 		$(this).hide().addClass('em-hidden');
+				// 		$('.em-part-lower-container').css('grid-template-areas', '"title title title" "two three five"');
+				// 	});	
+				// } else 
+				hide();
 
 			}
 
@@ -906,11 +914,19 @@ var sendGa = function(label, value = 0) {
 		$('.em-element-credit_loan_amount').down();
 		$('.em-element-loan_purpose').up();
 
+		$(this).addClass('em-cc-green');
+		$(this).siblings('.em-cc-no').removeClass('em-cc-green');
+
 		if ($('.em-i-credit_loan_amount').val())
 			$('.em-element-privateloan, .em-element-creditloan').down();
 	});
 
 	$('.em-element-collect_debt .em-cc-no').click(function() {
+
+		$(this).addClass('em-cc-green');
+		$(this).siblings('.em-cc-yes').removeClass('em-cc-green');
+
+
 		$('.em-element-loan_purpose').down();
 		$('.em-element-credit_loan_amount, .em-element-privateloan, .em-element-creditloan').up();
 	});
