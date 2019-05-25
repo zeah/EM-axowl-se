@@ -87,6 +87,32 @@ final class Axowl_shortcode_parts_se {
 		';
 	}
 
+	public function header() {
+		return sprintf(
+			'<div class="axowl-header">
+			 <h1 class="axow-header-title">Börja här!</h1>
+				<div class="axowl-header-part">
+					<img src="%s">
+					<span>1) Välj lånebelopp</span>
+				</div>
+				<div class="axowl-header-part">
+					<img src="%s">
+					<span>2) Fyll i formuläret</span>
+				</div>
+				<div class="axowl-header-part">
+					<img src="%s">
+					<span>3) Vi skickar erbjudande</span>
+				</div>
+			</div>',
+
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg1.png'),
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg2.png'),
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg3.png')
+
+
+		);
+	}
+
 
 	/**
 	 * [element description]

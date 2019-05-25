@@ -388,11 +388,11 @@ input.em-i:focus {
 .em-b-container {
 	display: none;
 	text-align: center;
-	margin: 0 10rem;
+	margin: 0 2rem;
 }
 
 .em-b-next {
-	width: 50%;
+	/*width: 50%;*/
 }
 
 .em-b-endre,
@@ -433,7 +433,7 @@ input.em-i:focus {
 }
 
 .em-part-lower-container {
-	display: grid;
+	/*display: grid;*/
 	grid-template-areas: 
 	 "title title title"
 	 "two three five";
@@ -519,7 +519,7 @@ input.em-i:focus {
 
 /* 2.1.2.4 part 1 inner */
 .em-part-1-grid {
-	display: grid;
+	/*display: grid;*/
 
 	grid-template-columns: 1fr 1fr;
 
@@ -542,7 +542,7 @@ input.em-i:focus {
 
 .em-part-2,
 .em-part-5 {
-	display: grid;
+	/*display: grid;*/
 	grid-template-columns: 1fr 1fr;
 	grid-column-gap: 2rem;
 }
@@ -574,7 +574,7 @@ input.em-i:focus {
 .em-employ {
 	grid-area: employ;
 
-	display: grid;
+	/*display: grid;*/
 
 	grid-template-columns: 1fr 1fr;
 
@@ -642,7 +642,7 @@ input.em-i:focus {
 }
 
 .em-co-applicant {
-	display: grid;
+	/*display: grid;*/
 
 	grid-template-columns: 1fr 1fr;
 
@@ -1156,9 +1156,9 @@ select.em-i:focus {
 .em-element-loan_amount {
 	grid-area: loan;
 
-
+	text-align: center;
 	/*margin-bottom: 4rem;*/
-	display: flex;
+	/*display: flex;*/
 
 	/*align-items: flex-end;*/
 }
@@ -1167,8 +1167,8 @@ select.em-i:focus {
 .em-ic-loan_amount {
 	/*flex-grow: 1;*/
 	/*flex-basis: 0;*/
-	margin-right: 1rem;
-	width: 50%;
+	/*margin-right: 1rem;*/
+	/*width: 50%;*/
 }
 
 /* 4.1.3 loan amount validation marker */
@@ -1204,9 +1204,9 @@ select.em-i:focus {
 
 	height: 3rem;
 	margin-top: 4rem;
-	margin-left: 1rem;
+	/*margin-left: 1rem;*/
 
-	width: 50%;
+	/*width: 50%;*/
     border-radius: 3px !important;
 
 }
@@ -1271,7 +1271,7 @@ select.em-i:focus {
 /* 4.2.1 tenure container */
 .em-element-tenure {
 	grid-area: tenure;
-	margin-left: 1rem;
+	/*margin-left: 1rem;*/
 	/*margin-bottom: 4rem;*/
 }
 
@@ -1299,19 +1299,19 @@ select.em-i:focus {
 /* 4.3 refinancing / collect debt */
 .em-element-collect_debt {
 	grid-area: refinancing;
-	margin-right: 1rem;
+	/*margin-right: 1rem;*/
 }
 
 /* 4.4 mobile number */
 .em-element-mobile_number {
 	grid-area: mobile;
-	margin-right: 1rem;
+	/*margin-right: 1rem;*/
 }
 
 /* 4.5 email */
 .em-element-email {
 	grid-area: email;
-	margin-left: 1rem;
+	/*margin-left: 1rem;*/
 }
 
 /* 4.6 axo accept */
@@ -1445,7 +1445,7 @@ select.em-i:focus {
 .em-b-neste {
 	/*border: none;*/
 	/*display: block;*/
-	width: 40rem;
+	width: 90%;
 	margin: 2rem 0;
 	padding: 1.3rem 0;
 	/*padding: .5rem 8rem;*/
@@ -1582,14 +1582,15 @@ select.em-i:focus {
 
 /* 8.0 loan example */
 .em-loan-example {
-	margin: 1rem 10rem;
+	margin: 1rem;
 	padding-bottom: .6rem;
 
 	text-align: center;
 	
-	font-family: Montserrat;
+	font-family: Source Sans Pro;
 	font-weight: 400;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
+	line-height: 1;
 }
 
 /* 9.0 email/phone popup */
@@ -1611,7 +1612,7 @@ select.em-i:focus {
 }
 
 .email-popup-grid {
-	display: grid;
+	/*display: grid;*/
 
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: 
@@ -1800,7 +1801,7 @@ select.em-i:focus {
 	}
 
 	.em-part-1-grid {
-		display: -ms-grid;
+		/*display: -ms-grid;*/
 
 		-ms-grid-columns: 25% 25% 25% 25%;
 		-ms-grid-rows: auto auto auto auto auto auto;
@@ -1868,7 +1869,7 @@ select.em-i:focus {
 	}
 
 	.em-part-lower-container {
-		display: -ms-grid;
+		/*display: -ms-grid;*/
 
 		-ms-grid-columns: 1fr 1fr auto 1fr;
 		-ms-grid-rows: auto auto auto auto auto auto;
@@ -1907,7 +1908,7 @@ select.em-i:focus {
 
 
 	.email-popup-grid {
-		display: -ms-grid;
+		/*display: -ms-grid;*/
 
 		-ms-grid-columns: 1fr 1fr;
 		-ms-grid-rows: auto auto auto auto;
@@ -1923,13 +1924,13 @@ select.em-i:focus {
 	.pop-phone-container {
 		-ms-grid-row: 2;
 		-ms-grid-column: 1;
-		margin-right: 1rem;
+		/*margin-right: 1rem;*/
 	}
 
 	.pop-email-container {
 		-ms-grid-row: 2;
 		-ms-grid-column: 2;
-		margin-left: 1rem;
+		/*margin-left: 1rem;*/
 
 	}
 

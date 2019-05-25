@@ -340,7 +340,39 @@ var sendGa = function(label, value = 0) {
 		try {
 			$(this).focusout(validation);
 
-			$(this).focus(function() { $(this).removeClass('em-valid-border em-invalid-border') });
+			$(this).focusout(function() {
+				$(this).siblings('label').find('.em-it').css('font-weight', '400');
+				
+				// var container = $(this).parents('.em-part-container');
+				// container.find('.em-part').each(function() {
+				// 	$(this).css('opacity', '1');
+				// });
+			});
+
+			$(this).focus(function() { 
+				$(this).siblings('label').find('.em-it').css('font-weight', '700');
+				$(this).removeClass('em-valid-border em-invalid-border');
+
+				// var parentPart = $(this).parents('.em-part')[0];
+				// var container = $(this).parents('.em-part-container');
+
+				// // container.find('.em-part').each(function() {
+				// // 	$(this).css('opacity', '1');
+				// // });
+
+				// container.find('.em-part').each(function() {
+
+				// 	if (this == parentPart) return;
+
+				// 	$(this).css('opacity', '.3');
+
+				// 	console.log(this);
+				// });
+				// for  (var p in container) 
+
+				// $(this).parents('.em-part').css('opacity', '.5');
+
+			});
 
 			// $(this).focus(function() {
 
@@ -609,7 +641,7 @@ var sendGa = function(label, value = 0) {
 				// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
 				// $('.em-element-email').detach().prependTo('.em-part-2');
 				$('.em-b-container').slideUp(500, function() {
-					$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 4rem');
+					$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 3rem');
 					$(this).slideDown(500);
 				});
 
@@ -641,32 +673,33 @@ var sendGa = function(label, value = 0) {
 
 			// });
 		
-			$('.em-b-endre').click(function() {
-					$('.em-part-1-grid').slideToggle();
-					$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
-					window.scrollTo(0, 0);
-			});
+			// $('.em-b-endre').click(function() {
+			// 		$('.em-part-1-grid').slideToggle();
+			// 		$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
+			// 		window.scrollTo(0, 0);
+			// });
 		}
 
 
 
 		if (mobile()) {
-			$('.em-element-mobile_number').detach().prependTo('.em-part-2');
-			$('.em-element-email').detach().prependTo('.em-part-2');
-			$('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
-			$('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
+			// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
+			// $('.em-element-email').detach().prependTo('.em-part-2');
+			// $('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
+			$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 3rem');
+			// $('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
 			$('.em-element-axo_accept, .em-element-contact_accepted').hide(0);
 			$('.em-slidedown').slideDown(800).removeClass('em-hidden');
-			$('.em-part-1-grid').slideUp(800);
-			$('.em-b-endre, .em-b-send, .em-b-text').show();
+			// $('.em-part-1-grid').slideUp(800);
+			$('.em-b-send, .em-b-text').show();
 
-			window.scrollTo(0, 0);
-			$('.em-b-endre').click(function() {
-				$('html').animate({'scrollTop': 0}, 1000, 'swing', function() {
-					$('.em-part-1-grid').slideToggle();
-					$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
-				});
-			});
+			// window.scrollTo(0, 0);
+			// $('.em-b-endre').click(function() {
+			// 	$('html').animate({'scrollTop': 0}, 1000, 'swing', function() {
+			// 		$('.em-part-1-grid').slideToggle();
+			// 		$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
+			// 	});
+			// });
 		}
 
 
@@ -827,7 +860,7 @@ var sendGa = function(label, value = 0) {
 			$(this).addClass('em-cc-green');
 			$(this).siblings('.em-cc-no').removeClass('em-cc-green');
 			// co_applicant
-			if (ele == '.em-part-4') {
+			// if (ele == '.em-part-4') {
 				// if (desktop()) {
 				// 	$('.em-part-lower-container').css('grid-template-areas', '"title title title title" "two three four five"');
 				// 	$('.em-part-lower-container').find('.em-part').animate({
@@ -837,15 +870,15 @@ var sendGa = function(label, value = 0) {
 				// 	$('.em-part-4').show().removeClass('em-hidden');
 				// }
 				// else 
-					show();
+					// show();
 
-			}
+			// }
 
 
-			else {
+			// else {
 				if (!no) show();
 				else hide();
-			}
+			// }
 		});
 
 		$(this).parent().find('.em-cc-no').click(function() {
@@ -855,7 +888,7 @@ var sendGa = function(label, value = 0) {
 			$(this).siblings('.em-cc-yes').removeClass('em-cc-green');
 
 			// co_applicant
-			if (ele == '.em-part-4') {
+			// if (ele == '.em-part-4') {
 
 				// if (desktop()) {
 				// 	$('.em-part-lower-container').find('.em-part:not(.em-part-4)').animate({
@@ -869,15 +902,15 @@ var sendGa = function(label, value = 0) {
 				// 		$('.em-part-lower-container').css('grid-template-areas', '"title title title" "two three five"');
 				// 	});	
 				// } else 
-				hide();
+				// hide();
 
-			}
+			// }
 
 
-			else {
+			// else {
 				if (no) show();
 				else hide();
-			}
+			// }
 
 		});
 	});

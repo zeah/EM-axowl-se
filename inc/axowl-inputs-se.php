@@ -103,7 +103,7 @@ final class Axowl_inputs_se {
 
 	public static $inputs2 = [
 		'div0' => ['class' => 'em-part-1-grid'],
-		'monthly_cost' => ['text_field' => 'Månadkostnad', 'notInput' => true],
+		'monthly_cost' => ['text_field' => 'Månadkostnad från', 'notInput' => true],
 		'loan_amount' => ['text' => true, 'range' => true, 'validation' => 'currency', 
 						  'format' => 'currency', 'max' => 500000, 'min' => 10000, 'default' => 250000, 'step' => 10000],
 		// 'collect_compare' => ['compare' => true],

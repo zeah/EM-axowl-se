@@ -136,7 +136,7 @@ final class Axowl_shortcode_se {
 		$html .= '</div></div>';
 
 		$html .= '<div class="em-b-container">
-			<button type="button" class="em-b em-b-next">Näste</button>
+			<button type="button" class="em-b em-b-next">Gå vidare</button>
 			<button type="button" class="em-b em-b-endre">Ändra lånebeloppet</button>
 			<button type="button" class="em-b em-b-send">Ansök nu</button>
 			<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
@@ -218,7 +218,7 @@ final class Axowl_shortcode_se {
 			isset($atts['style']) ? $atts['style'] : '',
 			$p->popup(),
 			$epop,
-			$lock
+			$p->header()
 		);
 
 		$html .= '<input type="hidden" name="fax">';
@@ -240,7 +240,7 @@ final class Axowl_shortcode_se {
 		$html .= '</div></div>';
 
 		$html .= '<div class="em-b-container">
-			<button type="button" class="em-b em-b-next">Näste</button>
+			<button type="button" class="em-b em-b-next">Gå vidare</button>
 			<button type="button" class="em-b em-b-send">Ansök nu</button>
 			<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
 			</div>';
@@ -389,7 +389,7 @@ final class Axowl_shortcode_se {
 
         // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
         wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.1', '(min-width: 901px)');
-        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-mobile-se.css', array(), '0.0.1', '(max-width: 900px)');
+        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.1', '(max-width: 900px)');
         
         // wp_enqueue_script('jquery-touch');
 
