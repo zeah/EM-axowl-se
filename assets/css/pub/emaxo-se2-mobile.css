@@ -869,13 +869,15 @@ input.em-i:focus {
 	width: 2rem;
 	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/downarrow.png') no-repeat center center;*/
 	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/selectarrow.png') no-repeat center center;*/
-	background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows2.png') no-repeat center center;
+	/*background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows2.png') no-repeat center center;*/
+	background: url('https://finanzia.se/wp-content/uploads/2019/05/listarrows2.png') no-repeat center center;
 	pointer-events: none;
 	/*cursor: pointer;*/
 }
 
 .em-lc:hover:after {
-	background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows3.png') no-repeat center center;
+	background: url('https://finanzia.se/wp-content/uploads/2019/05/listarrows3.png') no-repeat center center;
+	/*background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows3.png') no-repeat center center;*/
 }
 
 		
@@ -944,7 +946,8 @@ select.em-i:focus {
 .em-check:checked + label span::before {
 	border: solid 1px;
 	border-color: hsl(0, 0%, 30%);
-    background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');
+    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');*/
+    background-image: url('https://finanzia.se/wp-content/uploads/2019/05/checkcross.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -1239,7 +1242,8 @@ select.em-i:focus {
 	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
 
     /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
-    background-image: url('http://localhost:8010/wp/wp-content/uploads/2019/05/rangearrow.png');
+    /*background-image: url('http://localhost:8010/wp/wp-content/uploads/2019/05/rangearrow.png');*/
+    background-image: url('https://finanzia.se/wp-content/uploads/2019/05/rangearrow.png');
     background-repeat: no-repeat;
     background-position: center; 
 	background-color: #fff;
