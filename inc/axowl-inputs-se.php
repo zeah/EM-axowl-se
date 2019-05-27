@@ -68,14 +68,14 @@ final class Axowl_inputs_se {
 		'co_applicant_mobile_number' => ['text' => true, 'validation' => 'phone', 'digits' => 8],
 		'co_applicant_email' => ['text' => true, 'validation' => 'email'],
 		'co_applicant_employment_type' => ['list' => Axowl_list_se::employment_type, 'validation' => 'list'],
-		'div8' => ['class' => 'em-date'],
+		'div18' => ['class' => 'em-date'],
 		'co_applicant_employment_since_year' => ['list' => Axowl_list_se::years, 'validation' => 'list', 'hidden' => true],
 		'co_applicant_employment_since_month' => ['list' => Axowl_list_se::months, 'validation' => 'list', 'hidden' => true],
-		'/div8' => [],
-		'div9' => ['class' => 'em-date'],
+		'/div18' => [],
+		'div19' => ['class' => 'em-date'],
 		'co_applicant_employment_last_year' => ['list' => Axowl_list_se::lastyears, 'validation' => 'list', 'hidden' => true],
 		'co_applicant_employment_last_month' => ['list' => Axowl_list_se::months, 'validation' => 'list', 'hidden' => true],
-		'/div9' => [],
+		'/div19' => [],
 		'co_applicant_employer' => ['text' => true, 'hidden' => true, 'validation' => 'empty'],
 		'co_applicant_work_number' => ['text' => true, 'hidden' => true, 'validation' => 'phone', 'type' => 'tel'],
 		'co_applicant_monthly_income' => ['text' => true, 'validation' => 'currency', 'format' => 'currency'],
@@ -128,6 +128,7 @@ final class Axowl_inputs_se {
 		// 'social_number' => ['text' => true, 'page' => '2', 'validation' => 'socialnumber', 'digits' => 11],
 		'employment_type' => ['list' => Axowl_list_se::employment_type, 'validation' => 'list'],
 		'monthly_income' => ['text' => true, 'validation' => 'currency', 'format' => 'currency'],
+
 		'div4' => ['class' => 'em-employ'],
 		'employer' => ['text' => true, 'hidden' => true, 'validation' => 'empty'],
 		'div5' => ['class' => 'em-date'],
@@ -139,6 +140,7 @@ final class Axowl_inputs_se {
 		'employment_last_month' => ['hidden' => true, 'list' => Axowl_list_se::months, 'validation' => 'list'],
 		'/div6' => [],
 		'/div4' => [],
+		
 		// 'work_number' => ['text' => true, 'hidden' => true, 'validation' => 'phone', 'type' => 'tel'],
 
 		// 'co_applicant' => ['checkbox' => true, 'page' => '3', 'no' => true, 'show' => 'em-part-4'],
@@ -171,10 +173,11 @@ final class Axowl_inputs_se {
 		'co_applicant_mobile_number' => ['text' => true, 'validation' => 'phone', 'digits' => 8],
 		'co_applicant_email' => ['text' => true, 'validation' => 'email'],
 		'co_applicant_employment_type' => ['list' => Axowl_list_se::employment_type, 'validation' => 'list'],
+		
 		'div12' => ['class' => 'em-employ'],
 		'co_applicant_employer' => ['text' => true, 'hidden' => true, 'validation' => 'empty'],
 
-		'div13' => [],
+		// 'div13' => [],
 		'div8' => ['class' => 'em-date'],
 		'co_applicant_employment_since_year' => ['list' => Axowl_list_se::years, 'validation' => 'list', 'hidden' => true],
 		'co_applicant_employment_since_month' => ['list' => Axowl_list_se::months, 'validation' => 'list', 'hidden' => true],
@@ -183,7 +186,7 @@ final class Axowl_inputs_se {
 		'co_applicant_employment_last_year' => ['list' => Axowl_list_se::lastyears, 'validation' => 'list', 'hidden' => true],
 		'co_applicant_employment_last_month' => ['list' => Axowl_list_se::months, 'validation' => 'list', 'hidden' => true],
 		'/div9' => [],
-		'/div13' => [],
+		// '/div13' => [],
 
 		'/div12' => [],
 		// 'co_applicant_work_number' => ['text' => true, 'hidden' => true, 'validation' => 'phone', 'type' => 'tel'],

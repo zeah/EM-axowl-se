@@ -217,74 +217,43 @@ body {
 	width: 75rem;
 	max-width: 100%;
 
-	/*padding-top: 2rem;*/
 	border: solid 3px #333;
 	border-radius: 15px;
 
-	/*padding-bottom: 2rem;*/
 
 	background-color: hsl(0, 0%, 99%);
-	/*background-color: white;*/
 
 	user-select: none;
 
-	/*font-family: merriweather;*/
 	font-size: 1.6rem;
-	/*font-family: montserrat;*/
 }
 
-/* 1.1.1 font size */
-.emowl-form {
-/*.emowl-form button,*/
-/*.emowl-form select,*/
-/*.emowl-form input {*/
-	/*font-size: 1.6rem;*/
-	/*font-family: merriweather;*/
-
-	/*filter: blur(.2px);*/
-}
 
 
 /* 1.1.2 border */
 .em-if-monthly_cost,
-/*.em-element-monthly_cost,*/
-/*.em-r-loan_amount::-webkit-slider-thumb,*/
-/*.em-element-contact_accepted span::before,
-.em-element-axo_accept span::before,
-*/.em-progress,
-/*.em-b-neste,*/
-/*.em-b-next,*/
+.em-progress,
 .em-b-submit,
 .em-i,
 .em-r,
 .em-compare-save,
 .em-ht {
-	/*border-color: black red green blue;*/
-	/*border: ridge 3px;*/
-	/*border: solid 2.6px hsl(0, 0%, 20%);*/
 	border: 1px solid #949494;
 	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
 	border-radius: 3px;
 	font-family: Source Sans Pro;
-	/*outline: solid 1px hsl(0, 0%, 35%);*/
 }
 
 .em-element-contact_accepted span::before {
-	/*border: solid 2px hsl(0, 0%, 10%);*/
-	/*border: 1px solid #949494;*/
 	border: 1px solid #333;
 	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
 }
 
 
-/*.em-part-lower-container .em-i {
-	border: solid 1.6px hsl(0, 0%, 70%);
-}*/
 
 .em-invalid-border {
 	animation-name: bcolor;
 	animation-duration: .3s;
-	/*border-color: #000;*/
 	animation-fill-mode: forwards;
 }
 
@@ -296,25 +265,14 @@ body {
 	animation-name: vbcolor;
 	animation-duration: .3s;
 	animation-fill-mode: forwards;
-	/*border-color: hsl(0, 100%, 50%);*/
 }
 
 @keyframes vbcolor {
-	/*from { border-color: hsl(0, 100%, 50%); }*/
 	to { border-color: hsl(120, 50%, 60%); }
 }
 
 
 
-
-.em-cc-yes {
-	/*border-right: solid 1.5px hsl(0, 0%, 20%);*/
-
-}
-
-.em-cc-no {
-	/*border-left: solid 1.5px hsl(0, 0%, 20%);*/
-}
 
 /* 1.1.3 focus */
 .em-b:focus {
@@ -328,9 +286,6 @@ body {
 
 input.em-i:active,
 input.em-i:focus {
-	/*box-shadow: 0 0 6px #96f;*/
-	/*border-color: hsl(240, 70%, 60%) !important;*/
-	/*border-color: #96f !important;*/
 	outline: none;
 	border-bottom: dashed 2px #333;
 }
@@ -345,8 +300,6 @@ input.em-i:focus {
 }
 .ui-slider-handle:focus {
 	outline: none;
-	/*box-shadow: 0 0 5px #333;*/
-	/*outline: solid 1px #96f;*/
 }
 
 /* 1.2 form title */
@@ -355,9 +308,6 @@ input.em-i:focus {
 }
 
 /* 1.3 buttons */
-
-
-
 /* 1.3.1 buttons */
 .em-b {
 	background-color: hsl(30, 90%, 60%);
@@ -369,20 +319,11 @@ input.em-i:focus {
 	padding: 1.3rem 0;
 	font-weight: 700;
 	font-size: 2rem !important;
-	/*border: solid 2px #333; */
 	border: 1px solid #949494;
 	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
-	/*border-color: hsl(0, 0%, 50%) hsl(0, 0%, 20%) hsl(0, 0%, 50%) hsl(0, 0%, 20%);*/
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
 	height: auto;
 	background-color: #fc6;
 	cursor: pointer;
-	/*font-family: merriweather;*/
-}
-
-.em-b:focus {
-	/*outline: solid .6px #96f;*/
-	/*outline: dashed 1px #ccc;*/
 }
 
 .em-b-container {
@@ -428,42 +369,6 @@ input.em-i:focus {
 
 /* 2.0 form parts */
 
-/* 2.1 part container */
-.em-part-container {
-}
-
-.em-part-lower-container {
-	display: grid;
-	grid-template-areas: 
-	 "title title title"
-	 "two three five";
-
-	 grid-template-rows: auto auto;
-
-	 justify-items: center;
-
-}
-
-.em-lower-titles {
-	grid-area: title;
-}
-
-/* 2.1.1 generic */
-.em-part {
-	/*margin-top: 5rem;*/
-
-}
-
-/*.em-part-lower-container .em-part {*/
-	/*width: 25rem;*/
-	/*width: 30rem;*/
-/*}*/
-
-/*.em-part-lower-container .em-part-4 {
-	width: 0;
-	display: none;
-}*/
-
 
 .em-part-lower-container .em-part {
 	margin-top: 0;
@@ -477,7 +382,6 @@ input.em-i:focus {
 .em-r {
 	height: 4rem;
 	font-size: 1.6rem;
-	/*font-family: Merriweather;*/
 }
 
 /* 2.1.2 part 1*/
@@ -523,6 +427,8 @@ input.em-i:focus {
 
 	grid-template-columns: 1fr 1fr;
 
+	grid-column-gap: 2rem;
+
 	grid-template-areas: 
 	"monthly monthly"
 	"loan loan"
@@ -531,7 +437,6 @@ input.em-i:focus {
 	"mobile email"
 	"axoaccept axoaccept"
 	"contactaccept contactaccept";
-	/*padding: 4rem 10rem 0;*/
 
 	justify-content: space-between;
 	align-items: stretch;
@@ -627,7 +532,6 @@ input.em-i:focus {
 /* 2.1.5 part 4*/
 .em-part-4 {
 	grid-area: four;
-	/*display: none;*/
 }
 
 /* 2.1.5.1 text */
@@ -756,11 +660,8 @@ input.em-i:focus {
 	margin: 0;
 	margin-bottom: 1rem;
 	padding: .5rem 0;
-	/*background-color: #fc6;*/
-	/*text-align: center;*/
 	font-size: 2rem;
 	overflow: hidden;
-	/*font-family: Merriweather;*/
 	font-weight: 900;
 }
 
@@ -787,48 +688,25 @@ input.em-i:focus {
 
 /* 3.1 container */
 .em-element-container {
-	/*position: relative;*/
-
-	/*margin-bottom: 1rem;*/
-	/*margin: 1rem 4rem 1rem;*/
 	padding: .5rem 0;
 	margin-bottom: 2rem;
-	/*overflow: hidden;*/
-}
-.em-slidedown .em-element-container {
-	/*display: flex;*/
-
-	/*align-items: flex-end;*/
 }
 
-.em-slidedown .em-element-container > div {
-	/*flex-grow: 1;*/
-}
 
 .em-part-lower-container .em-element-container {
 	margin: 0;
 	margin-bottom: 1rem;
 }
 
-.em-part-lower-container .em-part {
-	/*margin: 1rem;*/
-}
-
-.em-part-lower-container .em-it {
-	/*font-weight: 400;*/
-	font-size: 1.4rem;
-}
 
 /* 3.2 title */
 .em-it {
 	margin: 0;
 	font-size: 1.6rem;
-	/*margin-bottom: 1rem;*/
 
 	white-space: nowrap;
 	overflow: hidden;
 	font-family: Source Sans Pro;
-	/*font-family: Merriweather;*/
 	font-weight: 400;
 }
 
@@ -843,7 +721,6 @@ input.em-i:focus {
 /* 3.3 text input */
 .em-i {
 	padding: .2rem .5rem;
-	/*padding: 1rem 0 1rem 1rem;*/
 	z-index: 20;
 	width: 100%;
 }
@@ -852,12 +729,10 @@ input.em-i:focus {
 .em-lc .em-i {
 	appearance: none;
 	-webkit-appearance: none;
-	/*padding-left: 1rem;*/
 }
 
 .em-lc {
 	position: relative;
-	/*cursor: pointer;*/
 }
 
 .em-lc::after {
@@ -867,16 +742,11 @@ input.em-i:focus {
 	right: 1rem;
 	height: 3rem;
 	width: 2rem;
-	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/downarrow.png') no-repeat center center;*/
-	/*background: url('https://norskfinans.no/wp-content/uploads/2019/03/selectarrow.png') no-repeat center center;*/
-	/*background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows2.png') no-repeat center center;*/
 	background: url('https://finanzia.se/wp-content/uploads/2019/05/listarrows2.png') no-repeat center center;
 	pointer-events: none;
-	/*cursor: pointer;*/
 }
 
 .em-lc:hover:after {
-	/*background: url('http://localhost:8010/wp/wp-content/uploads/2019/05/listarrows3.png') no-repeat center center;*/
 	background: url('https://finanzia.se/wp-content/uploads/2019/05/listarrows3.png') no-repeat center center;
 }
 
@@ -895,7 +765,6 @@ select.em-i {
 
 select.em-i:focus {
 	border-top: solid 2px #333;
-	/*box-shadow: 0 0 2px #333;*/
 }
 
 /* 3.5 range input */
@@ -926,14 +795,12 @@ select.em-i:focus {
 /* 3.6.2 check input */
 .em-check {
 	display: none;
-	/*font-family: montserrat;*/
 }
 
 /* 3.6.3 check label */
 .em-element-check label {
 	position: relative;
 	left: 3.5rem;
-	/*font-family: montserrat;*/
 }
 
 
@@ -946,9 +813,7 @@ select.em-i:focus {
 .em-check:checked + label span::before {
 	border: solid 1px;
 	border-color: hsl(0, 0%, 30%);
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');*/
     background-image: url('https://finanzia.se/wp-content/uploads/2019/05/checkcross.png');
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/checkcross.png');*/
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -1037,7 +902,6 @@ select.em-i:focus {
 	font-weight: 400;
 	text-align: center;
 	line-height: 2rem;
-	/*background-color: white;*/
 }
 
 
@@ -1065,8 +929,6 @@ select.em-i:focus {
 }
 
 .em-ht-q:focus .em-ht-mark {
-	/*box-shadow: 1px 1px hsl(120, 50%, 50%), -1px 1px hsl(120, 50%, 50%), 1px -1px hsl(120, 50%, 50%), -1px -1px hsl(120, 50%, 50%);*/
-	/*box-shadow: 1px 1px #96f, -1px 1px #96f, 1px -1px #96f, -1px -1px #96f;*/
 	box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f, -2px -2px #96f;
 }
 
@@ -1095,7 +957,6 @@ select.em-i:focus {
 .em-cc-no {
 	flex: 1;
 	text-align: center;
-	/*background-color: hsl(120, 0%, 90%);*/
 	background-color: white;
 	cursor: pointer;
 
@@ -1103,22 +964,18 @@ select.em-i:focus {
 	font-family: montserrat;
 }
 
-/*.em-part-lower-container .em-cc-yes {*/
 .em-cc-yes {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
 
-/*.em-part-lower-container .em-cc-no {*/
 .em-cc-no {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
-/*.em-part-lower-container .em-cc-yes,*/
 .em-cc-yes,
 .em-cc-no {
-/*.em-part-lower-container .em-cc-no {*/
 	padding: .5rem 0;
 	box-shadow: none;
 
@@ -1127,8 +984,6 @@ select.em-i:focus {
 
 /* 3.9.3 checkbox selected */
 .em-cc-green {
-	/*background-color: hsl(120, 80%, 60%);*/
-	/*background-color: #96f;*/
 	background-color: #3c3;
 	background-color: rgb(78, 202, 34);
 	color: #fff;
@@ -1146,11 +1001,9 @@ select.em-i:focus {
 
 /* 3.11 error info */
 .em-error {
-	/*background-color: hsl(0, 50%, 90%);*/
 	color: hsl(0, 100%, 60%);
 	padding: .5rem;
 	font-size: 1.4rem;
-	/*margin-top: .5rem;*/
 }
 
 /* 4.0 specific elements */
@@ -1161,17 +1014,11 @@ select.em-i:focus {
 .em-element-loan_amount {
 	grid-area: loan;
 
-
-	/*margin-bottom: 4rem;*/
 	display: flex;
-
-	/*align-items: flex-end;*/
 }
 
 /* 4.1.2 loan amount input container */
 .em-ic-loan_amount {
-	/*flex-grow: 1;*/
-	/*flex-basis: 0;*/
 	margin-right: 1rem;
 	width: 50%;
 }
@@ -1185,12 +1032,10 @@ select.em-i:focus {
 /* 4.1.4 loan amount input */
 .em-i-loan_amount {
 	text-align: center;
-	/*font-family: impact;*/
 	font-size: 2rem;
 	font-weight: 700;
 	padding: .5rem 0;
 	font-family: merriweather;
-	/*height: 5rem;*/
 	border-color: hsl(0, 0%, 20%) !important;
 }
 
@@ -1207,7 +1052,6 @@ select.em-i:focus {
 }
 
 .em-slider-beginning {
-	/*background-color: red;*/
 	height: 4rem;
 	width: 2.9rem;
 	border: 1px solid #333;
@@ -1227,69 +1071,43 @@ select.em-i:focus {
     	rgb(78, 202, 34) 10px, 
     	rgb(62, 177, 21) 0px, 
     	rgb(62, 177, 21) 20px);
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 }
+
 .em-slider-end {
-	/*background-color: red;*/
 	height: 4rem;
 	width: 2.9rem;
 	border: 1px solid #333;
 	border-left: none;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
-	   /* background-image: repeating-linear-gradient(
-    	45deg, 
-    	#fd7, 
-    	#fd7 10px, 
-    	#fc6 0px, 
-    	#fc6 20px);*/
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-	/*background-color: hsl(0, 0%, 95%);*/
     background-image: repeating-linear-gradient(
-	45deg, 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 95%), 
-	hsl(0, 0%, 95%) 20px);
+		45deg, 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 95%), 
+		hsl(0, 0%, 95%) 20px
+	);
 
 	background-position: 9px 0px;
 }
 
 
 .em-slider-loan_amount {
-	/*flex-grow: 1;*/
-	/*border: solid 3px black !important;*/
-
-	/*align-self: flex-end;*/
-	/*position: relative;*/
-	/*bottom: 1.4rem;*/
-
-	/*border: 1px solid #949494;*/
 	border: 1px solid #333 !important;
 	border-left: none !important;
 	border-right: none !important;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-	/*background-color: hsl(0, 0%, 95%);*/
 	height: 4rem;
-	/*margin-top: 4rem;*/
-	/*margin-left: 2rem;*/
-	/*margin-right: 2rem;*/
 	flex-grow: 1;
-	/*width: 50%;*/
-    /*border-radius: 3px !important;*/
     background-image: repeating-linear-gradient(
-	45deg, 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 95%), 
-	hsl(0, 0%, 95%) 20px);
+		45deg, 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 95%), 
+		hsl(0, 0%, 95%) 20px
+	);
 
 }
 .em-slider-loan_amount .ui-widget-header {
-	/*border-radius: 0;*/
-	/*border-right: solid 2px black !important;*/
-	/*background-image: none;*/
-
 	/* purple */
     /* background-image: repeating-linear-gradient(
     	45deg, 
@@ -1312,39 +1130,28 @@ select.em-i:focus {
     	rgb(78, 202, 34), 
     	rgb(78, 202, 34) 10px, 
     	rgb(62, 177, 21) 0px, 
-    	rgb(62, 177, 21) 20px);
+    	rgb(62, 177, 21) 20px
+    );
 
-	/*background: url('https://www.axofinans.no/images/slider-bg.png') repeat top;*/
-	/*background-color: #96f;*/
-	/*background: linear-gradient(45deg, black 0%, black 26%, transparent 26%), linear-gradient(-45deg, black 0%, black 27%, transparent 27%);*/
 }
 .em-slider-loan_amount .ui-slider-handle {
 	height: 5rem;
 	width: 6rem;
-	/*border: solid 3px black;*/
-	/*border: 1px solid #949494;*/
 	border: 1px solid #333;
 	border-right: 2px solid #333;
 	border-left: 2px solid #333;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
-    /*background-image: url('http://localhost:8010/wp/wp-content/uploads/2019/05/rangearrow.png');*/
     background-image: url('https://finanzia.se/wp-content/uploads/2019/05/rangearrow.png');
     background-repeat: no-repeat;
     background-position: center; 
 	background-color: #fff;
-	/*top: -.7rem;*/
 	bottom: .6rem;
 	margin-left: -3rem;
-	/*margin-right: -5rem;*/
 	cursor: grab;
     border-radius: 3px;
 
 }
 
 .em-slider-loan_amount .ui-state-active {
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 	background-color: #fff;
 }
 
@@ -1353,34 +1160,14 @@ select.em-i:focus {
 }
 
 
-
-
-.em-element-loan_amount .em-it {
-	/*font-size: 2rem;*/
-	/*margin-bottom: 1rem;*/
-}
-
 /* 4.2 tenure */
 
 /* 4.2.1 tenure container */
 .em-element-tenure {
 	grid-area: tenure;
-	margin-left: 1rem;
-	/*margin-bottom: 4rem;*/
 }
 
 /* 4.2.2 tenure input */
-.em-i-tenure {
-	/*text-align: center;*/
-	padding: 0 0 0 1rem;
-	/*width: auto;*/
-	/*padding-left: 0;*/
-	/*padding: 1rem 1.5rem 1rem 4.5rem;*/
-	/*font-family: Montserrat;*/
-	font-weight: 300;
-	/*font-size: 1.8rem;*/
-	/*border-color: hsl(0, 0%, 20%) !important;*/
-}
 
 /* 4.2.3 tenure validation marker */
 .em-ic-tenure > .em-val-marker {
@@ -1393,19 +1180,16 @@ select.em-i:focus {
 /* 4.3 refinancing / collect debt */
 .em-element-collect_debt {
 	grid-area: refinancing;
-	margin-right: 1rem;
 }
 
 /* 4.4 mobile number */
 .em-element-mobile_number {
 	grid-area: mobile;
-	margin-right: 1rem;
 }
 
 /* 4.5 email */
 .em-element-email {
 	grid-area: email;
-	margin-left: 1rem;
 }
 
 /* 4.6 axo accept */
@@ -1426,51 +1210,27 @@ select.em-i:focus {
 .em-element-monthly_cost {
 	grid-area: monthly;
 
-	/*position: relative;*/
-	/*top: 3.6rem;*/
-
-	/*justify-self: right;*/
-	/*align-self: flex-start;*/
 
 	padding: 0;
 	margin: 0;
 
-	/*margin-top: 1rem;*/
-	/*padding: 0 1rem;*/
 	background-color: transparent;
 	border: none;
 
 	text-align: center;
-
-	/*width: 100%;*/
-	/*overflow: visible;*/
-	/*text-align: center;*/
-
-	/*display: flex;
-	flex-direction: column;
-	align-items: center;*/
 }
 
 /* 4.8.2 monthly cost inner container */
 .em-container-monthly_cost {
-	/*font-family: montserrat;*/
 	font-family: Source Sans Pro;
 	font-weight: 400;
-	/*font-family: monospace;*/
-	/*font-weight: 300;*/
-	/*margin-bottom: 1rem;*/
-	/*position: relative;*/
-	/*top: 1px;*/
-	/*max-width: 100%;*/
 	font-size: 2rem;
-	/*overflow: visible;*/
 	white-space: nowrap;
 	text-align: center;
 }
 
 /* 4.8.3 monthly cost input */
 .em-if-monthly_cost {
-	/*border: none;*/
 	background-color: transparent;
 	color: black;
 	text-align: center;
@@ -1480,17 +1240,13 @@ select.em-i:focus {
 	padding: 1rem 2rem;
 	font-family: merriweather;
 
-	/*border: solid 3px black;*/
-
 	font-weight: 700;
 	font-size: 2rem !important;
-	/*height: 5rem;*/
-
 }
 
 
 /* 4.9 compare to credit card */
-.em-element-collect_compare {
+/*.em-element-collect_compare {
 	grid-area: compare;
 	display: none;
 	margin: 1rem 0;
@@ -1498,7 +1254,6 @@ select.em-i:focus {
 
 .em-compare-text {
 	margin: 1rem 0;
-	/*font-family: montserrat;*/
 }
 
 .em-compare-save {
@@ -1522,7 +1277,7 @@ select.em-i:focus {
 
 .em-compare-monthly {
 	white-space: nowrap;
-}
+}*/
 
 /* 4.10 neste button */
 
@@ -1530,22 +1285,16 @@ select.em-i:focus {
 .em-element-neste {
 	grid-area: neste;
 
-	/*justify-sel*/
 	text-align: center;
-	/*justify-self: stretch;*/
 }
 
 /* 4.9.2 neste button */
 .em-b-neste {
-	/*border: none;*/
-	/*display: block;*/
 	width: 40rem;
 	margin: 2rem 0;
 	padding: 1.3rem 0;
-	/*padding: .5rem 8rem;*/
 	font-weight: 700;
 	font-size: 2rem !important;
-	/*border: solid 2px hsl(0, 0%, 20%);*/
 	border: 1px solid #949494;
 	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
 
@@ -1555,36 +1304,11 @@ select.em-i:focus {
 	font-family: merriweather;
 }
 
+.em-cc-no:focus,
 .em-cc-yes:focus {
-	border-bottom: solid 2px #000;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
-	/*border: solid 2px #000 !important;*/
-	/*outline: solid 2px red;*/
-	/*box-shadow: 2px 2px #96f, 2px -2px #96f, -2px -2px #96f;*/
-	/*box-shadow: -2px 2px #96f, -2px -2px #96f;*/
-}
-
-.em-cc-no:focus {
 	border-bottom: solid 2px #333;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
-	/*border: solid 2px #000 !important;*/
-	/*outline: solid 2px red;*/
-	/*box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f;*/
-	/*box-shadow: 2px -2px #96f, 2px 2px #96f;*/
 }
 
-
-.em-part-1-grid .em-i,
-.em-if {
-	/*height: 5rem;*/
-}
-
-/*.em-i-tenure,
-.em-i-loan_amount,
-.em-i-mobile_number,
-.em-i-email,
-.em-if-monthly_cost,
-.em*/
 
 .em-income-alert {
 	margin-top: .5rem;
@@ -1606,17 +1330,13 @@ select.em-i:focus {
 
 /* 4.11 */
 .em-date {
-	/*background-color: pink;*/
-
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
 }
 
 .em-date > div {
-	/*background-color: blue;*/
 	flex-grow: 1;
-	/*margin-right: 1rem;*/
 }
 
 .em-date > div:first-child {
@@ -1635,7 +1355,6 @@ select.em-i:focus {
 	position: relative;
 	height: 323px;
 	width: 75rem;
-	/*width: 75rem;*/
 	max-width: 100%;
 	margin: auto;
 
@@ -1671,7 +1390,6 @@ select.em-i:focus {
 	font-size: 2rem;
 
 	text-align: center;
-	/*grid-area: content;*/
 }
 
 /* 8.0 loan example */
@@ -1791,7 +1509,6 @@ select.em-i:focus {
 	font-family: Montserrat;
 
 	overflow: auto;
-	/*height: 100%;*/
 }
 
 .modal-popup .content-title {
@@ -1841,9 +1558,6 @@ select.em-i:focus {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	/*border: solid 1px white;*/
-
-	/*margin-right: 4rem;*/
 }
 
 .axowl-header-part img {
@@ -1856,18 +1570,6 @@ select.em-i:focus {
 /* 20.0 INTERNET EXPLORER GRIDS AND OTHERWISE */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
 
-	/* email/send popups, em-lower-container - js stuff */
-
-	/*button,*/
-/*	button:focus,
-	button:active,*/
-	.em-b,
-	.em-compare-save,
-	.em-ht,
-	.em-if,
-	.em-i {
-		border: solid 2.4px black;
-	}
 
 	.em-i {
 		height: 4rem;
@@ -1878,75 +1580,62 @@ select.em-i:focus {
 	}
 
 	.em-cc-yes {
-		border-right: solid 1.5px black;
+		border-right: solid 1px #949494;
 	}
 
 	.em-cc-no {
-		border-left: solid 1.5px black;
+		border-left: none;
 	}
 	
 	select::-ms-expand {
 	    display: none;
 	}
 
-	.em-element-contact_accepted span::before {
-		border: solid 2px;
-	}
 
 	.em-part-1-grid {
 		display: -ms-grid;
 
-		-ms-grid-columns: 25% 25% 25% 25%;
-		-ms-grid-rows: auto auto auto auto auto auto;
+		-ms-grid-columns: 1fr 1fr;
+		-ms-grid-rows: auto auto auto auto auto auto auto;
 
 	}
 
 	.em-element-loan_amount {
-		-ms-grid-row: 1;
+		-ms-grid-row: 2;
 		-ms-grid-column: 1;
 		-ms-grid-column-span: 2;
 	}
 
 	.em-element-monthly_cost {
 		-ms-grid-row: 1;
-		-ms-grid-column: 3;
+		-ms-grid-column: 1;
 		-ms-grid-column-span: 2;
-		-ms-grid-column-align: end;
 	}
 
 	.em-element-neste {
-		-ms-grid-row: 2;
-		-ms-grid-column: 2;
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
 		-ms-grid-column-span: 2;		
 	}
 
-	.em-element-collect_compare {
-		-ms-grid-row: 3;
-		-ms-grid-column: 1;
-		-ms-grid-column-span: 4;		
-	}
-
 	.em-element-tenure {
-		-ms-grid-row: 4;
-		-ms-grid-column: 1;
+		-ms-grid-row: 3;
+		-ms-grid-column: 2;
 	}
 
 	.em-element-collect_debt {
-		-ms-grid-row: 4;
-		-ms-grid-column: 2;
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
 	}
 
 	.em-element-mobile_number {
 		-ms-grid-row: 4;
-		-ms-grid-column: 3;
-		-ms-grid-column-span: 2;
+		-ms-grid-column: 1;
 	}
 
 	.em-element-email {
-		-ms-grid-row: 5;
-		-ms-grid-column: 3;
-		-ms-grid-column-span: 2;
-		-ms-grid-row-span: 2;
+		-ms-grid-row: 4;
+		-ms-grid-column: 2;
 	}
 
 	.em-element-axo_accept {
@@ -1961,42 +1650,208 @@ select.em-i:focus {
 		-ms-grid-column-span: 2;
 	}
 
-	.em-part-lower-container {
-		display: -ms-grid;
 
-		-ms-grid-columns: 1fr 1fr auto 1fr;
+	.em-part-2 {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr;
 		-ms-grid-rows: auto auto auto auto auto auto;
 	}
 
-	.em-part-lower-titles {
+	.em-element-co_applicant {
 		-ms-grid-row: 1;
 		-ms-grid-column: 1;
 	}
 
-	.em-part-2 {
+	.em-element-employment_type {
 		-ms-grid-row: 2;
 		-ms-grid-column: 1;
-		-ms-grid-column-align: center;
+		margin-right: 1rem;
 	}
 
-	.em-part-3 {
+	.em-element-monthly_income {
 		-ms-grid-row: 2;
 		-ms-grid-column: 2;
-		-ms-grid-column-align: center;
+		margin-left: 1rem;
 	}
 
-	
-	.em-part-4 {
+	.em-part-2 > .em-employ {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr;
+	}
+
+	.em-part-2 > .em-employ .em-element-employer {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;		
+		margin-right: 1rem;
+	}
+
+	.em-part-2 > .em-employ .em-date {
+		-ms-grid-row: 1;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-civilstatus {
+		-ms-grid-row: 4;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-number_of_children {
+		-ms-grid-row: 4;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-living_conditions {
+		-ms-grid-row: 5;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-part-2 > .em-date {
+		-ms-grid-row: 5;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-rent {
+		-ms-grid-row: 6;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-co-applicant {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr;
+		-ms-grid-rows: auto auto auto auto auto auto auto;
+	}
+
+	.em-co-applicant-title {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+	}
+
+	.em-element-living_together {
 		-ms-grid-row: 2;
-		-ms-grid-column: 3;
-		-ms-grid-column-align: center;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
 	}
 
+	.em-element-co_applicant_social_number {
+		-ms-grid-row: 2;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-co_applicant_mobile_number {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-co_applicant_email {
+		-ms-grid-row: 3;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-co_applicant_employment_type {
+		-ms-grid-row: 4;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-co_applicant_monthly_income {
+		-ms-grid-row: 4;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-co-applicant > .em-employ {
+		-ms-grid-row: 5;
+		-ms-grid-column: 1;
+		-ms-grid-column-span: 2;
+
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr;
+	}
+
+	.em-co-applicant > .em-employ .em-element-employer {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;		
+		margin-right: 1rem;
+	}
+
+	.em-co-applicant > .em-employ .em-date {
+		-ms-grid-row: 1;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-co_applicant_civilstatus {
+		-ms-grid-row: 6;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-co_applicant_living_conditions {
+		-ms-grid-row: 6;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-co_applicant_rent {
+		-ms-grid-row: 7;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-date-co_applicant_living_conditions {
+		-ms-grid-row: 7;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
 	
 	.em-part-5 {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr 1fr;
+		-ms-grid-rows: auto auto;
+	}
+
+	.em-element-credit_loan_amount {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-loan_purpose {
+		-ms-grid-row: 1;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-social_number {
+		-ms-grid-row: 1;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
+	}
+
+	.em-element-privateloan {
 		-ms-grid-row: 2;
-		-ms-grid-column: 4;
-		-ms-grid-column-align: center;
+		-ms-grid-column: 1;
+		margin-right: 1rem;
+	}
+
+	.em-element-creditloan {
+		-ms-grid-row: 2;
+		-ms-grid-column: 2;
+		margin-left: 1rem;
 	}
 
 
@@ -2049,13 +1904,6 @@ select.em-i:focus {
 		-ms-grid-columns: 2fr 1fr 1fr 1fr;
 		-ms-grid-rows: auto auto;
 
-		/*grid-template-columns: 2fr 1fr 1fr 1fr;*/
-
-		/*grid-template-areas: */
-			/*"loan tenure refinancing monthly"*/
-			/*"compare compare compare compare";*/
-
-		/*grid-column-gap: 2rem;*/
 
 		padding: 4rem 6rem;
 	}
@@ -2100,9 +1948,3 @@ select.em-i:focus {
 .em-hidden {
 	display: none;
 }
-
-.em-slidedown {
-	/*display: block;*/
-}
-
-/*.ui-widget-header {background-image:none;background-color:#887e6d;}

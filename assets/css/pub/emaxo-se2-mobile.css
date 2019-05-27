@@ -847,7 +847,7 @@ input.em-i:focus {
 	z-index: 20;
 	width: 100%;
 	background-color: #fff;
-	
+
 }
 
 /* 3.4 select input */
@@ -1162,6 +1162,8 @@ select.em-i:focus {
 	grid-area: loan;
 
 	text-align: center;
+
+	margin-top: 2rem;
 	/*margin-bottom: 4rem;*/
 	/*display: flex;*/
 
@@ -1194,54 +1196,142 @@ select.em-i:focus {
 	border-color: hsl(0, 0%, 20%) !important;
 }
 
-/* 4.1.5 loan amount range input */
+
+
+
+
+.em-slider-container {
+
+	display: flex;
+	margin-top: 4rem;
+	/*align-self: flex-end;*/
+	/*align-content: flex-end;*/
+	/*width: 50%;*/
+	/*margin-left: 1rem;*/
+	height: 4rem;
+}
+
+.em-slider-beginning {
+	/*background-color: red;*/
+	height: 4rem;
+	width: 2.9rem;
+	border: 1px solid #333;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-right: none;
+	    background-image: repeating-linear-gradient(
+    	45deg, 
+    	#fd7, 
+    	#fd7 10px, 
+    	#fc6 0px, 
+    	#fc6 20px);
+
+    background-image: repeating-linear-gradient(
+    	45deg, 
+    	rgb(78, 202, 34), 
+    	rgb(78, 202, 34) 10px, 
+    	rgb(62, 177, 21) 0px, 
+    	rgb(62, 177, 21) 20px);
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
+}
+.em-slider-end {
+	/*background-color: red;*/
+	height: 4rem;
+	width: 2.9rem;
+	border: 1px solid #333;
+	border-left: none;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	   /* background-image: repeating-linear-gradient(
+    	45deg, 
+    	#fd7, 
+    	#fd7 10px, 
+    	#fc6 0px, 
+    	#fc6 20px);*/
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
+	/*background-color: hsl(0, 0%, 95%);*/
+    background-image: repeating-linear-gradient(
+	45deg, 
+	hsl(0, 0%, 97%), 
+	hsl(0, 0%, 97%), 
+	hsl(0, 0%, 95%), 
+	hsl(0, 0%, 95%) 20px);
+
+	background-position: 9px 0px;
+}
+
 
 .em-slider-loan_amount {
 	/*flex-grow: 1;*/
 	/*border: solid 3px black !important;*/
 
-	align-self: flex-end;
-	position: relative;
-	bottom: 1rem;
+	/*align-self: flex-end;*/
+	/*position: relative;*/
+	/*bottom: 1.4rem;*/
 
-	border: 1px solid #949494;
-	box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;
-
-	height: 3rem;
-	margin-top: 4rem;
-	/*margin-left: 1rem;*/
-
+	/*border: 1px solid #949494;*/
+	border: 1px solid #333 !important;
+	border-left: none !important;
+	border-right: none !important;
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
+	/*background-color: hsl(0, 0%, 95%);*/
+	height: 4rem;
+	/*margin-top: 4rem;*/
+	/*margin-left: 2rem;*/
+	/*margin-right: 2rem;*/
+	flex-grow: 1;
 	/*width: 50%;*/
-    border-radius: 3px !important;
+    /*border-radius: 3px !important;*/
+    background-image: repeating-linear-gradient(
+	45deg, 
+	hsl(0, 0%, 97%), 
+	hsl(0, 0%, 97%), 
+	hsl(0, 0%, 95%), 
+	hsl(0, 0%, 95%) 20px);
 
 }
 .em-slider-loan_amount .ui-widget-header {
-	border-radius: 0;
+	/*border-radius: 0;*/
+	/*border-right: solid 2px black !important;*/
 	/*background-image: none;*/
-    background-image: repeating-linear-gradient(
+
+	/* purple */
+    /* background-image: repeating-linear-gradient(
     	45deg, 
     	#96f, 
     	#96f 10px, 
     	#85e 0px, 
-    	#85e 20px);
+    	#85e 20px);*/
 
+    /* yellow */
+    /*background-image: repeating-linear-gradient(
+    	45deg, 
+    	#fd7, 
+    	#fd7 10px, 
+    	#fc6 0px, 
+    	#fc6 20px);*/
 
-   /* background-image: repeating-linear-gradient(
+    /* green */
+    background-image: repeating-linear-gradient(
     	45deg, 
     	rgb(78, 202, 34), 
     	rgb(78, 202, 34) 10px, 
     	rgb(62, 177, 21) 0px, 
-    	rgb(62, 177, 21) 20px);*/
+    	rgb(62, 177, 21) 20px);
+
 	/*background: url('https://www.axofinans.no/images/slider-bg.png') repeat top;*/
 	/*background-color: #96f;*/
 	/*background: linear-gradient(45deg, black 0%, black 26%, transparent 26%), linear-gradient(-45deg, black 0%, black 27%, transparent 27%);*/
 }
 .em-slider-loan_amount .ui-slider-handle {
-	height: 4rem;
-	width: 4rem;
+	height: 5rem;
+	width: 6rem;
 	/*border: solid 3px black;*/
-	border: 1px solid #949494;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4;*/
+	/*border: 1px solid #949494;*/
+	border: 1px solid #333;
+	border-right: 2px solid #333;
+	border-left: 2px solid #333;
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 
     /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
     /*background-image: url('http://localhost:8010/wp/wp-content/uploads/2019/05/rangearrow.png');*/
@@ -1249,22 +1339,23 @@ select.em-i:focus {
     background-repeat: no-repeat;
     background-position: center; 
 	background-color: #fff;
-	top: -.6rem;
-	margin-left: -2rem;
+	/*top: -.7rem;*/
+	bottom: .6rem;
+	margin-left: -3rem;
+	/*margin-right: -5rem;*/
 	cursor: grab;
     border-radius: 3px;
 
 }
 
 .em-slider-loan_amount .ui-state-active {
+	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 	background-color: #fff;
 }
 
 .ui-corner-all {
 	border-radius: 0;
 }
-
-
 
 
 .em-element-loan_amount .em-it {

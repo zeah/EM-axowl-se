@@ -97,6 +97,7 @@ final class Axowl_data_se {
 	 * 
 	 */
 	public function incomplete() {
+		exit;
 
 		$data = ['status' => 'incomplete'];
 

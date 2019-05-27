@@ -4,7 +4,7 @@
  */
 
 
-var sendGa = function(label, value = 0) {
+var sendGa = function(label, value) {
 	
 	// dont send to GA if logged in
 	if (emurl.logged_in) return;
@@ -609,7 +609,7 @@ jQuery(function($) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		if (!valid) return;
+		// if (!valid) return;
 
 		location.hash = 'form';
 		$.post(emurl.ajax_url, {
