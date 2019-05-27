@@ -269,7 +269,12 @@ final class Axowl_shortcode_parts_se {
 		// wp_die('<xmp>'.print_r($o, true).'</xmp>');
 
 		return sprintf(
-			'<div class="em-slider em-slider-%1$s" data-max="%2$s" data-min="%3$s" data-step="%4$s" data-def="%5$s"></div>',
+			'<div class="em-slider-container">
+				<div class="em-slider-beginning"></div>
+				<div class="em-slider em-slider-%1$s" data-max="%2$s" data-min="%3$s" data-step="%4$s" data-def="%5$s"></div>
+				<div class="em-slider-end"></div>
+			</div>
+			',
 
 			$o['name'],
 

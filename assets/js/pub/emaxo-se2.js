@@ -11,7 +11,7 @@ var sendGa = function(label, value = 0) {
 
 	// sending ga via gtm
 	try {
-		var action = $('#abtesting-post').val() ? $('#abtesting-post').val() : 'na';
+		var action = $('#abtesting-name').val() ? $('#abtesting-name').val() : 'na';
 		if ("ga" in window) {
 		    tracker = ga.getAll()[0];
 		    if (tracker) tracker.send('event', 'axo form', action, label, value);
@@ -21,7 +21,11 @@ var sendGa = function(label, value = 0) {
 };
 
 // VALIDATION AND EVENTS
-(function($) {
+jQuery(function($) {
+// (function($) {
+
+	sendGa('view', 0);
+
 	var validColor = 'green';
 	var invalidColor = 'red';
 
@@ -767,11 +771,13 @@ var sendGa = function(label, value = 0) {
 			console.log(d);
 			if (d === 'Validation Error') {
 				alert('Teknisk Feil - last inn siden på nytt og prøv igjen eller kontakt oss på epost.');
+				sendGa('validation error', 0);
 				return;
 			}
 
 			if (d === 'Technical Error') {
 				alert('Teknisk Feil - Feil hos Axo Finans. Prøv igjen seinere eller kontakt oss på epost.');
+				sendGa('technical error', 0);
 				return;				
 			}
 
@@ -796,12 +802,13 @@ var sendGa = function(label, value = 0) {
 			window.removeEventListener('beforeunload', unload);
 		});
 	});
-
-})(jQuery);
+});
+// })(jQuery);
 
 
 // BEHAVIOUR
-(function($) {
+jQuery(function($) {
+// (function($) {
 
 	var desktop = function() {
 		return $(window).width() > 900;
@@ -1062,15 +1069,16 @@ var sendGa = function(label, value = 0) {
 			}
 		}
 	});
-
-})(jQuery);
+});
+// })(jQuery);
 
 
 /***********
 	POPUP
  **********/
 
-(function($) {
+jQuery(function($) {
+// (function($) {
 
 	var numb = function(n) { return n.replace(/\D/g, '') }
 
@@ -1102,8 +1110,8 @@ var sendGa = function(label, value = 0) {
 			$.post(emurl.ajax_url, 
 				{
 					action: 'popup_se',
-					'ab-name': $('#abtesting-post').val(),
-					'ab-sc': $('#abtesting-sc').val(),
+					// 'ab-name': $('#abtesting-name').val(),
+					// 'ab-sc': $('#abtesting-sc').val(),
 					'pop-email': $('#pop-email').val(),
 					'pop-phone': numb($('#pop-phone').val())
 				}, 
@@ -1130,14 +1138,15 @@ var sendGa = function(label, value = 0) {
 			$('.em-b-next').one('click', function() { $('body').off('mouseleave', showPopup) });
 		}
 	}, 5000);
-
-})(jQuery);
+});
+// })(jQuery);
 
 
 /*****************
 	BACK BUTTON
  *****************/
-(function($) {
+jQuery(function($) {
+// (function($) {
 	if (/.+/.test(location.hash)) history.replaceState(null, null, ' ');
 
 	var hash = '';
@@ -1146,13 +1155,15 @@ var sendGa = function(label, value = 0) {
 
 		hash = location.hash;
 	});
-})(jQuery);
+});
+// })(jQuery);
 
 
 /*************
 	COOKIES
  *************/
-(function($) {
+jQuery(function($) {
+// (function($) {
 	var date = new Date();
 	date.setTime(date.getTime() + (120*24*60*60*1000));
 	date = date.toUTCString();
@@ -1184,27 +1195,30 @@ var sendGa = function(label, value = 0) {
 			document.cookie = 'referrer='+document.referrer+'; expires='+date;
 
 	}());
-
-})(jQuery);
+});
+// })(jQuery);
 
 
 /**************
 	QA BOXES
  **************/
-(function($) {
+jQuery(function($) {
+// (function($) {
   $('.em-qa-title').each(function() {
     $(this).on('click touch', function() {
     	$(this).next('.em-qa-box').slideToggle();
     });
   });
-})(jQuery);
+});
+// })(jQuery);
 
 
 
 /*********************
 	MODAL LINK
  *********************/
-(function($) {
+// (function($) {
+jQuery(function($) {
 
 	$('.modal-link').on('click', function(e) {
 
@@ -1236,5 +1250,5 @@ var sendGa = function(label, value = 0) {
 		});
 
 	});
-
-})(jQuery);
+});
+// })(jQuery);

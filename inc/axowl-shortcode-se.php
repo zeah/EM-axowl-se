@@ -248,7 +248,7 @@ final class Axowl_shortcode_se {
 		// $html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
 		$html .= '<div class="em-loan-example">Individuell ränta från 2,95% - 24%. Exempel: 5,3%. 70 000 kr på 15 år. Eff. ränta 6,54 %. Tot. belopp 108 346 kr. Kostn./mån: 600 kr. Startavg. 495 kr. Avikostn. 35 kr/mån.</div></form></div>';
 
-		$html .= '<input type="hidden" id="abtesting-sc" value="1">';
+		$html .= '<input type="hidden" id="abtesting-sc" value="2">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';
 
 		// TODO set transient
@@ -388,12 +388,12 @@ final class Axowl_shortcode_se {
 	public function sands2() {
 
         // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
-        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.3', '(min-width: 901px)');
-        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.3', '(max-width: 900px)');
+        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 901px)');
+        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.4', '(max-width: 900px)');
         
         // wp_enqueue_script('jquery-touch');
 
-        wp_enqueue_script('emaxowl-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/emaxo-se2.js', [], '0.0.3', true);
+        wp_enqueue_script('emaxowl-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/emaxo-se2.js', [], '0.0.4', true);
 	}
 
 
