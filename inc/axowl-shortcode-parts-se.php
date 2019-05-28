@@ -44,39 +44,82 @@ final class Axowl_shortcode_parts_se {
 		);
 	}
 
-	public function form_buttons($o = []) {
+	public function epop($o = []) {
 		// wp_die('<xmp>'.print_r($o, true).'</xmp>');
 		
-		return sprintf('
-			<div class="em-b-container%s"><div class="em-b-inner">
-				<button class="em-b em-b-next" type="button">Neste</button>
-				%s
-				<button class="em-b em-b-submit em-hidden" type="button">Ansök nu</button>
-			</div></div>
-		',
-			isset($o['hidden']) ? ' em-hidden' : '',
-			isset($o['hide_prog']) ? '' : '<div class="em-progress-container">
-												<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
-												<div class="em-progress-text">0%</div>
-											</div>'
+		// $o = get_option('em_axowl_se');
+
+		return sprintf('<div class="em-glass"></div>
+			<div class="email-popup"><div class="email-popup-grid">
+
+			 	<h2 class="pop-title">%s</h2>
+
+			 	<div class="pop-input-container pop-phone-container">
+				 	<label for="pop-phone" class="pop-label-phone">%s</label>
+				 	<input type="text" class="em-i em-pop-phone" name="pop-phone" id="pop-phone">
+			 	</div>
+
+			 	<div class="pop-input-container pop-email-container">
+				 	<label for="pop-email" class="pop-label-email">%s</label>
+				 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
+				</div>
+			 	
+			 	<button type="button" class="em-b pop-neste">%s</button>
+
+			 	<div class="pop-text">%s</div>
+
+			 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
+			</div>',
+		 	
+		 	(isset($o['popup_text']) && $o['popup_text']) ? $o['popup_text'] : 'VIL DU FYLLE UT SØKNADSSKJEMA SENERE?',
+
+		 	(isset($o['popup_number']) && $o['popup_number']) ? $o['popup_number'] : 'Mobil nummer',
+
+		 	(isset($o['popup_email']) && $o['popup_email']) ? $o['popup_email'] : 'Epost',
+
+		 	(isset($o['popup_submit']) && $o['popup_submit']) ? $o['popup_submit'] : 'Näste',
+
+		 	(isset($o['popup_subtext']) && $o['popup_subtext']) ? $o['popup_subtext'] : ''
+
 		);
-				// <button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
+
 	}
 
-	public function form_buttons2() {
-		// return '<button class="em-b em-b-next" type="button">Neste</button>';
-				// <div class="em-progress-container">
-				// 	<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
-				// 	<div class="em-progress-text">0%</div>
-				// </div>
-		return '
-			<div class="em-b-container">
-				<button class="em-b em-b-next" type="button">Neste</button>
-				<button class="em-b em-b-submit em-hidden" type="button">Send inn</button>
-				<button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
-			</div>
-		';
-	}
+	// public function form_buttons($o = []) {
+	// 	// wp_die('<xmp>'.print_r($o, true).'</xmp>');
+		
+	// 	return sprintf('
+	// 		<div class="em-b-container%s"><div class="em-b-inner">
+	// 			<button class="em-b em-b-next" type="button">Neste</button>
+	// 			%s
+	// 			<button class="em-b em-b-submit em-hidden" type="button">Ansök nu</button>
+	// 		</div></div>
+	// 	',
+	// 		isset($o['hidden']) ? ' em-hidden' : '',
+	// 		isset($o['hide_prog']) ? '' : '<div class="em-progress-container">
+	// 											<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
+	// 											<div class="em-progress-text">0%</div>
+	// 										</div>'
+	// 	);
+	// 			// <button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
+	// }
+
+
+
+	// public function form_buttons2() {
+	// 	// return '<button class="em-b em-b-next" type="button">Neste</button>';
+	// 			// <div class="em-progress-container">
+	// 			// 	<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
+	// 			// 	<div class="em-progress-text">0%</div>
+	// 			// </div>
+	// 	return '
+	// 		<div class="em-b-container">
+	// 			<button class="em-b em-b-next" type="button">Neste</button>
+	// 			<button class="em-b em-b-submit em-hidden" type="button">Send inn</button>
+	// 			<button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
+	// 		</div>
+	// 	';
+	// }
 
 	public function popup() {
 		return '

@@ -86,36 +86,36 @@ final class Axowl_shortcode_se {
 		$lock = '<div class="em-lock" title="Kryptert og sikker kommunikasjon"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>';
 		$lock = '';
 
-		$epop = '<div class="em-glass"></div>
-				 <div class="email-popup"><div class="email-popup-grid">
+		// $epop = '<div class="em-glass"></div>
+		// 		 <div class="email-popup"><div class="email-popup-grid">
 
-				 	<h2 class="pop-title">VIL DU FYLLE UT SØKNADSSKJEMA SENERE?</h2>
+		// 		 	<h2 class="pop-title">VIL DU FYLLE UT SØKNADSSKJEMA SENERE?</h2>
 
-				 	<div class="pop-input-container pop-phone-container">
-					 	<label for="pop-phone" class="pop-label-phone">Telefon</label>
-					 	<input type="text" class="em-i em-pop-phone" name="pop-phone" id="pop-phone">
-				 	</div>
+		// 		 	<div class="pop-input-container pop-phone-container">
+		// 			 	<label for="pop-phone" class="pop-label-phone">Telefon</label>
+		// 			 	<input type="text" class="em-i em-pop-phone" name="pop-phone" id="pop-phone">
+		// 		 	</div>
 
-				 	<div class="pop-input-container pop-email-container">
-					 	<label for="pop-email" class="pop-label-email">E-Post</label>
-					 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
-					</div>
+		// 		 	<div class="pop-input-container pop-email-container">
+		// 			 	<label for="pop-email" class="pop-label-email">E-Post</label>
+		// 			 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
+		// 			</div>
 				 	
-				 	<button type="button" class="em-b pop-neste">Näste</button>
+		// 		 	<button type="button" class="em-b pop-neste">Näste</button>
 
-				 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
+		// 		 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
 
-				 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
-				 </div>';
+		// 		 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
+		// 		 </div>';
 
 		$html = sprintf(
-			'<div class="em-form-container" style="opacity: 0;%s">%s%s<form class="emowl-form">%s',
+			'<div class="em-form-container" style="opacity: 0;%s">%s%s<form class="emowl-form">',
 			
 			isset($atts['style']) ? $atts['style'] : '',
 			$p->popup(),
-			$epop,
-			$lock
+			$p->epop($data)
 		);
+
 
 		$html .= '<input type="hidden" name="fax">';
 
@@ -217,7 +217,7 @@ final class Axowl_shortcode_se {
 			
 			isset($atts['style']) ? $atts['style'] : '',
 			$p->popup(),
-			$epop,
+			$p->epop($data),
 			$p->header()
 		);
 
@@ -370,7 +370,7 @@ final class Axowl_shortcode_se {
 	}
 
 	public function sands() {
-        wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
+        // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
         
         wp_enqueue_script('jquery-touch');
 
@@ -388,8 +388,10 @@ final class Axowl_shortcode_se {
 	public function sands2() {
 
         // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
-        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 901px)');
-        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.4', '(max-width: 900px)');
+        // wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 901px)');
+        wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 751px)');
+        // wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.4', '(max-width: 900px)');
+        wp_enqueue_style('emaxowl-se-mobile', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2-mobile.css', array(), '0.0.4', '(max-width: 750px)');
         
         // wp_enqueue_script('jquery-touch');
 

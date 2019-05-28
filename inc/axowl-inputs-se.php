@@ -173,6 +173,7 @@ final class Axowl_inputs_se {
 		'co_applicant_mobile_number' => ['text' => true, 'validation' => 'phone', 'digits' => 8],
 		'co_applicant_email' => ['text' => true, 'validation' => 'email'],
 		'co_applicant_employment_type' => ['list' => Axowl_list_se::employment_type, 'validation' => 'list'],
+		'co_applicant_monthly_income' => ['text' => true, 'validation' => 'currency', 'format' => 'currency'],
 		
 		'div12' => ['class' => 'em-employ'],
 		'co_applicant_employer' => ['text' => true, 'hidden' => true, 'validation' => 'empty'],
@@ -190,7 +191,6 @@ final class Axowl_inputs_se {
 
 		'/div12' => [],
 		// 'co_applicant_work_number' => ['text' => true, 'hidden' => true, 'validation' => 'phone', 'type' => 'tel'],
-		'co_applicant_monthly_income' => ['text' => true, 'validation' => 'currency', 'format' => 'currency'],
 		
 		'co_applicant_civilstatus' => ['list' => Axowl_list_se::civilstatus, 'validation' => 'list'],
 		

@@ -43,7 +43,7 @@ final class Axowl_settings_se {
 		if ($hook != 'settings_page_em-axowl-se-page') return;
 
         wp_enqueue_style('emaxowl-se-admin', EM_AXOWL_SE_PLUGIN_URL.'assets/css/admin/emaxo-se.css', array(), '1.0.0');
-        wp_enqueue_script('emaxowl-se-admin', EM_AXOWL_SE_PLUGIN_URL.'/assets/js/admin/emaxo-se.js', array(), '1.0.0', true);
+        wp_enqueue_script('emaxowl-se-admin', EM_AXOWL_SE_PLUGIN_URL.'/assets/js/admin/emaxo-se.js', array(), '1.0.1', true);
 
 	}
 
@@ -55,6 +55,7 @@ final class Axowl_settings_se {
 		register_setting('em-axowl-se-settings-name', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
 		register_setting('em-axowl-se-settings-data', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
 		register_setting('em-axowl-se-settings-input', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		register_setting('em-axowl-se-settings-popup', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
 		register_setting('em-axowl-se-settings-ab', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
 
 		add_settings_section('em-axowl-se-name', '', [$this, 'name_section'], 'em-axowl-se-page-name');
@@ -160,7 +161,7 @@ final class Axowl_settings_se {
 			// 'account_number' => 'The bank account the loan will be paid out to, <br>without e.g. spaces and dots. CDV control is recommended',
 			'axo_accept' => 'Checkbox for accepting data usage by axo.',
 			'contact_accepted' => 'Checkbox for accepting data usage by axo.',
-			'popup_text' => 'Bottom text for email/phone popup collector'
+			// 'popup_text' => 'Bottom text for email/phone popup collector'
 		];
 
 		add_settings_section('em-axowl-se-input', 'Text for form inputs', [$this, 'input_section'], 'em-axowl-se-page-input');
@@ -174,6 +175,25 @@ final class Axowl_settings_se {
 				[$key, $value, true]
 			);
 
+
+		$popup = [
+			'popup_text' => 'popup tekst',
+			'popup_number' => 'tittel for telefon input',
+			'popup_email' => 'tittel for epost input',
+			'popup_submit' => 'tekst på knapp for å sende inn',
+			'popup_subtext' => 'tekst på bunnen av popup vindu' 
+		];
+
+		add_settings_section('em-axowl-se-popup', 'Popup vindu', [$this, 'input_section'], 'em-axowl-se-page-popup');
+		foreach ($popup as $key => $value)
+			add_settings_field(
+				'em-axowl-se'.$key,
+				ucwords(str_replace('_', ' ', $key)),
+				[$this, 'input_setting'],
+				'em-axowl-se-page-popup',
+				'em-axowl-se-popup',
+				[$key, $value, true]
+			);
 			// add_settings_field(
 			// 	'em-axowl-se-personvern',
 			// 	'Personvern',
@@ -200,6 +220,7 @@ final class Axowl_settings_se {
 			<button type="button" class="em-settings-anchor em-settings-anchor-name em-settings-anchor-active">General</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-data">Callbacks</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-input">Input text</button>
+			<button type="button" class="em-settings-anchor em-settings-anchor-popup">Popup</button>
 			<!-- <button type="button" class="em-settings-anchor em-settings-anchor-ab">A/B</button> -->
 		</div>';
 
@@ -225,6 +246,10 @@ final class Axowl_settings_se {
 		do_settings_sections('em-axowl-se-page-input');
 		echo '</div>';
 
+		echo '<div class="em-settings em-settings-popup em-hidden">';
+		settings_fields('em-axowl-se-settings-popup');
+		do_settings_sections('em-axowl-se-page-popup');
+		echo '</div>';
 		// fourth tab
 		// echo '<div class="em-settings em-settings-ab em-hidden">';
 		// settings_fields('em-axowl-se-settings-ab');

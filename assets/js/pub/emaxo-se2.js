@@ -189,7 +189,7 @@ jQuery(function($) {
 
 			var c = v.replace(/\s/g, '');  
 			if (c.length == 10) validation.call(this);
-			else if (c.length > 10) this.value = v.substring(0, v.length-1); 
+			else if (c.length > 10) this.value = this.value.substring(0, v.length-1); 
 		},
 
 		email: function() {},

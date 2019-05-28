@@ -36,11 +36,18 @@
 			e.target.classList.add('em-settings-anchor-active');
 		});
 
-		qs('.em-settings-anchor-ab').addEventListener('click', function(e) {
+		// qs('.em-settings-anchor-ab').addEventListener('click', function(e) {
+		// 	hideAll();
+		// 	qs('.em-settings-ab').classList.remove('em-hidden');
+		// 	e.target.classList.add('em-settings-anchor-active');
+		// });
+
+		qs('.em-settings-anchor-popup').addEventListener('click', function(e) {
 			hideAll();
-			qs('.em-settings-ab').classList.remove('em-hidden');
+			qs('.em-settings-popup').classList.remove('em-hidden');
 			e.target.classList.add('em-settings-anchor-active');
 		});
+
 
 		// var n = qsa('.em-settings');
 
