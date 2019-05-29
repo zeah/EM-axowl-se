@@ -63,8 +63,10 @@ final class Axowl_settings_se {
 		add_settings_field('em-axowl-se-content', 'Content', [$this, 'input_setting'], 'em-axowl-se-page-name', 'em-axowl-se-name', ['content', 'Can be used to distinguish between different publishers']);
 
 
-		// add_settings_section('em-axowl-se-ab', '', [$this, 'ab_section'], 'em-axowl-se-page-ab');
-		// add_settings_field('em-axowl-se-ab', 'Testing settings', [$this, 'ab_setting'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
+		add_settings_section('em-axowl-se-ab', '', [$this, 'ab_section'], 'em-axowl-se-page-ab');
+		add_settings_field('em-axowl-se-ab-onoff', '', [$this, 'ab_setting_onoff'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
+		add_settings_field('em-axowl-se-ab-page', 'Set page to testing', [$this, 'ab_page'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
+		add_settings_field('em-axowl-se-ab-add', 'Add page to testing', [$this, 'ab_add'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
 
 
 		$settings = [
@@ -161,6 +163,16 @@ final class Axowl_settings_se {
 			// 'account_number' => 'The bank account the loan will be paid out to, <br>without e.g. spaces and dots. CDV control is recommended',
 			'axo_accept' => 'Checkbox for accepting data usage by axo.',
 			'contact_accepted' => 'Checkbox for accepting data usage by axo.',
+			'interest_ex' => 'Interest Example (bottom of form)',
+			'end_popup' => 'Text for popup after form sent in (thank you page)',
+			'button_next' => 'Text on button to open second part of form.',
+			'button_send' => 'Text on button to send in form.',
+			'button_endre' => 'Text on button "endre"',
+			'button_text' => 'Text below "send" button.',
+			'top_text_title' => 'Top text: title',
+			'top_text_1' => 'Top text: step 1',
+			'top_text_2' => 'Top text: step 2',
+			'top_text_3' => 'Top text: step 3'
 			// 'popup_text' => 'Bottom text for email/phone popup collector'
 		];
 
@@ -219,9 +231,9 @@ final class Axowl_settings_se {
 		echo '<div class="em-settings-nav">
 			<button type="button" class="em-settings-anchor em-settings-anchor-name em-settings-anchor-active">General</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-data">Callbacks</button>
-			<button type="button" class="em-settings-anchor em-settings-anchor-input">Input text</button>
+			<button type="button" class="em-settings-anchor em-settings-anchor-input">Tekst</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-popup">Popup</button>
-			<!-- <button type="button" class="em-settings-anchor em-settings-anchor-ab">A/B</button> -->
+			<button type="button" class="em-settings-anchor em-settings-anchor-ab">A/B</button>
 		</div>';
 
 		// form
@@ -250,11 +262,11 @@ final class Axowl_settings_se {
 		settings_fields('em-axowl-se-settings-popup');
 		do_settings_sections('em-axowl-se-page-popup');
 		echo '</div>';
-		// fourth tab
-		// echo '<div class="em-settings em-settings-ab em-hidden">';
-		// settings_fields('em-axowl-se-settings-ab');
-		// do_settings_sections('em-axowl-se-page-ab');
-		// echo '</div>';
+
+		echo '<div class="em-settings em-settings-ab em-hidden">';
+		settings_fields('em-axowl-se-settings-ab');
+		do_settings_sections('em-axowl-se-page-ab');
+		echo '</div>';
 
 
 		submit_button('save');
@@ -335,7 +347,31 @@ final class Axowl_settings_se {
 		// echo 'title';
 	}
 
-	public function ab_setting() {
+	public function ab_setting_onoff() {
+		$opt = $this->option('ab_onoff');
+		printf('<div>Activate AB-testing. <input type="checkbox" name="em_axowl_se[ab_onoff]" %s></div>', $opt ? ' checked' : '');
+	}
+
+	public function ab_page() {
+		// $data = get_option('em_axowl_se');
+		$posts = get_posts(['numberposts' => -1, 'post_type' => ['post', 'page'], 'orderby' => 'name', 'order' => 'asc']);
+
+		printf(
+				'<div style="margin-top: 1rem;"><select name="em_axowl_se[ab_page]">%s</select></div>',
+				$this->option_html($this->option('ab_page'), $posts)
+			);
+	}
+
+	public function ab_add() {
+		$posts = get_posts(['numberposts' => -1, 'post_type' => ['post', 'page'], 'orderby' => 'name', 'order' => 'asc']);
+
+		printf(
+				'<div style="margin-top: 1rem;"><select name="em_axowl_se[ab_add]">%s</select></div>',
+				$this->option_html($this->option('ab_add'), $posts)
+			);
+	}
+
+	public function ab_setting2() {
 		$d = get_option('em_axowl_se');
 		$posts = get_posts(['numberposts' => -1, 'post_type' => ['post', 'page'], 'orderby' => 'name', 'order' => 'asc']);
 

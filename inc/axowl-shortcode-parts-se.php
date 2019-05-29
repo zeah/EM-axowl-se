@@ -45,10 +45,6 @@ final class Axowl_shortcode_parts_se {
 	}
 
 	public function epop($o = []) {
-		// wp_die('<xmp>'.print_r($o, true).'</xmp>');
-		
-		// $o = get_option('em_axowl_se');
-
 		return sprintf('<div class="em-glass"></div>
 			<div class="email-popup"><div class="email-popup-grid">
 
@@ -80,77 +76,50 @@ final class Axowl_shortcode_parts_se {
 		 	(isset($o['popup_submit']) && $o['popup_submit']) ? $o['popup_submit'] : 'Näste',
 
 		 	(isset($o['popup_subtext']) && $o['popup_subtext']) ? $o['popup_subtext'] : ''
-
 		);
-
 	}
-
-	// public function form_buttons($o = []) {
-	// 	// wp_die('<xmp>'.print_r($o, true).'</xmp>');
-		
-	// 	return sprintf('
-	// 		<div class="em-b-container%s"><div class="em-b-inner">
-	// 			<button class="em-b em-b-next" type="button">Neste</button>
-	// 			%s
-	// 			<button class="em-b em-b-submit em-hidden" type="button">Ansök nu</button>
-	// 		</div></div>
-	// 	',
-	// 		isset($o['hidden']) ? ' em-hidden' : '',
-	// 		isset($o['hide_prog']) ? '' : '<div class="em-progress-container">
-	// 											<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
-	// 											<div class="em-progress-text">0%</div>
-	// 										</div>'
-	// 	);
-	// 			// <button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
-	// }
-
-
-
-	// public function form_buttons2() {
-	// 	// return '<button class="em-b em-b-next" type="button">Neste</button>';
-	// 			// <div class="em-progress-container">
-	// 			// 	<progress title="framdriftsbar" class="em-progress" value="0" max="100"></progress>
-	// 			// 	<div class="em-progress-text">0%</div>
-	// 			// </div>
-	// 	return '
-	// 		<div class="em-b-container">
-	// 			<button class="em-b em-b-next" type="button">Neste</button>
-	// 			<button class="em-b em-b-submit em-hidden" type="button">Send inn</button>
-	// 			<button class="em-b em-b-back em-hidden" type="button">Tilbake</button>
-	// 		</div>
-	// 	';
-	// }
 
 	public function popup() {
-		return '
-			<div class="em-popup">
+
+		$opt = get_option('em_axowl_se');
+
+		return sprintf(
+			'<div class="em-popup">
 				<button type="button" class="em-popup-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></button>
-				<div class="em-popup-content"><span>DIN SØKNAD ER SENDT INN TIL VÅR PARTNER AXO FINANS AS.<br>DU VIL FÅ SVAR PÅ SØKNADEN FRA AXO FINANS I LØPET AV 1 DAG.</span></div>
-			</div>
-		';
+				<div class="em-popup-content"><span>%s</span></div>
+			</div>',
+			isset($opt['end_popup']) ? $opt['end_popup'] : 'DIN SØKNAD ER SENDT INN TIL VÅR PARTNER AXO FINANS AS.<br>DU VIL FÅ SVAR PÅ SØKNADEN FRA AXO FINANS I LØPET AV 1 DAG.'
+		);
 	}
 
-	public function header() {
+	public function header($o = []) {
 		return sprintf(
 			'<div class="axowl-header">
-			 <h1 class="axow-header-title">Börja här!</h1>
+			 <h1 class="axow-header-title">%s</h1>
 				<div class="axowl-header-part">
 					<img src="%s">
-					<span>1) Välj lånebelopp</span>
+					<span>%s</span>
 				</div>
 				<div class="axowl-header-part">
 					<img src="%s">
-					<span>2) Fyll i formuläret</span>
+					<span>%s</span>
 				</div>
 				<div class="axowl-header-part">
 					<img src="%s">
-					<span>3) Vi skickar erbjudande</span>
+					<span>%s</span>
 				</div>
 			</div>',
 
+			isset($o['top_text_title']) ? $o['top_text_title'] : 'Börja här!',
+
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg1.png'),
+			isset($o['top_text_1']) ? $o['top_text_1'] : '1) Välj lånebelopp',
+
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg2.png'),
-			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg3.png')
+			isset($o['top_text_2']) ? $o['top_text_2'] : '2) Fyll i formuläret',
+
+			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg3.png'),
+			isset($o['top_text_3']) ? $o['top_text_3'] : '3) Vi skickar erbjudande'
 
 
 		);
@@ -576,17 +545,13 @@ final class Axowl_shortcode_parts_se {
 				break;
 		}
 
-		// wp_die('<xmp>'.print_r($valid, true).'</xmp>');
 		return sprintf(
 			'<img class="em-marker-valid em-marker-val em-hidden" src="%s">
 			<img class="em-marker-invalid em-marker-val em-hidden" src="%s">',
 			
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/'.$valid),
-			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/hook.png'),
-			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/greentick.png'),
 			
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/'.$invalid)
-			// esc_url(EM_AXOWL_PLUGIN_URL.'assets/img/redtick.png')
 		);		
 	}
 
@@ -604,6 +569,37 @@ final class Axowl_shortcode_parts_se {
 				    <span class="em-compare-tenure">5</span> år.
 				</div>';
 
+	}
+
+	public function buttons($o = [], $d = []) {
+		return sprintf(
+			'<div class="em-b-container">
+				%s
+				%s
+				%s
+				%s
+			</div>',
+			isset($o['next']) ? sprintf(
+									'<button type="button" class="em-b em-b-next">%s</button>',
+									isset($d['next']) ? $d['button_next'] : 'Gå vidare'
+								) : '',
+
+			isset($o['endre']) ? sprintf(
+									'<button type="button" class="em-b em-b-endre">%s</button>',
+									isset($d['endre']) ? $d['button_endre'] : 'Endre'
+								) : '',
+
+			isset($o['send']) ? sprintf(
+									'<button type="button" class="em-b em-b-send">%s</button>',
+									isset($d['send']) ? $d['button_send'] : 'Ansök nu'
+								) : '',
+
+			isset($o['text']) ? sprintf(
+									'<div class="em-b-text">%s</div>',
+									isset($d['text']) ? $d['button_text'] : 'Ansökan är kostnadsfri och inte bindande.'
+								) : ''
+
+		);
 	}
 
 

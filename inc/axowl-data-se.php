@@ -272,6 +272,7 @@ final class Axowl_data_se {
 
 	}
 
+	// TODO send to gfunc -> slack logs channel
 	private function validation_error($data) {
 		echo 'Validation Error';
 	}

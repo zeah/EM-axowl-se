@@ -4,6 +4,9 @@
  */
 
 
+// console.log(JSON.parse(emurl));
+console.log(emurl);
+
 var sendGa = function(label, value) {
 	
 	// dont send to GA if logged in
@@ -22,7 +25,6 @@ var sendGa = function(label, value) {
 
 // VALIDATION AND EVENTS
 jQuery(function($) {
-// (function($) {
 
 	sendGa('view', 0);
 
@@ -204,24 +206,10 @@ jQuery(function($) {
 
 		check: function() { if (!this.val()) invalid.call(this); else valid.call(this) },
 
-		// bankaccount: function() {
-		// 	this.value = this.value
-		// 					.replace(/[^\d\.\s]/g, '')
-		// 					.replace(/\.{2,}/g, '.')
-		// 					.replace(/\s{2,}/g, ' ');
-
-		// 	var c = this.value.replace(/[\s\. ]/g, '');
-		// 	if (c.length == 11) validation.call(this);
-		// 	else if (c.length > 11) this.value = this.value.substring(0, this.value.length-1); 
-		// },
-
 		socialnumber: function() {
 			var v = this.value;
 			var c = v.replace(/\D/g, '');
 
-			// var p = v.replace(/-/, '%FD%');
-
-			// p = p.replace(/\D|(%FD%)/g, '').replace('%FD%', '-');
 			function removeDup(string, regex) {
 			  var count = 0
 			  var replaceWith = ''
@@ -240,7 +228,6 @@ jQuery(function($) {
 			this.value = removeDup(this.value, /-|\+/g);
 
 			if (!/^(\d{6})|(\d{8})(-|\+)?\d*$/.test(this.value)) this.value = this.value.replace(/\D/g, '');
-			// if (/^\d{7}|\d{9}(-|\+)?.+/.test(this.value)) this.value = this.value.replace(/\D/g, '');
 
 			if (c.length > 12) this.value = v.substring(0, v.length-1); 
 
@@ -271,9 +258,6 @@ jQuery(function($) {
 			// convert to number with spaces
 			var v = this.value.replace(/\D/g, '');
 			this.value = v.replace(/(\d)(?=(\d{2})+(?!\d))/g, '$1 ');
-			// this.value = v.replace(/^(\d{3})+$/, '$1 ');
-			// var m = v.match(/^(\d{3})(\d{2})(\d{3})/); 
-			// if (m) this.value = m[1]+' '+m[2]+' '+m[3];
 		},
 		email: function() {},
 		currency: function() {
@@ -295,10 +279,6 @@ jQuery(function($) {
 
 			if (d.length == 12) this.value = d.replace(/(\d{8})(\d{4})/, '$1-$2');
 			else if (d.length == 10) this.value = d.replace(/(\d{6})(\d{4})/, '$1-$2');
-
-			// var d = this.value.replace(/[\D]/g, '');
-			// var m = d.match(/^(\d{6})(\d{5})$/);
-			// if (m) this.value = m[1]+' '+m[2];
 		}
 	}
 
@@ -348,105 +328,12 @@ jQuery(function($) {
 
 			$(this).focusout(function() {
 				$(this).siblings('label').find('.em-it').css('font-weight', '400');
-				
-				// var container = $(this).parents('.em-part-container');
-				// container.find('.em-part').each(function() {
-				// 	$(this).css('opacity', '1');
-				// });
 			});
 
 			$(this).focus(function() { 
 				$(this).siblings('label').find('.em-it').css('font-weight', '700');
 				$(this).removeClass('em-valid-border em-invalid-border');
-
-				// var parentPart = $(this).parents('.em-part')[0];
-				// var container = $(this).parents('.em-part-container');
-
-				// // container.find('.em-part').each(function() {
-				// // 	$(this).css('opacity', '1');
-				// // });
-
-				// container.find('.em-part').each(function() {
-
-				// 	if (this == parentPart) return;
-
-				// 	$(this).css('opacity', '.3');
-
-				// 	console.log(this);
-				// });
-				// for  (var p in container) 
-
-				// $(this).parents('.em-part').css('opacity', '.5');
-
 			});
-
-			// $(this).focus(function() {
-
-			// 	var c = $(this)[0].className;
-
-			// 	if (/tenure/.test(c)) return;
-
-			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
-
-			// 	if (!m || !m[0]) return;
-
-			// 	c = m[0].replace(/em-i-/, '');
-
-			// 	$.post(emurl.ajax_url, {
-			// 		action: 'gdoc_se',
-			// 		type: 'focus',
-			// 		name: c
-			// 	}, function(data) {
-			// 		// console.log(data);
-			// 	}); 
-			// });
-
-			// $(this).focusout(function() {
-
-			// 	var c = $(this)[0].className;
-
-			// 	if (/tenure/.test(c)) return;
-
-			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
-
-			// 	if (!m || !m[0]) return;
-
-			// 	c = m[0].replace(/em-i-/, '');
-
-			// 	$.post(emurl.ajax_url, {
-			// 		action: 'gdoc_se',
-			// 		type: 'unfocus',
-			// 		name: c
-			// 	}, function(data) {
-			// 		// console.log(data);
-			// 	}); 
-			// });
-
-
-			// var validlive = function() {
-			// 	if ($(this).validate()) $(this).off('focusout', validlive);
-			// 	else return;
-
-			// 	var c = $(this)[0].className;
-
-			// 	if (/tenure/.test(c)) return;
-
-			// 	var m = /em-i-.*?(?: |$)/.exec($(this)[0].className);
-
-			// 	if (!m || !m[0]) return;
-
-			// 	c = m[0].replace(/em-i-/, '');
-
-			// 	$.post(emurl.ajax_url, {
-			// 		action: 'gdoc_se',
-			// 		type: 'valid',
-			// 		name: c
-			// 	}, function(data) {
-			// 		// console.log(data);
-			// 	}); 
-			// }
-
-			// $(this).on('focusout', validlive);
 
 
 		} catch (e) { console.error(e) }
@@ -473,7 +360,6 @@ jQuery(function($) {
 			case 'socialnumber': 
 				$(this)[0].val = val.socialnumber;
 				$(this).on('input', input.socialnumber).focusout(focusout.socialnumber);
-				// $(this).on('input', input.socialnumber).focus(focus.socialnumber).focusout(focusout.socialnumber);
 				break;
 			
 			case 'bankaccount': 
@@ -510,7 +396,7 @@ jQuery(function($) {
 		if (numb($(this).val()) < 200000) {
 
 			if (!$('.em-income-alert')[0]) {
-				$(this).parent().append('<div class="em-income-alert">Viktig! Sjekk at du har skrevet riktig brutto årslønn.<button type="button" class="em-income-button">OK</button></div>');
+				$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
 				$('.em-income-button').one('click touch', function() {
 					$(this).parent().slideUp(300, function() {
 						$(this).remove();
@@ -588,7 +474,6 @@ jQuery(function($) {
 
 		$('.em-part-1-grid > .em-hidden, .em-b-container').each(function() {
 			$(this).slideDown(600, function() {
-				// $('.em-i-tenure').focus();
 				if (!$('.em-cc-collect_debt .em-cc-yes').is(':focus')) $('.em-cc-collect_debt .em-cc-yes').focus();
 
 			}).removeClass('em-hidden');
@@ -611,7 +496,7 @@ jQuery(function($) {
 			if (!$(this).validation()) valid = false;
 		});
 
-		// if (!valid) return;
+		if (!valid) return;
 
 		location.hash = 'form';
 		$.post(emurl.ajax_url, {
@@ -620,7 +505,7 @@ jQuery(function($) {
 			'email': $('.em-i-email').val(),
 			'mobile_number': $('.em-i-mobile_number').val().replace(/[\D]/g, '')
 		}, function(data) {
-			// console.log(data);
+			console.log(data);
 		}); 
 		
 		sendGa('incomplete', 0);
@@ -638,14 +523,9 @@ jQuery(function($) {
 		else $('.navbar-menu').fadeTo(0, 0);
 
 		if (desktop()) {
-			// $('.em-part-1-grid').slideUp(800, function() {
 
 				$('.content, .main').css('margin-bottom', '0');
 				$('.em-form-container').css('margin-bottom', '0');
-				// $('.emowl-form').css('width', 'auto');
-				// $('.em-element-loan_amount').css('margin-bottom', '0');
-				// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
-				// $('.em-element-email').detach().prependTo('.em-part-2');
 				$('.em-b-container').slideUp(500, function() {
 					$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 3rem');
 					$(this).slideDown(500);
@@ -654,25 +534,9 @@ jQuery(function($) {
 				$('.em-b-endre, .em-b-send, .em-b-text').show();
 				$('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
 
-				// $('.em-part-1-grid').addClass('em-part-1-grid-2');
-
-				// $('.em-element-tenure, .em-element-collect_debt, .em-element-monthly_cost').css({
-				// 	'margin': '0',
-				// 	'top': '.3rem'
-				// });
-				
-				// $('.em-i-tenure, .em-cc-collect_debt, .em-if-monthly_cost').css({
-				// 	'width': '15rem'
-				// });
-
-				// $('.em-lc-tenure').addClass('em-lc-lower');
-
-
-				// $('.em-compare-text').css('font-size', '2rem');
 
 				$('.em-element-axo_accept, .em-element-contact_accepted').slideUp(500, function() {
 					$('.em-slidedown').slideDown(800, function() {
-						// if (!$('.em-i-social_number').is(':focus')) $('.em-i-social_number').focus();
 						if (!$('.em-cc-co_applicant .em-cc-yes').is(':focus')) $('.em-cc-co_applicant .em-cc-yes').focus();
 
 						$('.content-post > div:not(.em-form-container)').each(function() {
@@ -682,40 +546,19 @@ jQuery(function($) {
 					}).removeClass('em-hidden');
 				});
 
-			// });
-		
-			// $('.em-b-endre').click(function() {
-			// 		$('.em-part-1-grid').slideToggle();
-			// 		$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
-			// 		window.scrollTo(0, 0);
-			// });
 		}
 
 
 
 		if (mobile()) {
-			// $('.em-element-mobile_number').detach().prependTo('.em-part-2');
-			// $('.em-element-email').detach().prependTo('.em-part-2');
-			// $('.em-part-2 .em-part-title').detach().prependTo('.em-part-2');
 			$('.em-b-container').detach().appendTo('.em-slidedown').css('margin', '0 3rem');
-			// $('.em-b-container').detach().appendTo('.em-part-5').css('margin', '0');
 			$('.em-element-axo_accept, .em-element-contact_accepted').hide(0);
 			$('.em-slidedown').slideDown(800, function() {
 				$('.content-post > div:not(.em-form-container)').each(function() {
 					$(this).fadeOut();
 				});
 			}).removeClass('em-hidden');
-			// $('.em-part-1-grid').slideUp(800);
 			$('.em-b-send, .em-b-text').show();
-
-
-			// window.scrollTo(0, 0);
-			// $('.em-b-endre').click(function() {
-			// 	$('html').animate({'scrollTop': 0}, 1000, 'swing', function() {
-			// 		$('.em-part-1-grid').slideToggle();
-			// 		$('.em-b-endre').text($('.em-b-endre').text() == 'Endre Lånebeløp' ? 'Skjul Lånebeløp' : 'Endre Lånebeløp');
-			// 	});
-			// });
 		}
 
 
@@ -805,12 +648,10 @@ jQuery(function($) {
 		});
 	});
 });
-// })(jQuery);
 
 
 // BEHAVIOUR
 jQuery(function($) {
-// (function($) {
 
 	var desktop = function() {
 		return $(window).width() > 900;
@@ -878,26 +719,10 @@ jQuery(function($) {
 			$input.val(1);
 			$(this).addClass('em-cc-green');
 			$(this).siblings('.em-cc-no').removeClass('em-cc-green');
-			// co_applicant
-			// if (ele == '.em-part-4') {
-				// if (desktop()) {
-				// 	$('.em-part-lower-container').css('grid-template-areas', '"title title title title" "two three four five"');
-				// 	$('.em-part-lower-container').find('.em-part').animate({
-				// 		width: '20rem'
-				// 		// width: '25rem'
-				// 	});
-				// 	$('.em-part-4').show().removeClass('em-hidden');
-				// }
-				// else 
-					// show();
-
-			// }
 
 
-			// else {
-				if (!no) show();
-				else hide();
-			// }
+			if (!no) show();
+			else hide();
 		});
 
 		$(this).parent().find('.em-cc-no').click(function() {
@@ -906,30 +731,8 @@ jQuery(function($) {
 			$(this).addClass('em-cc-green');
 			$(this).siblings('.em-cc-yes').removeClass('em-cc-green');
 
-			// co_applicant
-			// if (ele == '.em-part-4') {
-
-				// if (desktop()) {
-				// 	$('.em-part-lower-container').find('.em-part:not(.em-part-4)').animate({
-				// 		width: '25rem'
-				// 	});
-
-				// 	$('.em-part-4').animate({
-				// 		width: '0rem'
-				// 	}, function() {
-				// 		$(this).hide().addClass('em-hidden');
-				// 		$('.em-part-lower-container').css('grid-template-areas', '"title title title" "two three five"');
-				// 	});	
-				// } else 
-				// hide();
-
-			// }
-
-
-			// else {
-				if (no) show();
-				else hide();
-			// }
+			if (no) show();
+			else hide();
 
 		});
 	});
@@ -1034,7 +837,6 @@ jQuery(function($) {
 	});
 
 	$('.em-i-living_conditions').change(function() {
-		// console.log($(this).val());
 		switch ($(this).val()) {
 			case 'Hyresrätt':
 			case 'Bostadsrätt':
@@ -1044,7 +846,6 @@ jQuery(function($) {
 	});
 
 	$('.em-i-co_applicant_living_conditions').change(function() {
-		// console.log($(this).val());
 		switch ($(this).val()) {
 			case 'Hyresrätt':
 			case 'Bostadsrätt':
@@ -1055,8 +856,6 @@ jQuery(function($) {
 	});
 
 	$('.em-i-monthly_income').focusout(function() {
-		// console.log('ya');
-		// if (numb($(this).val()) < 10000) {
 
 		var val = parseInt(String($(this).val()).replace(/\D/g, ''));
 
@@ -1072,7 +871,6 @@ jQuery(function($) {
 		}
 	});
 });
-// })(jQuery);
 
 
 /***********
@@ -1080,7 +878,6 @@ jQuery(function($) {
  **********/
 
 jQuery(function($) {
-// (function($) {
 
 	var numb = function(n) { return n.replace(/\D/g, '') }
 
@@ -1112,8 +909,6 @@ jQuery(function($) {
 			$.post(emurl.ajax_url, 
 				{
 					action: 'popup_se',
-					// 'ab-name': $('#abtesting-name').val(),
-					// 'ab-sc': $('#abtesting-sc').val(),
 					'pop-email': $('#pop-email').val(),
 					'pop-phone': numb($('#pop-phone').val())
 				}, 
@@ -1141,14 +936,12 @@ jQuery(function($) {
 		}
 	}, 5000);
 });
-// })(jQuery);
 
 
 /*****************
 	BACK BUTTON
  *****************/
 jQuery(function($) {
-// (function($) {
 	if (/.+/.test(location.hash)) history.replaceState(null, null, ' ');
 
 	var hash = '';
@@ -1158,14 +951,12 @@ jQuery(function($) {
 		hash = location.hash;
 	});
 });
-// })(jQuery);
 
 
 /*************
 	COOKIES
  *************/
 jQuery(function($) {
-// (function($) {
 	var date = new Date();
 	date.setTime(date.getTime() + (120*24*60*60*1000));
 	date = date.toUTCString();
@@ -1198,28 +989,24 @@ jQuery(function($) {
 
 	}());
 });
-// })(jQuery);
 
 
 /**************
 	QA BOXES
  **************/
 jQuery(function($) {
-// (function($) {
   $('.em-qa-title').each(function() {
     $(this).on('click touch', function() {
     	$(this).next('.em-qa-box').slideToggle();
     });
   });
 });
-// })(jQuery);
 
 
 
 /*********************
 	MODAL LINK
  *********************/
-// (function($) {
 jQuery(function($) {
 
 	$('.modal-link').on('click', function(e) {
@@ -1253,4 +1040,3 @@ jQuery(function($) {
 
 	});
 });
-// })(jQuery);

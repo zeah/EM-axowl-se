@@ -13,6 +13,7 @@ require_once 'inc/axowl-settings-se.php';
 require_once 'inc/axowl-shortcode-se.php';
 require_once 'inc/axowl-data-se.php';
 require_once 'inc/axowl-unsub-se.php';
+require_once 'inc/axowl-abtesting-se.php';
 
 function init_em_axowl_se() {
 	EM_axowl_se::get_instance();
@@ -35,6 +36,8 @@ final class EM_axowl_se {
 
 	private function __construct() {
         add_filter('wp_enqueue_scripts', [$this, 'add_sands']);
+
+		Axowl_abtesting_se::get_instance();
 
 		Axowl_settings_se::get_instance();
 		Axowl_shortcode_se::get_instance();

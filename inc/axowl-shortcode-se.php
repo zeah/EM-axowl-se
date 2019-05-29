@@ -12,6 +12,8 @@ final class Axowl_shortcode_se {
 
 	private static $parts;
 
+	private $refinance = false;
+
 	public static function get_instance() {
 		if (self::$instance === null) self::$instance = new self();
 
@@ -62,16 +64,16 @@ final class Axowl_shortcode_se {
 	 * @return [type]          [description]
 	 */
 	public function shortcode_1($atts, $content = null) {
-		// if (is_array($atts) && $atts[0] == '2') add_action('wp_enqueue_scripts', [$this, 'sands2']);
-		// else add_action('wp_enqueue_scripts', [$this, 'sands']);
 		add_action('wp_enqueue_scripts', [$this, 'sands']);
 		add_action('wp_enqueue_scripts', [$this, 'sands1']);
-		add_action('wp_enqueue_scripts', [$this, 'sands0']);
+		add_action('wp_enqueue_scripts', [$this, 'inline_script']);
 
 		add_filter('google_link', [$this, 'fonts']);
 
-		// if (!is_user_logged_in()) 
-			// if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
+		if (isset($atts['refinance'])) $this->refinance = true;
+
+		if (!is_user_logged_in()) 
+			if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
 
 		// shortcode-parts.php
 		$p = self::$parts;
@@ -84,29 +86,6 @@ final class Axowl_shortcode_se {
 		$inputs = AXOWL_inputs_se::$inputs;
 
 		$lock = '<div class="em-lock" title="Kryptert og sikker kommunikasjon"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>';
-		$lock = '';
-
-		// $epop = '<div class="em-glass"></div>
-		// 		 <div class="email-popup"><div class="email-popup-grid">
-
-		// 		 	<h2 class="pop-title">VIL DU FYLLE UT SØKNADSSKJEMA SENERE?</h2>
-
-		// 		 	<div class="pop-input-container pop-phone-container">
-		// 			 	<label for="pop-phone" class="pop-label-phone">Telefon</label>
-		// 			 	<input type="text" class="em-i em-pop-phone" name="pop-phone" id="pop-phone">
-		// 		 	</div>
-
-		// 		 	<div class="pop-input-container pop-email-container">
-		// 			 	<label for="pop-email" class="pop-label-email">E-Post</label>
-		// 			 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
-		// 			</div>
-				 	
-		// 		 	<button type="button" class="em-b pop-neste">Näste</button>
-
-		// 		 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
-
-		// 		 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
-		// 		 </div>';
 
 		$html = sprintf(
 			'<div class="em-form-container" style="opacity: 0;%s">%s%s<form class="emowl-form">',
@@ -142,16 +121,12 @@ final class Axowl_shortcode_se {
 			<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
 			</div>';
 
-		// $html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
 		$html .= '<div class="em-loan-example">Individuell ränta från 2,95% - 24%. Exempel: 5,3%. 70 000 kr på 15 år. Eff. ränta 6,54 %. Tot. belopp 108 346 kr. Kostn./mån: 600 kr. Startavg. 495 kr. Avikostn. 35 kr/mån.</div></form></div>';
 
 		$html .= '<input type="hidden" id="abtesting-sc" value="1">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';
 
-		// TODO set transient
-		// if (!is_user_logged_in()) 
-			// set_transient('axowl_se_sc1', $html);
-			// 
+		set_transient('axowl_se_sc1', $html);
 		return $html;
 	}
 
@@ -163,19 +138,16 @@ final class Axowl_shortcode_se {
 	 * @return [type]          [description]
 	 */
 	public function shortcode_2($atts, $content = null) {
-		// if (is_array($atts) && $atts[0] == '2') add_action('wp_enqueue_scripts', [$this, 'sands2']);
-		// else add_action('wp_enqueue_scripts', [$this, 'sands']);
-		// add_action('wp_enqueue_scripts', [$this, 'sands2']);
-		// 
-		// 
 		add_action('wp_enqueue_scripts', [$this, 'sands']);
 		add_action('wp_enqueue_scripts', [$this, 'sands2']);
-		add_action('wp_enqueue_scripts', [$this, 'sands0']);
+		add_action('wp_enqueue_scripts', [$this, 'inline_script']);
 
 		add_filter('google_link', [$this, 'fonts2']);
+		
+		if (isset($atts['refinance'])) $this->refinance = true;
 
-		// if (!is_user_logged_in()) 
-			// if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
+		if (!is_user_logged_in()) 
+			if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
 
 		// shortcode-parts.php
 		$p = self::$parts;
@@ -187,38 +159,13 @@ final class Axowl_shortcode_se {
 		$data = $this->sanitize($data);
 		$inputs = AXOWL_inputs_se::$inputs2;
 
-		$lock = '<div class="em-lock" title="Kryptert og sikker kommunikasjon"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24"><g fill="none"><path d="M0 0h24v24H0V0z"/><path opacity=".87" d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></div>';
-		$lock = '';
-
-		$epop = '<div class="em-glass"></div>
-				 <div class="email-popup"><div class="email-popup-grid">
-
-				 	<h2 class="pop-title">VIL DU FYLLE UT SØKNADSSKJEMA SENERE?</h2>
-
-				 	<div class="pop-input-container pop-phone-container">
-					 	<label for="pop-phone" class="pop-label-phone">Telefon</label>
-					 	<input type="text" class="em-i em-pop-phone" name="pop-phone" id="pop-phone">
-				 	</div>
-
-				 	<div class="pop-input-container pop-email-container">
-					 	<label for="pop-email" class="pop-label-email">E-Post</label>
-					 	<input type="text" class="em-i em-pop-email" name="pop-email" id="pop-email">
-					</div>
-				 	
-				 	<button type="button" class="em-b pop-neste">Näste</button>
-
-				 	<div class="pop-text">'.(isset($data['popup_text']) ? $data['popup_text'] : '').'</div>
-
-				 	</div><buttton type="button" class="em-pop-email-x"><img class="em-close" src="'.EM_AXOWL_SE_PLUGIN_URL.'assets/img/close.png"></buttton>
-				 </div>';
-
 		$html = sprintf(
 			'<div class="em-form-container" style="opacity: 0;%s">%s%s<form class="emowl-form">%s',
 			
 			isset($atts['style']) ? $atts['style'] : '',
 			$p->popup(),
 			$p->epop($data),
-			$p->header()
+			$p->header($data)
 		);
 
 		$html .= '<input type="hidden" name="fax">';
@@ -239,22 +186,20 @@ final class Axowl_shortcode_se {
 		// ends last page and ends part container
 		$html .= '</div></div>';
 
-		$html .= '<div class="em-b-container">
-			<button type="button" class="em-b em-b-next">Gå vidare</button>
-			<button type="button" class="em-b em-b-send">Ansök nu</button>
-			<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
-			</div>';
+		$html .= $p->buttons(['next' => true, 'send' => true], $data);
 
-		// $html .= '<div class="em-loan-example">Nominell rente fra 6,39% til 21,95%. Effektiv rente fra 6,81% til 24,4%. Eff. rente 13,2%, 150.000 o/10 år, kostnad: 112.573, Totalt: 262573.</div></form></div>';
-		$html .= '<div class="em-loan-example">Individuell ränta från 2,95% - 24%. Exempel: 5,3%. 70 000 kr på 15 år. Eff. ränta 6,54 %. Tot. belopp 108 346 kr. Kostn./mån: 600 kr. Startavg. 495 kr. Avikostn. 35 kr/mån.</div></form></div>';
+		// $html .= '<div class="em-b-container">
+		// 	<button type="button" class="em-b em-b-next">Gå vidare</button>
+		// 	<button type="button" class="em-b em-b-send">Ansök nu</button>
+		// 	<div class="em-b-text">Ansökan är kostnadsfri och inte bindande.</div>
+		// 	</div>';
+
+		$html .= sprintf('<div class="em-loan-example">%s</div></form></div>', isset($data['interest_ex']) ? $data['interest_ex'] : '');
 
 		$html .= '<input type="hidden" id="abtesting-sc" value="2">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';
 
-		// TODO set transient
-		// if (!is_user_logged_in()) 
-			// set_transient('axowl_se_sc1', $html);
-			// 
+		set_transient('axowl_se_sc1', $html);
 		return $html;
 	}
 
@@ -399,9 +344,11 @@ final class Axowl_shortcode_se {
 	}
 
 
-	public function sands0() {
+	public function inline_script() {
 
 		$data = [];
+
+		if ($this->refinance) $data['refinance'] = true;
 
 		$data['ajax_url'] = admin_url('admin-ajax.php');
 		$data['logged_in'] = is_user_logged_in();

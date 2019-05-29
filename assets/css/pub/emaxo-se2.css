@@ -1177,9 +1177,9 @@ select.em-i:focus {
 .ui-slider .ui-slider-handle {
     position: absolute;
     z-index: 2;
-    width: 1.2em;
-    height: 1.2em;
-    cursor: default;
+    /*width: 1.2em;*/
+    /*height: 1.2em;*/
+    /*cursor: default;*/
     -ms-touch-action: none;
     touch-action: none;
 }
@@ -1408,6 +1408,9 @@ select.em-i:focus {
 	width: 75rem;
 	max-width: 100%;
 	margin: auto;
+
+	border: solid 2px #333;
+	border-radius: 15px;
 
 	line-height: 3;
 

@@ -21,6 +21,9 @@ var sendGa = function(label, value = 0) {
 
 // VALIDATION AND EVENTS
 (function($) {
+
+	sendGa('view', 0);
+
 	var validColor = 'green';
 	var invalidColor = 'red';
 
@@ -471,7 +474,7 @@ var sendGa = function(label, value = 0) {
 		if (numb($(this).val()) < 200000) {
 
 			if (!$('.em-income-alert')[0]) {
-				$(this).parent().append('<div class="em-income-alert">Viktig! Sjekk at du har skrevet riktig brutto årslønn.<button type="button" class="em-income-button">OK</button></div>');
+				$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
 				$('.em-income-button').one('click touch', function() {
 					$(this).parent().slideUp(300, function() {
 						$(this).remove();
@@ -718,11 +721,13 @@ var sendGa = function(label, value = 0) {
 			console.log(d);
 			if (d === 'Validation Error') {
 				alert('Teknisk Feil - last inn siden på nytt og prøv igjen eller kontakt oss på epost.');
+				sendGa('validation error', 0);
 				return;
 			}
 
 			if (d === 'Technical Error') {
 				alert('Teknisk Feil - Feil hos Axo Finans. Prøv igjen seinere eller kontakt oss på epost.');
+				sendGa('technical error', 0);
 				return;				
 			}
 
