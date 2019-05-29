@@ -931,6 +931,11 @@ select.em-i:focus {
 	/*font-family: montserrat;*/
 }
 
+.em-check-span {
+	display: block;
+	width: 90%;
+}
+
 /* 3.6.3 check label */
 .em-element-check label {
 	position: relative;
@@ -983,17 +988,18 @@ select.em-i:focus {
 
 	padding: 2rem;
 
-	background-color: #96f;
-	color: #fff;
+	background-color: #eee;
+	color: #000;
 
-	font-size: 1.4rem;
+	font-size: 1.6rem;
+	line-height: 1.2;
 	z-index: 199;
 
-	border: solid 2px #333;
+	border: solid 1px #333;
 	box-shadow: none;
 
-	font-family: montserrat;
-	font-weight: 300;
+	/*font-family: montserrat;*/
+	/*font-weight: 300;*/
 }
 
 .em-cc .em-ht {
@@ -1054,10 +1060,11 @@ select.em-i:focus {
 	line-height: 2rem;
 	font-size: 1.8rem;
 	border-radius: 50%;
-	background-color: #333;
-	color: #fff;
-	font-family: Montserrat;
-	font-weight: 700;
+	background-color: #fff;
+	border: dashed 1px #ccc;
+	color: #333;
+	/*font-family: Montserrat;*/
+	/*font-weight: 700;*/
 	cursor: pointer;
 }
 
@@ -1068,7 +1075,9 @@ select.em-i:focus {
 .em-ht-q:focus .em-ht-mark {
 	/*box-shadow: 1px 1px hsl(120, 50%, 50%), -1px 1px hsl(120, 50%, 50%), 1px -1px hsl(120, 50%, 50%), -1px -1px hsl(120, 50%, 50%);*/
 	/*box-shadow: 1px 1px #96f, -1px 1px #96f, 1px -1px #96f, -1px -1px #96f;*/
-	box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f, -2px -2px #96f;
+	/*box-shadow: 2px 2px #96f, -2px 2px #96f, 2px -2px #96f, -2px -2px #96f;*/
+	background-color: #ded;
+
 }
 
 /* 3.8 label */
@@ -1212,7 +1221,6 @@ select.em-i:focus {
 }
 
 .em-slider-beginning {
-	/*background-color: red;*/
 	height: 4rem;
 	width: 2.9rem;
 	border: 1px solid #333;
@@ -1232,69 +1240,43 @@ select.em-i:focus {
     	rgb(78, 202, 34) 10px, 
     	rgb(62, 177, 21) 0px, 
     	rgb(62, 177, 21) 20px);
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 }
+
 .em-slider-end {
-	/*background-color: red;*/
 	height: 4rem;
 	width: 2.9rem;
 	border: 1px solid #333;
 	border-left: none;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
-	   /* background-image: repeating-linear-gradient(
-    	45deg, 
-    	#fd7, 
-    	#fd7 10px, 
-    	#fc6 0px, 
-    	#fc6 20px);*/
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-	/*background-color: hsl(0, 0%, 95%);*/
     background-image: repeating-linear-gradient(
-	45deg, 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 95%), 
-	hsl(0, 0%, 95%) 20px);
+		45deg, 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 95%), 
+		hsl(0, 0%, 95%) 20px
+	);
 
 	background-position: 9px 0px;
 }
 
 
 .em-slider-loan_amount {
-	/*flex-grow: 1;*/
-	/*border: solid 3px black !important;*/
-
-	/*align-self: flex-end;*/
-	/*position: relative;*/
-	/*bottom: 1.4rem;*/
-
-	/*border: 1px solid #949494;*/
 	border: 1px solid #333 !important;
 	border-left: none !important;
 	border-right: none !important;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-	/*background-color: hsl(0, 0%, 95%);*/
 	height: 4rem;
-	/*margin-top: 4rem;*/
-	/*margin-left: 2rem;*/
-	/*margin-right: 2rem;*/
 	flex-grow: 1;
-	/*width: 50%;*/
-    /*border-radius: 3px !important;*/
     background-image: repeating-linear-gradient(
-	45deg, 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 97%), 
-	hsl(0, 0%, 95%), 
-	hsl(0, 0%, 95%) 20px);
+		45deg, 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 97%), 
+		hsl(0, 0%, 95%), 
+		hsl(0, 0%, 95%) 20px
+	);
 
 }
 .em-slider-loan_amount .ui-widget-header {
-	/*border-radius: 0;*/
-	/*border-right: solid 2px black !important;*/
-	/*background-image: none;*/
-
 	/* purple */
     /* background-image: repeating-linear-gradient(
     	45deg, 
@@ -1317,39 +1299,74 @@ select.em-i:focus {
     	rgb(78, 202, 34), 
     	rgb(78, 202, 34) 10px, 
     	rgb(62, 177, 21) 0px, 
-    	rgb(62, 177, 21) 20px);
+    	rgb(62, 177, 21) 20px
+    );
 
-	/*background: url('https://www.axofinans.no/images/slider-bg.png') repeat top;*/
-	/*background-color: #96f;*/
-	/*background: linear-gradient(45deg, black 0%, black 26%, transparent 26%), linear-gradient(-45deg, black 0%, black 27%, transparent 27%);*/
 }
+
+.ui-slider {
+	position: relative;
+}
+
+.ui-slider-handle:focus {
+	box-shadow: 0 0 2px #333;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+
+.ui-slider .ui-slider-range {
+    /*position: absolute;*/
+    z-index: 1;
+    /*font-size: .7em;*/
+    display: block;
+    /*border: 0;*/
+    /*background-position: 0 0;*/
+}
+
+.ui-widget-header {
+    /*border: 1px solid #dddddd;
+    background: #e9e9e9;
+    color: #333333;
+    font-weight: bold;*/
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    /*top: -.6rem;*/
+    /*margin-left: -.6em;*/
+}
+
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
 .em-slider-loan_amount .ui-slider-handle {
 	height: 5rem;
 	width: 6rem;
-	/*border: solid 3px black;*/
-	/*border: 1px solid #949494;*/
 	border: 1px solid #333;
 	border-right: 2px solid #333;
 	border-left: 2px solid #333;
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
-
-    /*background-image: url('https://norskfinans.no/wp-content/uploads/2019/03/rangepil.png');*/
-    /*background-image: url('http://localhost:8010/wp/wp-content/uploads/2019/05/rangearrow.png');*/
     background-image: url('https://finanzia.se/wp-content/uploads/2019/05/rangearrow.png');
     background-repeat: no-repeat;
     background-position: center; 
 	background-color: #fff;
-	/*top: -.7rem;*/
 	bottom: .6rem;
 	margin-left: -3rem;
-	/*margin-right: -5rem;*/
 	cursor: grab;
     border-radius: 3px;
+    top: -.6rem;
 
 }
 
 .em-slider-loan_amount .ui-state-active {
-	/*box-shadow: 0 0 0 transparent, inset 0 1px 0px #d4d4d4;*/
 	background-color: #fff;
 }
 

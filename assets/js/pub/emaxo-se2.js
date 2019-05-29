@@ -163,11 +163,13 @@ jQuery(function($) {
 			var t = 0;
 			for (var i in c) {
 				var n = c[i] * parseInt(v[i]);
-
 				t += parseInt(add(n));
 			}
 
 			var x = 10 - (t % 10);
+
+			if (x == 10) x = 0;
+
 			var y = v.slice(-1);
 
 			if (x == y) return true;

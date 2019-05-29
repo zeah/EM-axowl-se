@@ -76,8 +76,8 @@ final class Axowl_settings_se {
 			'gdocs_ads' => 'Google Docs for Google Ads upload',
 			// 'slack' => 'Slack webhook',
 			'payout' => 'Commision earned per lead (used for uploading to google ads and slack)',
-			'currency' => 'NOK or SEK (used for uploading to google ads)',
-			'ga_code' => 'Google Analytics'
+			'currency' => 'NOK or SEK (used for uploading to google ads)'
+			// 'ga_code' => 'Google Analytics'
 		];
 
 		add_settings_section('em-axowl-se-data', 'URLs', [$this, 'data_section'], 'em-axowl-se-page-data');

@@ -64,8 +64,8 @@ final class Axowl_inputs_se {
 
 		'div2' => ['class' => 'em-co-applicant em-lower', 'page' => '4', 'page_class' => 'em-hidden'], 
 
-		'co_applicant_social_number' => ['text' => true, 'validation' => 'socialnumber', 'digits' => 11],
-		'co_applicant_mobile_number' => ['text' => true, 'validation' => 'phone', 'digits' => 8],
+		'co_applicant_social_number' => ['text' => true, 'validation' => 'socialnumber'],
+		'co_applicant_mobile_number' => ['text' => true, 'validation' => 'phone'],
 		'co_applicant_email' => ['text' => true, 'validation' => 'email'],
 		'co_applicant_employment_type' => ['list' => Axowl_list_se::employment_type, 'validation' => 'list'],
 		'div18' => ['class' => 'em-date'],

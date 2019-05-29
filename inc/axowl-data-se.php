@@ -97,8 +97,6 @@ final class Axowl_data_se {
 	 * 
 	 */
 	public function incomplete() {
-		exit;
-
 		$data = ['status' => 'incomplete'];
 
 		if (isset($_POST['email'])) $data['email'] = $_POST['email'];
@@ -190,13 +188,13 @@ final class Axowl_data_se {
 		else { 
 
 
-			echo "\nsending to axo";
-			print_r($data);
+			// echo "\nsending to axo";
+			// print_r($data);
 
 			$res = $this->to_axo($url, $data);
 
-			echo "\nresponse";
-			print_r($res);
+			// echo "\nresponse";
+			// print_r($res);
 
 			if (!is_array($res) || !isset($res['status']) || !$res) return;
 		}
