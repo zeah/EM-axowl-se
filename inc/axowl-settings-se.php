@@ -165,6 +165,7 @@ final class Axowl_settings_se {
 			'contact_accepted' => 'Checkbox for accepting data usage by axo.',
 			'interest_ex' => 'Interest Example (bottom of form)',
 			'end_popup' => 'Text for popup after form sent in (thank you page)',
+			'button_open' => 'Text on button to open first part of form.',
 			'button_next' => 'Text on button to open second part of form.',
 			'button_send' => 'Text on button to send in form.',
 			'button_endre' => 'Text on button "endre"',

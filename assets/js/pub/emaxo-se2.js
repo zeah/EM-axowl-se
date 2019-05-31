@@ -635,9 +635,9 @@ jQuery(function($) {
 				$('.em-form-container').css('margin-bottom', '4rem');
 				$('.em-popup').slideDown(800, function() {
 
-					$('.content-post > div:not(.top-container), .em-icons-container').each(function() {
-						$(this).fadeIn(500);
-					});
+					// $('.content-post > div:not(.top-container), .em-icons-container').each(function() {
+					// 	$(this).fadeIn(500);
+					// });
 
 					if ($('.mobile-icon-container')[0]) $('.mobile-icon-container').show();
 					else $('.navbar-menu').fadeTo(0, 1);
@@ -861,7 +861,7 @@ jQuery(function($) {
 
 		if (val < 6000 || val > 90000) {
 			if (!$('.em-income-alert')[0]) {
-				$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
+				$(this).parent().append('<div class="em-income-alert"><div>Viktigt! Se om du har skrivit riktig månadslön.</div><button type="button" class="em-income-button">OK</button></div>');
 				$('.em-income-button').one('click touch', function() {
 					$(this).parent().slideUp(300, function() {
 						$(this).remove();

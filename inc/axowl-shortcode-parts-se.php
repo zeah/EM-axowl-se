@@ -110,16 +110,16 @@ final class Axowl_shortcode_parts_se {
 				</div>
 			</div>',
 
-			isset($o['top_text_title']) ? $o['top_text_title'] : 'Börja här!',
+			isset($o['top_text_title']) ? do_shortcode($o['top_text_title']) : 'Börja här!',
 
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg1.png'),
-			isset($o['top_text_1']) ? $o['top_text_1'] : '1) Välj lånebelopp',
+			isset($o['top_text_1']) ? do_shortcode($o['top_text_1']) : '1) Välj lånebelopp',
 
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg2.png'),
-			isset($o['top_text_2']) ? $o['top_text_2'] : '2) Fyll i formuläret',
+			isset($o['top_text_2']) ? do_shortcode($o['top_text_2']) : '2) Fyll i formuläret',
 
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg3.png'),
-			isset($o['top_text_3']) ? $o['top_text_3'] : '3) Vi skickar erbjudande'
+			isset($o['top_text_3']) ? do_shortcode($o['top_text_3']) : '3) Vi skickar erbjudande'
 
 
 		);
@@ -206,7 +206,7 @@ final class Axowl_shortcode_parts_se {
 		if (isset($value['list'])) $html .= $this->list($d);
 		// if (isset($value['list'])) $html .= $this->datalist($d);
 
-		if (isset($value['button'])) $html .= $this->button($d);
+		if (isset($value['button'])) $html .= $this->button($data);
 
 		if (isset($value['compare'])) $html .= $this->compare();
 
@@ -502,7 +502,7 @@ final class Axowl_shortcode_parts_se {
 	private function button($o = []) {
 		return sprintf('
 			<button class="em-b em-b-neste" type="button">%s</button>',
-			$o['text']
+			isset($o['button_open']) ? do_shortcode($o['button_open']) : 'Näste'
 		);
 	}
 
@@ -572,6 +572,9 @@ final class Axowl_shortcode_parts_se {
 	}
 
 	public function buttons($o = [], $d = []) {
+
+		// $c = $this->cd;
+
 		return sprintf(
 			'<div class="em-b-container">
 				%s
@@ -581,25 +584,34 @@ final class Axowl_shortcode_parts_se {
 			</div>',
 			isset($o['next']) ? sprintf(
 									'<button type="button" class="em-b em-b-next">%s</button>',
-									isset($d['next']) ? $d['button_next'] : 'Gå vidare'
+									isset($d['button_next']) ? do_shortcode($d['button_next']) : 'Gå vidare'
 								) : '',
 
 			isset($o['endre']) ? sprintf(
 									'<button type="button" class="em-b em-b-endre">%s</button>',
-									isset($d['endre']) ? $d['button_endre'] : 'Endre'
+									isset($d['button_endre']) ? do_shortcode($d['button_endre']) : 'Endre'
 								) : '',
 
 			isset($o['send']) ? sprintf(
 									'<button type="button" class="em-b em-b-send">%s</button>',
-									isset($d['send']) ? $d['button_send'] : 'Ansök nu'
+									$this->cd('button_send', $d) ? do_shortcode($d['button_send']) : 'Ansök nu'
+									// isset($d['button_send']) ? do_shortcode($d['button_send']) : 'Ansök nu'
 								) : '',
 
 			isset($o['text']) ? sprintf(
 									'<div class="em-b-text">%s</div>',
-									isset($d['text']) ? $d['button_text'] : 'Ansökan är kostnadsfri och inte bindande.'
+									isset($d['button_text']) ? do_shortcode($d['button_text']) : 'Ansökan är kostnadsfri och inte bindande.'
 								) : ''
 
 		);
+	}
+
+	private function cd($name, $data) {
+
+		if (isset($data[$name]) && $data[$name]) return $data[$name];
+
+		return false;
+
 	}
 
 
