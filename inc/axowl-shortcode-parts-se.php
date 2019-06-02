@@ -136,7 +136,7 @@ final class Axowl_shortcode_parts_se {
 	public function element($key, $value, $data, $vers = false) {
 
 		// if ($vers) $this->$vers = $vers;
-		// wp_die('<xmp>'.print_r($this->$vers, true).'</xmp>');
+		// wp_die('<xmp>'.print_r($data, true).'</xmp>');
 		
 		// div element (container)
 		if (substr($key, 0,3) == 'div') {
@@ -572,8 +572,8 @@ final class Axowl_shortcode_parts_se {
 	}
 
 	public function buttons($o = [], $d = []) {
-
-		// $c = $this->cd;
+		// $o which to add
+		// $d adds value
 
 		return sprintf(
 			'<div class="em-b-container">
@@ -582,36 +582,56 @@ final class Axowl_shortcode_parts_se {
 				%s
 				%s
 			</div>',
-			isset($o['next']) ? sprintf(
-									'<button type="button" class="em-b em-b-next">%s</button>',
-									isset($d['button_next']) ? do_shortcode($d['button_next']) : 'Gå vidare'
-								) : '',
 
-			isset($o['endre']) ? sprintf(
-									'<button type="button" class="em-b em-b-endre">%s</button>',
-									isset($d['button_endre']) ? do_shortcode($d['button_endre']) : 'Endre'
-								) : '',
+			$this->get_button('next', $o, $d, 'Gå vidare'),
 
-			isset($o['send']) ? sprintf(
-									'<button type="button" class="em-b em-b-send">%s</button>',
-									$this->cd('button_send', $d) ? do_shortcode($d['button_send']) : 'Ansök nu'
-									// isset($d['button_send']) ? do_shortcode($d['button_send']) : 'Ansök nu'
-								) : '',
+			// isset($o['next']) ? sprintf(
+			// 						'<button type="button" class="em-b em-b-next">%s</button>',
+			// 						$this->cd('button_next', $d) ? do_shortcode($d['button_next']) : 'Gå vidare'
+			// 					) : '',
+
+			$this->get_button('endre', $o, $d, 'Endre'),
+			// isset($o['endre']) ? sprintf(
+			// 						'<button type="button" class="em-b em-b-endre">%s</button>',
+			// 						$this->cd('button_endre', $d) ? do_shortcode($d['button_endre']) : 'Endre'
+			// 					) : '',
+
+			$this->get_button('send', $o, $d, 'Ansök nu'),
+			// isset($o['send']) ? sprintf(
+			// 						'<button type="button" class="em-b em-b-send">%s</button>',
+			// 						$this->cd('button_send', $d) ? do_shortcode($d['button_send']) : 'Ansök nu'
+			// 						// isset($d['button_send']) ? do_shortcode($d['button_send']) : 'Ansök nu'
+			// 					) : '',
 
 			isset($o['text']) ? sprintf(
 									'<div class="em-b-text">%s</div>',
-									isset($d['button_text']) ? do_shortcode($d['button_text']) : 'Ansökan är kostnadsfri och inte bindande.'
+									$this->cd('button_text', $d) ? do_shortcode($d['button_text']) : 'Ansökan är kostnadsfri och inte bindande.'
 								) : ''
 
 		);
 	}
 
+	private function get_button($name, $o, $d, $default = '') {
+
+		if (!isset($o[$name])) return '';
+		// wp_die('<xmp>'.print_r($this->cd($name, $d), true).'</xmp>');
+
+		return sprintf(
+			'<button type="button" class="em-b em-b-%s">%s</button>',
+			$name,
+			$this->cd('button_'.$name, $d) ? do_shortcode($d['button_'.$name]) : $default
+		);
+
+	}
+
 	private function cd($name, $data) {
+		// wp_die('<xmp>'.print_r($name, true).'</xmp>');
+		
+		if (!isset($data[$name])) return false;
 
-		if (isset($data[$name]) && $data[$name]) return $data[$name];
+		if ($data[$name] === 'default') return false;
 
-		return false;
-
+		return $data[$name];
 	}
 
 
