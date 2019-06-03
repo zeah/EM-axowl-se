@@ -73,7 +73,7 @@ final class Axowl_shortcode_parts_se {
 
 		 	(isset($o['popup_email']) && $o['popup_email']) ? $o['popup_email'] : 'Epost',
 
-		 	(isset($o['popup_submit']) && $o['popup_submit']) ? $o['popup_submit'] : 'Näste',
+		 	(isset($o['popup_submit']) && $o['popup_submit']) ? $o['popup_submit'] : 'Nästa',
 
 		 	(isset($o['popup_subtext']) && $o['popup_subtext']) ? $o['popup_subtext'] : ''
 		);

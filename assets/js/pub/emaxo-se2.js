@@ -404,19 +404,19 @@ jQuery(function($) {
 	});
 
 
-	$('.em-i-income').focusout(function() {
-		if (numb($(this).val()) < 200000) {
+	// $('.em-i-income').focusout(function() {
+	// 	if (numb($(this).val()) < 200000) {
 
-			if (!$('.em-income-alert')[0]) {
-				$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
-				$('.em-income-button').one('click touch', function() {
-					$(this).parent().slideUp(300, function() {
-						$(this).remove();
-					})
-				});
-			}
-		}
-	});
+	// 		if (!$('.em-income-alert')[0]) {
+	// 			$(this).parent().append('<div class="em-income-alert">Viktigt! Se om du har skrivit riktig månadslön.<button type="button" class="em-income-button">OK</button></div>');
+	// 			$('.em-income-button').one('click touch', function() {
+	// 				$(this).parent().slideUp(300, function() {
+	// 					$(this).remove();
+	// 				})
+	// 			});
+	// 		}
+	// 	}
+	// });
 
 	$('#pop-phone')[0].val = val.phone;
 	$('#pop-phone').on('input', input.phone).focusout(focusout.phone).focusout(validation);

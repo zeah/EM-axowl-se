@@ -218,7 +218,7 @@ body {
 	max-width: 100%;
 
 	/*padding-top: 2rem;*/
-	border: solid 3px #333;
+	border: solid 3px #28517c;
 	border-radius: 15px;
 
 	/*padding-bottom: 2rem;*/
@@ -1845,11 +1845,13 @@ select.em-i:focus {
 	align-content: center;
 	justify-content: space-around;
 
-	background-color: #333;
+	background-color: #28517c;
+	/*background-color: #333;*/
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	padding: 1rem;
-	color: hsl(30, 100%, 92%);
+	/*color: hsl(30, 100%, 92%);*/
+	color: #f2e7d5;
 }
 
 .axow-header-title {
