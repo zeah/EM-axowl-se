@@ -4,8 +4,17 @@
  */
 
 
+// jQuery(function($) {
+	// $(document).keypress(function(e) {
+	// 	if (e.keyCode == 33)
+	// 		$('.em-i-loan_amount').focus();
+	// 	console.log(e.keyCode);
+	// });
+// });
+
+
 // console.log(JSON.parse(emurl));
-console.log(emurl);
+// console.log(emurl);
 
 var sendGa = function(label, value) {
 	
@@ -187,9 +196,12 @@ jQuery(function($) {
 
 		number: function() { this.value = this.value.replace(/[^0-9]/g, '') },
 
-		phone: function() { 
+		phone: function() {
 			var v = this.value;
 			this.value = v.replace(/[^0-9\s]/g, '');
+
+			if (v.length == 2 && !/07/.test(v)) validation.call(this);
+
 
 			var c = v.replace(/\s/g, '');  
 			if (c.length == 10) validation.call(this);

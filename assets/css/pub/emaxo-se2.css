@@ -217,7 +217,8 @@ body {
 	width: 75rem;
 	max-width: 100%;
 
-	border: solid 3px #333;
+	/*border: solid 3px #333;*/
+	border: solid 3px #28517c;
 	border-radius: 15px;
 
 
@@ -417,8 +418,12 @@ input.em-i:focus {
 }
 
 .em-part {
-	padding: 1rem 3rem;
-	border-top: dashed 2px #999;
+	/*padding: 1rem 3rem;*/
+
+	margin: 0 3rem;
+	padding: 1rem 0;
+	border-top: solid 1px #ccc;
+	/*border-top: dashed 2px #999;*/
 }
 
 .em-part-1 {
@@ -1047,7 +1052,7 @@ select.em-i:focus {
 	font-weight: 700;
 	padding: .5rem 0;
 	font-family: merriweather;
-	border-color: hsl(0, 0%, 20%) !important;
+	/*border-color: hsl(0, 0%, 20%) !important;*/
 }
 
 /* 4.1.5 loan amount range input */
@@ -1059,17 +1064,20 @@ select.em-i:focus {
 	align-self: flex-end;
 	width: 50%;
 	margin-left: 1rem;
-	height: 4rem;
+	height: 3rem;
+
+	position: relative;
+	bottom: .5rem;
 }
 
 .em-slider-beginning {
-	height: 4rem;
+	height: 100%;
 	width: 2.9rem;
-	border: 1px solid #333;
+	border: 1px solid #949494;
 	border-top-left-radius: 3px;
 	border-bottom-left-radius: 3px;
 	border-right: none;
-	    background-image: repeating-linear-gradient(
+	background-image: repeating-linear-gradient(
     	45deg, 
     	#fd7, 
     	#fd7 10px, 
@@ -1085,9 +1093,9 @@ select.em-i:focus {
 }
 
 .em-slider-end {
-	height: 4rem;
-	width: 2.9rem;
-	border: 1px solid #333;
+	height: 100%;
+	width: 1.9rem;
+	border: 1px solid #949494;
 	border-left: none;
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -1104,10 +1112,10 @@ select.em-i:focus {
 
 
 .em-slider-loan_amount {
-	border: 1px solid #333 !important;
+	border: 1px solid #949494 !important;
 	border-left: none !important;
 	border-right: none !important;
-	height: 4rem;
+	height: 100%;
 	flex-grow: 1;
     background-image: repeating-linear-gradient(
 		45deg, 
@@ -1191,8 +1199,8 @@ select.em-i:focus {
 }
 
 .em-slider-loan_amount .ui-slider-handle {
-	height: 5rem;
-	width: 6rem;
+	height: 4.5rem;
+	width: 5rem;
 	border: 1px solid #333;
 	border-right: 2px solid #333;
 	border-left: 2px solid #333;
@@ -1200,11 +1208,12 @@ select.em-i:focus {
     background-repeat: no-repeat;
     background-position: center; 
 	background-color: #fff;
-	bottom: .6rem;
+	/*bottom: .6rem;*/
 	margin-left: -3rem;
 	cursor: grab;
     border-radius: 3px;
-    top: -.6rem;
+    /*top: -.6rem;*/
+    top: -.8rem;
 
 }
 
@@ -1611,15 +1620,17 @@ select.em-i:focus {
 	align-content: center;
 	justify-content: space-around;
 
-	background-color: #333;
+	background-color: #28517c;
+	/*background-color: #333;*/
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	padding: 1rem;
 	color: hsl(30, 100%, 92%);
+	color: #f2e7d5;
 }
 
 .axow-header-title {
-	margin: 0 0 2rem;
+	margin: 0 2rem 2rem;
 	width: 100%;
 	font-size: 2.5rem;
 }
@@ -1633,6 +1644,10 @@ select.em-i:focus {
 .axowl-header-part img {
 	height: 5rem;
 	width: auto;
+}
+
+.axowl-header-part span {
+	padding: 2rem 0 1rem;
 }
 
 
