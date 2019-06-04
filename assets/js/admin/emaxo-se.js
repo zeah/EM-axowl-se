@@ -48,6 +48,12 @@
 			e.target.classList.add('em-settings-anchor-active');
 		});
 
+		qs('.em-settings-anchor-del').addEventListener('click', function(e) {
+			hideAll();
+			qs('.em-settings-del').classList.remove('em-hidden');
+			e.target.classList.add('em-settings-anchor-active');
+		});
+
 
 		// var n = qsa('.em-settings');
 

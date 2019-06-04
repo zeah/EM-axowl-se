@@ -147,7 +147,7 @@ final class Axowl_shortcode_se {
 		if (isset($atts['refinance'])) $this->refinance = true;
 
 		if (!is_user_logged_in()) 
-			if (get_transient('axowl_se_sc1')) return get_transient('axowl_se_sc1');
+			if (get_transient('axowl_se_sc2')) return get_transient('axowl_se_sc2');
 
 		// shortcode-parts.php
 		$p = self::$parts;
@@ -199,7 +199,8 @@ final class Axowl_shortcode_se {
 		$html .= '<input type="hidden" id="abtesting-sc" value="2">';
 		$html .= '<input type="hidden" id="abtesting-name" value="'.$post->post_name.'">';
 
-		set_transient('axowl_se_sc1', $html);
+		set_transient('axowl_se_sc2', $html);
+
 		return $html;
 	}
 
@@ -211,24 +212,24 @@ final class Axowl_shortcode_se {
 
 	public function delete($atts, $content = null) {
 		add_action('wp_enqueue_scripts', [$this, 'sands_delete']);
+		add_filter('google_link', [$this, 'fonts2']);
 
-		return '<div class="axodel-container">
+		$opt = get_option('em_axowl_se');
+
+		// wp_die('<xmp>'.print_r($opt, true).'</xmp>');
+
+		return sprintf('<div class="axodel-container">
 				<div class="axodel-form">
-					<h2>Slett meg</h2>
-					<p>Skriv inn epost eller telefonnummer og din personelig informasjon vil bli slettet fra Norsk Finans.</p>
+					<h2>%s</h2>
+					<p>%s</p>
 					<input class="axodel-input" name="axodel">
-					<button class="axodel-send" type="button">Send inn</button>
+					<button class="axodel-send" type="button">%s</button>
 				</div>
-				<div class="axodel-message">
-				    <h2>Informasjonen er slettet</h2>
-					Din personelig informasjon (<span class="axodel-info"></span> m.m.) har nå bli slettet og du vil ikke få flere meldinger fra Norsk Finans.
-					<br>Dette er ikke en bekreftelse på at <span class="axodel-info"></span> fantes, men at hvis den eksisterte i vår database så er den nå slettet.
-				</div>
+				<div class="axodel-message">%s</div>
 			</div>
 			<script>
-				(function($) {
+				jQuery(function($) {
 					var click = function() {
-
 						var val = $(".axodel-input").val();
 
 						if (!val) return;
@@ -270,24 +271,28 @@ final class Axowl_shortcode_se {
 						//console.log(e.keyCode);
 					});
 
-					var css = "<style>.axodel-container { margin: 4rem 0; } .axodel-input { font-size: 1.6rem; padding: .5rem; min-width: 30rem; border: solid 2px #333; } .axodel-send { display: block; margin: 2rem 0; border: none; outline: none; background-color: #fc6; font-size: 1.6rem; padding: .6rem; border: solid 2px #333; } .axodel-message { display: none; }  @media only screen and (max-width: 949px) { }</style>";
+					var css = "<style>.axodel-container { margin: 4rem 0; } .axodel-input { font-size: 1.6rem; padding: .5rem; min-width: 30rem; border: 1px solid #949494; border-radius: 3px; box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4; font-family: Source Sans Pro; } .axodel-send { display: block; margin: 2rem 0; border: none; outline: none; background-color: #fc6; font-size: 2rem; padding: .6rem; border: 1px solid #949494; border-radius: 3px; box-shadow: 0 0 0 transparent, inset 0 1px 1px #d4d4d4; font-family: Source Sans Pro; } .axodel-message { display: none; }  @media only screen and (max-width: 949px) { }</style>";
+					
+					// var css = "<style>.axodel-container { margin: 4rem 0; } .axodel-input { font-size: 1.6rem; padding: .5rem; min-width: 30rem; border: solid 2px #333; } .axodel-send { display: block; margin: 2rem 0; border: none; outline: none; background-color: #fc6; font-size: 1.6rem; padding: .6rem; border: solid 2px #333; } .axodel-message { display: none; }  @media only screen and (max-width: 949px) { }</style>";
 					// var css = "<style>@media only screen and (min-width: 950px) { .axodel-container { margin: 4rem 0; } .axodel-input { font-size: 1.6rem; padding: .5rem; min-width: 30rem; border: solid 2px #333; } .axodel-send { display: block; margin: 2rem 0; border: none; outline: none; background-color: #fc6; font-size: 1.6rem; padding: .6rem; border: solid 2px #333; } .axodel-message { display: none; } } @media only screen and (max-width: 949px) { }</style>";
 
 					$("head").append(css);
-
-				})(jQuery);
+				});
 			</script>
-			';
+			',
+			isset($opt['del_title']) ? $opt['del_title'] : 'Slett Meg',
+			isset($opt['del_text']) ? $opt['del_text'] : 'Skriv inn epost eller telefonnummer og din personelig informasjon vil bli slettet fra Norsk Finans.',
+			isset($opt['del_send']) ? $opt['del_send'] : 'Send inn',
+			isset($opt['del_info']) ? str_replace('[info]', '<span class="axodel-info"></span>', $opt['del_info']) : '<h2>Informasjonen er slettet</h2>Din personelig informasjon (<span class="axodel-info"></span> m.m.) har nå bli slettet og du vil ikke få flere meldinger fra Norsk Finans.<br>Dette er ikke en bekreftelse på at <span class="axodel-info"></span> fantes, men at hvis den eksisterte i vår database så er den nå slettet.'
+
+		);
 	
 	}
 
 
 	public function sands_delete() {
-
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('axodel-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/axodel.js', [], '0.0.1');
+        wp_enqueue_script('axodel-se', EM_AXOWL_SE_PLUGIN_URL.'assets/js/pub/axodel-se.js', ['jquery'], '0.0.1');
 		wp_localize_script('axodel-se', 'emurl', ['ajax_url' => admin_url('admin-ajax.php')]);
-
 	}
 
 
@@ -332,7 +337,7 @@ final class Axowl_shortcode_se {
 
 	public function sands2() {
 
-		$vers = '0.0.8';
+		$vers = '0.0.9';
 
         // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
         // wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 901px)');

@@ -52,11 +52,17 @@ final class Axowl_settings_se {
 	}
 
 	public function register_settings() {
-		register_setting('em-axowl-se-settings-name', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
-		register_setting('em-axowl-se-settings-data', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
-		register_setting('em-axowl-se-settings-input', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
-		register_setting('em-axowl-se-settings-popup', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
-		register_setting('em-axowl-se-settings-ab', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+
+		$n = ['name', 'data', 'input', 'popup', 'ab', 'del'];
+
+		foreach ($n as $s) register_setting('em-axowl-se-settings-'.$s, 'em_axowl_se', ['sanitize_callback' => [$this, 'sanitize']]);
+
+		// register_setting('em-axowl-se-settings-name', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		// register_setting('em-axowl-se-settings-data', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		// register_setting('em-axowl-se-settings-input', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		// register_setting('em-axowl-se-settings-popup', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		// register_setting('em-axowl-se-settings-ab', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
+		// register_setting('em-axowl-se-settings-del', 'em_axowl_se', ['sanitize_callback' => array($this, 'sanitize')]);
 
 		add_settings_section('em-axowl-se-name', '', [$this, 'name_section'], 'em-axowl-se-page-name');
 		add_settings_field('em-axowl-se-name', 'Partner Name', [$this, 'input_setting'], 'em-axowl-se-page-name', 'em-axowl-se-name', ['name', 'Name of the partner, as agreed with Axo.']);
@@ -67,6 +73,13 @@ final class Axowl_settings_se {
 		add_settings_field('em-axowl-se-ab-onoff', '', [$this, 'ab_setting_onoff'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
 		add_settings_field('em-axowl-se-ab-page', 'Set page to testing', [$this, 'ab_page'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
 		add_settings_field('em-axowl-se-ab-add', 'Add page to testing', [$this, 'ab_add'], 'em-axowl-se-page-ab', 'em-axowl-se-ab', ['ab', 'ab testing']);
+
+
+		add_settings_section('em-axowl-se-del', '', [$this, 'del_section'], 'em-axowl-se-page-del');
+		add_settings_field('em-axowl-se-del-title', 'Title', [$this, 'input_setting'], 'em-axowl-se-page-del', 'em-axowl-se-del', ['del_title', 'Title']);
+		add_settings_field('em-axowl-se-del-text', 'Text', [$this, 'input_setting'], 'em-axowl-se-page-del', 'em-axowl-se-del', ['del_text', 'Text']);
+		add_settings_field('em-axowl-se-del-info', 'Text on submit', [$this, 'input_setting'], 'em-axowl-se-page-del', 'em-axowl-se-del', ['del_info', 'Text on submit (add [info] of where to return user input)']);
+		add_settings_field('em-axowl-se-del-send', 'Button', [$this, 'input_setting'], 'em-axowl-se-page-del', 'em-axowl-se-del', ['del_send', 'Text on send button.']);
 
 
 		$settings = [
@@ -162,7 +175,10 @@ final class Axowl_settings_se {
 			// 'total_unsecured_debt' => 'Sum of other, unsecured loans in the household. (forbrukslån)',
 			// 'account_number' => 'The bank account the loan will be paid out to, <br>without e.g. spaces and dots. CDV control is recommended',
 			'axo_accept' => 'Checkbox for accepting data usage by axo.',
-			'contact_accepted' => 'Checkbox for accepting data usage by axo.',
+			'contact_accepted' => 'Checkbox for accepting data usage by axo.'
+		];
+
+		$input_2 = [
 			'interest_ex' => 'Interest Example (bottom of form)',
 			'end_popup' => 'Text for popup after form sent in (thank you page)',
 			'button_open' => 'Text on button to open first part of form.',
@@ -183,6 +199,16 @@ final class Axowl_settings_se {
 				'em-axowl-se'.$key, 
 				ucwords(str_replace('_', ' ', $key)), 
 				[$this, 'input'], 
+				'em-axowl-se-page-input', 
+				'em-axowl-se-input', 
+				[$key, $value, true]
+			);
+
+		foreach ($input_2 as $key => $value)
+			add_settings_field(
+				'em-axowl-se'.$key, 
+				ucwords(str_replace('_', ' ', $key)), 
+				[$this, 'input_setting'], 
 				'em-axowl-se-page-input', 
 				'em-axowl-se-input', 
 				[$key, $value, true]
@@ -235,6 +261,7 @@ final class Axowl_settings_se {
 			<button type="button" class="em-settings-anchor em-settings-anchor-input">Tekst</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-popup">Popup</button>
 			<button type="button" class="em-settings-anchor em-settings-anchor-ab">A/B</button>
+			<button type="button" class="em-settings-anchor em-settings-anchor-del">Delete Shortcode</button>
 		</div>';
 
 		// form
@@ -267,6 +294,11 @@ final class Axowl_settings_se {
 		echo '<div class="em-settings em-settings-ab em-hidden">';
 		settings_fields('em-axowl-se-settings-ab');
 		do_settings_sections('em-axowl-se-page-ab');
+		echo '</div>';
+
+		echo '<div class="em-settings em-settings-del em-hidden">';
+		settings_fields('em-axowl-se-settings-del');
+		do_settings_sections('em-axowl-se-page-del');
 		echo '</div>';
 
 
@@ -444,6 +476,23 @@ final class Axowl_settings_se {
 
 		return '';
 	}
+
+
+	public function del_section() {
+
+	}
+
+	// public function del_title {
+
+	// }
+
+	// public function del_text {
+		
+	// }
+
+	// public function del_info {
+		
+	// }
 
 
 	/**

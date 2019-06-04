@@ -3,7 +3,7 @@
 /*
 Plugin Name: EM Axo WL SE
 Description: Axo White Label Sverige
-Version: 0.0.11
+Version: 0.0.12
 GitHub Plugin URI: zeah/EM-axowl-se
 */
 

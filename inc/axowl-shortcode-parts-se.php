@@ -95,7 +95,7 @@ final class Axowl_shortcode_parts_se {
 	public function header($o = []) {
 		return sprintf(
 			'<div class="axowl-header">
-			 <h1 class="axow-header-title">%s</h1>
+			    %s
 				<div class="axowl-header-part">
 					<img src="%s">
 					<span>%s</span>
@@ -110,7 +110,12 @@ final class Axowl_shortcode_parts_se {
 				</div>
 			</div>',
 
-			isset($o['top_text_title']) ? do_shortcode($o['top_text_title']) : 'Börja här!',
+			isset($o['top_text_title']) 
+				? $o['top_text_title'] 
+				  ? '<h1 class="axow-header-title">'.do_shortcode($o['top_text_title']).'</h1>' 
+				  : ''
+
+				: '<h1 class="axow-header-title">Börja här!</h1>',
 
 			esc_url(EM_AXOWL_SE_PLUGIN_URL.'assets/img/steg1.png'),
 			isset($o['top_text_1']) ? do_shortcode($o['top_text_1']) : '1) Välj lånebelopp',

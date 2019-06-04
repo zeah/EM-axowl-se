@@ -99,6 +99,9 @@ final class Axowl_data_se {
 	public function incomplete() {
 		$data = ['status' => 'incomplete'];
 
+		// should never happen because of js validation
+		if (!isset($_POST['email']) || !isset($_POST['mobile_number'])) exit;
+
 		if (isset($_POST['email'])) $data['email'] = $_POST['email'];
 		if (isset($_POST['mobile_number'])) $data['mobile_number'] = preg_replace('/[^0-9]/', '', $_POST['mobile_number']);
 		$data['customer_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -202,7 +205,7 @@ final class Axowl_data_se {
 		if (isset($data['contact_accepted'])) $data['contact_accepted'] = $data['contact_accepted'];
 
 		$data = $this->remove_confidential($data);
-		$data['transactionId'] = isset($res['transactionId']) ? $res['transactionId'] : '';
+		$data['transactionid'] = isset($res['transactionID']) ? $res['transactionID'] : '';
 		$data['server_name'] = $_SERVER['SERVER_NAME'];
 
 		switch ($res['status']) {
