@@ -1643,6 +1643,8 @@ select.em-i:focus {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+
+	width: 30%;
 }
 
 .axowl-header-part img {
