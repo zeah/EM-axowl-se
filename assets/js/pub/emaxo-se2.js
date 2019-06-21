@@ -784,6 +784,8 @@ jQuery(function($) {
 		$(this).addClass('em-cc-green');
 		$(this).siblings('.em-cc-no').removeClass('em-cc-green');
 
+		$(this).parent().siblings('.em-c').val(1);
+
 		if ($('.em-i-credit_loan_amount').val())
 			$('.em-element-privateloan, .em-element-creditloan').down();
 	});
@@ -792,6 +794,8 @@ jQuery(function($) {
 
 		$(this).addClass('em-cc-green');
 		$(this).siblings('.em-cc-yes').removeClass('em-cc-green');
+
+		$(this).parent().siblings('.em-c').val(0);
 
 
 		$('.em-element-loan_purpose').down();
