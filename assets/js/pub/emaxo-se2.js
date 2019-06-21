@@ -4,17 +4,6 @@
  */
 
 
-// jQuery(function($) {
-	// $(document).keypress(function(e) {
-	// 	if (e.keyCode == 33)
-	// 		$('.em-i-loan_amount').focus();
-	// 	console.log(e.keyCode);
-	// });
-// });
-
-
-// console.log(JSON.parse(emurl));
-// console.log(emurl);
 
 var sendGa = function(label, value) {
 	

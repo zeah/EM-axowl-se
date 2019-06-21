@@ -749,7 +749,7 @@ input.em-i:focus {
 .em-lc::after {
 	content: ' ';
 	position: absolute;
-	bottom: .5rem;
+	top: 2.5rem;
 	right: 1rem;
 	height: 3rem;
 	width: 2rem;
@@ -1411,7 +1411,7 @@ select.em-i:focus {
 /* 4.11 */
 .em-date {
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 	justify-content: space-between;
 }
 
@@ -1665,6 +1665,7 @@ select.em-i:focus {
 	.em-i {
 		height: 4rem;
 	}
+
 
 	.em-part-lower-container .em-lc::after {
 		bottom: 0;
@@ -2033,6 +2034,14 @@ select.em-i:focus {
 	.em-part-1-grid-2 .em-lc::after {
 		bottom: .5rem;
 		right: 6rem;
+	}
+
+	.em-i {
+		margin: 0 .5rem;
+	}
+
+	.em-element-mobile_number {
+		margin-right: 1rem;
 	}
 }
 
