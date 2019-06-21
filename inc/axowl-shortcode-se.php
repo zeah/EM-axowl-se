@@ -337,7 +337,7 @@ final class Axowl_shortcode_se {
 
 	public function sands2() {
 
-		$vers = '0.0.11';
+		$vers = '0.0.12';
 
         // wp_enqueue_style('jqslid', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css', false);
         // wp_enqueue_style('emaxowl-se-style', EM_AXOWL_SE_PLUGIN_URL.'assets/css/pub/emaxo-se2.css', array(), '0.0.4', '(min-width: 901px)');

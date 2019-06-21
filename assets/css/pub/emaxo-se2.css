@@ -1656,6 +1656,15 @@ select.em-i:focus {
 	padding: 2rem 0 1rem;
 }
 
+.em-element-address_since_year,
+.em-element-address_since_month,
+.em-element-employment_since_year,
+.em-element-employment_since_month,
+.em-element-employment_last_year,
+.em-element-employment_last_month {
+	width: 50%;
+}
+
 
 
 /* 20.0 INTERNET EXPLORER GRIDS AND OTHERWISE */

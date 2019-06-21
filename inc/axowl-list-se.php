@@ -381,10 +381,10 @@ final class Axowl_list_se {
 					'Renovering/köpa möbler' => 'Renovering/köpa möbler',
 					// 'Köpa bil/fordon/båt' => 'Köpa bil/fordon/båt',
 					// 'Renovering' => 'Renovering',
-					'Konsumtion' => 'Konsumtion',
+					'Övrig konsumtion' => 'Övrig konsumtion',
 					// 'Köpa bostad/handpenning' => 'Köpa bostad/handpenning', 
 					'Resa' => 'Resa',
-					'Övrigt' => 'Övrigt',
+					// 'Övrigt' => 'Övrigt',
 					'Sjukvård'
 	];
 
