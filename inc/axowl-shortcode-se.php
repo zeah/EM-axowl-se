@@ -138,6 +138,7 @@ final class Axowl_shortcode_se {
 	 * @return [type]          [description]
 	 */
 	public function shortcode_2($atts, $content = null) {
+
 		add_action('wp_enqueue_scripts', [$this, 'sands']);
 		add_action('wp_enqueue_scripts', [$this, 'sands2']);
 		add_action('wp_enqueue_scripts', [$this, 'inline_script']);
